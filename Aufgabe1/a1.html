@@ -1,0 +1,21 @@
+<html>
+<body>
+
+<p>Bitte auf den Button klicken</p>
+
+<button onclick="myFunction()">klick mich</button>
+
+<p id="klicken"></p>
+
+<script>
+function myFunction() {
+    var name = prompt("Please enter your name", "Harry Potter");
+    if (name != null) {
+        document.getElementById("klicken").innerHTML =
+        "Hallo " + name + "! Schön dich zu sehen!";
+    }
+}
+</script>
+
+</body>
+</html>
