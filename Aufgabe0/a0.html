@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Userpage Alicia Burger</title>
+        <link rel="stylesheet" type="text/css" href="userpage.css">
+
+
+<style>
+body {
+	font-family: Candara, 'Hind Siliguri', sans-serif;
+	font-size:14pt;
+	text-align:center;
+	background-color: #FFFFFF;
+	color: black;
+	margin-left:auto;
+	margin-right:auto;
+	width:60%;
+}
+</style>
+</head>
+<body>
+<p>Bitte auf den Button klicken</p>
+
+<button onclick="myFunction()">klick mich</button>
+
+<p id="klicken"></p>
+
+<script>
+function myFunction() {
+    var name = prompt("Bitte Namen eingeben", "Max Musterman");
+    if (name != null) {
+        document.getElementById("klicken").innerHTML =
+        "Hallo " + name + "! Schön dich zu sehen!";
+    }
+}
+</script>
+
+</body>
+</html>
