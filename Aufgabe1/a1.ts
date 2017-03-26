@@ -1,8 +1,24 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
     let n = 5;
     let c;
     let x = 0;
     let y = 0;
+    function placeDiv(_color, _x, _y, _width, _height) {
+        console.log("c " + _color + " / x " + _x + " / y " + _y + " / a " + _width);
+        let div = document.createElement("div");
+        document.body.appendChild(div);
+        let s = div.style;
+        s.borderStyle = "solid";
+        s.borderColor = "#000000";
+        s.borderWidth = "1px";
+        s.position = "absolute";
+        s.display = "inline-block";
+        s.backgroundColor = _color;
+        s.width = _width + "px";
+        s.height = _height + "px";
+        s.left = _x + "px";
+        s.top = _y + "px";
+    }
     for (let i = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;
         x = (x + 170) % 400;
@@ -25,20 +41,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 break;
         }
     }
-    function placeDiv(_color, _x, _y, _width, _height) {
-        let div = document.createElement("div");
-        document.body.appendChild(div);
-        let s = div.style;
-        s.borderStyle = "solid";
-        s.borderColor = "#000000";
-        s.borderWidth = "1px";
-        s.position = "absolute";
-        s.display = "inline-block";
-        s.backgroundColor = _color;
-        s.width = _width + "px";
-        s.height = _height + "px";
-        s.left = _x + "px";
-        s.top = _y + "px";
-    }
 });
-//# sourceMappingURL=Code.js.map
+//# sourceMappingURL=aufgabe2.js.map
