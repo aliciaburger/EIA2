@@ -1,45 +1,50 @@
-document.addEventListener('DOMContentLoaded', function () {
-    let n = 5;
-    let c;
-    let x = 0;
-    let y = 0;
-    function placeDiv(_color, _x, _y, _width, _height) {
-        console.log("c " + _color + " / x " + _x + " / y " + _y + " / a " + _width);
-        let div = document.createElement("div");
-        document.body.appendChild(div);
-        let s = div.style;
-        s.borderStyle = "solid";
-        s.borderColor = "#000000";
-        s.borderWidth = "1px";
-        s.position = "absolute";
-        s.display = "inline-block";
-        s.backgroundColor = _color;
-        s.width = _width + "px";
-        s.height = _height + "px";
-        s.left = _x + "px";
-        s.top = _y + "px";
+document.addEventListener("DOMContentLoaded", function () {
+    
+let n: number = 5;
+let c: string;
+let x: number = 0;
+let y: number = 0;
+
+for (let i: number = 0; i < n; i++) {
+    y += (i == 2) ? 20 : 50;
+    x = (x + 170) % 400;
+    switch (i) {
+        case 0:
+            c = "#ff0000";
+            break;
+        case 1:
+        case 4:
+            c = "#00ff00";
+            break;
+        case 3:
+            continue;
+        default:
+            c = "#0000ff";
     }
-    for (let i = 0; i < n; i++) {
-        y += (i == 2) ? 20 : 50;
-        x = (x + 170) % 400;
-        switch (i) {
-            case 0:
-                c = "#ff0000";
-                break;
-            case 1:
-            case 4:
-                c = "#00ff00";
-                break;
-            case 3:
-                continue;
-            default:
-                c = "#0000ff";
-        }
-        for (let a = 50; a > 0; a -= 20) {
-            placeDiv(c, x, y, a, a);
-            if (i == 4)
-                break;
-        }
+    for (let a: number = 50; a > 0; a -= 20) {
+        placeDiv(c, x, y, a, a);
+        if (i == 4)
+            break;
     }
+}
+
+
+
+function placeDiv(_color: string, _x: number, _y: number, _width: number, _height: number): void {
+    let div: HTMLDivElement = document.createElement("div");
+    document.body.appendChild(div);
+
+    let s: CSSStyleDeclaration = div.style;
+    s.borderStyle = "solid";
+    s.borderColor = "#000000";
+    s.borderWidth = "1px";
+    s.position = "absolute";
+    s.display = "inline-block";
+    s.backgroundColor = _color;
+    s.width = _width + "px";
+    s.height = _height + "px";
+    s.left = _x + "px";
+    s.top = _y + "px";
+}
+    
 });
-//# sourceMappingURL=aufgabe2.js.map
