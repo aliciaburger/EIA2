@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     let n = 5;
     let c;
-    let x = 0;
+    let x = 0; 
     let y = 0;
     for (let i = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;
