@@ -1,10 +1,12 @@
 /*
-Aufgabe: (Nummer und Titel der Aufgabe)
-Name: (Ihr Name)
-Matrikel: (Ihre Matrikelnummer)
-Datum: (Datum der letzten Bearbeitung)
+(Aufgabe 3)
+Name: (Alicia Burger)
+Matrikel: (254604)
+Datum: (09.04.17)
     
-Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+Hiermit versichere ich,
+dass ich diesen Code selbst geschrieben habe.
+Er wurde nicht kopiert und auch nicht diktiert.
 */
 document.addEventListener('DOMContentLoaded', function () {
     let Karten = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Ass", "Karo Bube", "Karo Dame",
