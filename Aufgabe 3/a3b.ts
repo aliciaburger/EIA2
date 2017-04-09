@@ -1,12 +1,10 @@
 /*
-(Aufgabe 3)
-Name: (Alicia Burger)
-Matrikel: (254604)
-Datum: (09.04.17)
+Aufgabe: (Nummer und Titel der Aufgabe)
+Name: (Ihr Name)
+Matrikel: (Ihre Matrikelnummer)
+Datum: (Datum der letzten Bearbeitung)
     
-Hiermit versichere ich, 
-dass ich diesen Code selbst geschrieben habe. 
-Er wurde nicht kopiert und auch nicht diktiert.
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -16,37 +14,37 @@ document.addEventListener('DOMContentLoaded', function() {
         "Kreuz 7", "Kreuz 8", "Kreuz 9", "Karo 10", "Kreuz Ass", "Kreuz Bube", "Kreuz Dame"];
 
 
-    
-    let leg: HTMLElement = document.getElementById("ablegstapel");
+   
+    let leg: HTMLElement = document.getElementById("ablegstapel"); 
     let zieh: HTMLElement = document.getElementById("nachziehstapel");
-    let handkarten: string[] = [];
+    let handkartenListe: string[] = [];  
+    let r: number = 0;
 
-
-    zieh.addEventListener("click", function(_zeiehfunktion: Event): void {
-
-        for (let r: number = 0; r < 5; r++) {
-            //         if (r < 5) {
-            //                       }
-            let handkarte: HTMLElement = document.createElement("div");
-            document.body.appendChild(handkarte);
+    zieh.addEventListener("click", function (_event: Event): void {
+//        for(let r: number = 0;r<5;i++){
+//            }
+        if (r < 5) {
+            let handkarte: HTMLElement = document.createElement("div"); 
+            document.body.appendChild(handkarte); 
 
             let zufall = Karten[Math.round(Math.random() * Karten.length)];
-            handkarte.textContent += zufall;
-            handkarten[r] = zufall;
-            handkarte.addEventListener("click", function(_event: Event): void {
-                let aktiv: HTMLDivElement = <HTMLDivElement>_event.target;
-                let karteAusgeben: string = aktiv.textContent;
-                aktiv.style.display = "none";
-                r--;
-                leg.textContent = karteAusgeben;
-                console.log(karteAusgeben, Event);
-            });
-        }
+            handkarte.textContent += zufall; 
+            r = r+1; 
+            handkartenListe[r] = zufall;
 
-        console.log(Event, handkarten);
+            handkarte.addEventListener("click",  function (_event: Event): void {
+        let aktiv: HTMLDivElement = <HTMLDivElement>_event.target;
+        let sorte: string = aktiv.textContent;
+        aktiv.style.display = "none"; 
+        r= r-1;
+        leg.textContent = sorte; 
+        console.log(sorte, Event);
+    });
+        }
+        console.log(Event, handkartenListe);
     });
 
 
-
+   
 
 });
