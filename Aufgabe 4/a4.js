@@ -21,20 +21,17 @@ document.addEventListener('DOMContentLoaded', function () {
     drawSun();
     drawTree(50, 145);
     drawTree(110, 155);
-    drawTulpe(150, 200, "#ffa400");
-    drawBlume(190, 200, "#ff4e00", "#ffbfd4");
-    //    crc2.fillStyle = "#0000ff";
-    //    crc2.fillRect(0, 0, canvas.width, canvas.height);
-    //
-    //    crc2.moveTo(0, 0);
-    //    crc2.lineTo(canvas.width, canvas.height);
-    //    crc2.stroke();
+    drawTulpe(240, 200, "#ffa400");
+    drawBlume(290, 175, "#ff4e00", "#ffbfd4");
+    drawBlume(315, 230, "#cb0051", "#d5f3ee");
+    //FKT. Himmel malen
     function drawSky() {
         crc2.beginPath();
         crc2.fillStyle = "#91e7ff";
         crc2.rect(0, 0, canvas.width, canvas.height);
         crc2.fill();
     }
+    //FKT. Berge malen
     function drawMountain() {
         crc2.beginPath();
         crc2.moveTo(-20, 125); //Wiese Startpunkt
@@ -53,18 +50,21 @@ document.addEventListener('DOMContentLoaded', function () {
         crc2.fillStyle = "#c8c8c8";
         crc2.fill();
     }
+    //FKT. Gras malen
     function drawGrass() {
         crc2.beginPath();
         crc2.fillStyle = "#00aa24";
         crc2.rect(0, 125, 350, 250);
         crc2.fill();
     }
+    //FKT. Sonne malen
     function drawSun() {
         crc2.beginPath();
         crc2.fillStyle = "#ffe527";
         crc2.arc(305, 27, 22, 0, 2 * Math.PI);
         crc2.fill();
     }
+    //FKT. Baum malen
     function drawTree(_x, _y) {
         //Baumstamm
         crc2.beginPath();
@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         crc2.arc(_x + 8, _y - 39, 11, 0, 2 * Math.PI);
         crc2.fill();
     }
+    //FKT. Tulpe malen
     function drawTulpe(_x, _y, _blueteFarbe) {
         //Blumenstengel
         crc2.beginPath();
@@ -104,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         crc2.fill();
     }
     ;
+    //FKT. 5 Blättrige Blume mit Blütenkopf malen 
     function drawBlume(_x, _y, _blaetterFarbe, _blueteFarbe) {
         //Blumenstengel
         crc2.beginPath();
@@ -135,28 +137,11 @@ document.addEventListener('DOMContentLoaded', function () {
         crc2.fill();
     }
     ;
-    var blaetterFarbe = [
-        "#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"
-    ];
-    var blueteFarbe = [
-        "#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"
-    ];
-    //
-    //
-    //        for (var i = 0; i < 25; i++) {
-    //            var randomX = (Math.random() * (400 - 1)) + 1;
-    //            var randomY = (Math.random() * (300 - 230)) + 230;
-    //            var randomColor = colors[Math.floor(Math.random() * colors.length)];
-    //            //            var randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
-    //            console.log("X ist " + randomX, "Y ist " + randomY, randomFlower);
-    //            
-    //            var randomFlower: number = Math.floor((Math.random() * 2)) + 1;
-    //            if (randomFlower == 1) {
-    //                drawFlower(randomX, randomY, "#196F3D", "#F8C471", randomColor);
-    //            } else {
-    //                drawTulip(randomX, randomY, "#196F3D", randomColor);
-    //            }
-    //}
+    // zufällige Blume mit zufälliger Farbe malen
+    //Liste mit verschieden Farben für Blätter und Blütenkopf
+    var blaetterFarbe = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
+    var blueteFarbe = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
+    // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
     for (var i = 0; i < 15; i++) {
         let minX = 0;
         let maxX = 175;
@@ -167,6 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let zufallFarbeBlatt = blaetterFarbe[Math.floor(Math.random() * blaetterFarbe.length)];
         let zufallFarbeBluete = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
         let zufallBlume = Math.floor((Math.random() * 2)) + 1;
+        // if für zufällige Blumensorte
         if (zufallBlume == 1) {
             drawTulpe(zufallZahlX, zufallZahlY, zufallFarbeBlatt);
         }
