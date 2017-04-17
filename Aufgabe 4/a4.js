@@ -138,15 +138,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     ;
     // zufällige Blume mit zufälliger Farbe malen
-    
     //Liste mit verschieden Farben für Blätter und Blütenkopf
-    
     var blaetterFarbe = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
     var blueteFarbe = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
-    
     // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
     for (var i = 0; i < 15; i++) {
-    	
         let minX = 0;
         let maxX = 175;
         let minY = 166;
