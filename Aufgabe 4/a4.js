@@ -1,8 +1,8 @@
 /*
-(Aufgabe 3)
+(Aufgabe 4)
 Name: (Alicia Burger)
 Matrikel: (254604)
-Datum: (09.04.17)
+Datum: (17.04.17)
     
 Hiermit versichere ich,
 dass ich diesen Code selbst geschrieben habe.
