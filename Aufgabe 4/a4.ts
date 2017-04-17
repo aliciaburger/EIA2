@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         crc2.arc(305, 27, 22, 0, 2 * Math.PI);
         crc2.fill();
     }
+    
     //FKT. Baum malen
     function drawTree(_x: number, _y: number): void {
 
