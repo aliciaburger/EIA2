@@ -5,6 +5,9 @@ div{
 	float:left;
 	overflow:auto;
 }
+.farbe{
+	background-color: #C3FFF4;!Important
+}
 
 @media screen and (min-width:  350px){
 	div{
