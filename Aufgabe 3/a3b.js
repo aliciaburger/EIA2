@@ -16,27 +16,31 @@ document.addEventListener('DOMContentLoaded', function () {
     let leg = document.getElementById("ablegstapel");
     let zieh = document.getElementById("nachziehstapel");
     let handkartenListe = [];
+    let hand = document.getElementById("hand");
     let r = 0;
-    zieh.addEventListener("click", function (_event) {
+    zieh.addEventListener("click", ziehen);
+    function ziehen(_event) {
         //        for(let r: number = 0;r<5;i++){
         //            }
         if (r < 5) {
             let handkarte = document.createElement("div");
             document.body.appendChild(handkarte);
-            let zufall = Karten[Math.round(Math.random() * Karten.length)];
+            let zufall = Karten[Math.floor(Math.random() * (Karten.length - 0 + 1)) + 0];
             handkarte.textContent += zufall;
             r = r + 1;
             handkartenListe[r] = zufall;
-            handkarte.addEventListener("click", function (_event) {
+            handkarte.addEventListener("click", ablegen);
+            function ablegen(_event) {
                 let aktiv = _event.target;
                 let sorte = aktiv.textContent;
                 aktiv.style.display = "none";
                 r = r - 1;
                 leg.textContent = sorte;
                 console.log(sorte, Event);
-            });
+            }
         }
         console.log(Event, handkartenListe);
-    });
+    }
+    //__________________________________________
 });
 //# sourceMappingURL=a3b.js.map

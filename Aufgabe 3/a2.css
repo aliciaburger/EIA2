@@ -5,9 +5,51 @@ div{
 	float:left;
 	overflow:auto;
 }
-.farbe{
-	background-color: #C3FFF4;!Important
+.farbe{ background-color : #C3FFF4 !important;
+color:#000000 !important;
 }
+.black{
+	background-color: #000000;
+	color:#ffffff;
+}
+.white{
+	background-color: #ffffff;
+	color:#000000;
+}
+#mouseBox {
+	display:none;
+	position: absolute;
+	background-color: #70CF78;
+	color: #000000;
+	border:  solid 1px;
+	z-index: 1;
+	heigth: 100px;
+    width: 300px;
+    padding: 1px;
+    font-size: 12pt;
+}
+.board {
+    height: 80px;
+    width: 80px;
+    float: left;
+    margin: auto;
+    border: 1px solid black;
+}
+#pfeil {
+	display: none;
+	position: absolute;
+	background-color: #70CF78;
+	color: white;
+	border:  solid 1px;
+	z-index: 1000000;
+	heigth: 100px;
+    width: 300px;
+    padding: 1px;
+    font-size: 12pt;
+}
+
+
+
 
 @media screen and (min-width:  350px){
 	div{

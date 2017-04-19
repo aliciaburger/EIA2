@@ -16,37 +16,47 @@ document.addEventListener('DOMContentLoaded', function() {
         "Kreuz 7", "Kreuz 8", "Kreuz 9", "Karo 10", "Kreuz Ass", "Kreuz Bube", "Kreuz Dame"];
 
 
-   
-    let leg: HTMLElement = document.getElementById("ablegstapel"); 
+
+    let leg: HTMLElement = document.getElementById("ablegstapel");
     let zieh: HTMLElement = document.getElementById("nachziehstapel");
-    let handkartenListe: string[] = [];  
+    let handkartenListe: string[] = [];
+    let hand = document.getElementById("hand");
     let r: number = 0;
 
-    zieh.addEventListener("click", function (_event: Event): void {
-//        for(let r: number = 0;r<5;i++){
-//            }
-        if (r < 5) {
-            let handkarte: HTMLElement = document.createElement("div"); 
-            document.body.appendChild(handkarte); 
 
-            let zufall = Karten[Math.round(Math.random() * Karten.length)];
-            handkarte.textContent += zufall; 
-            r = r+1; 
+    zieh.addEventListener("click", ziehen);
+
+    function ziehen(_event: Event): void {
+        //        for(let r: number = 0;r<5;i++){
+        //            }
+        if (r < 5) {
+            let handkarte: HTMLElement = document.createElement("div");
+            document.body.appendChild(handkarte);
+
+            let zufall = Karten[Math.floor(Math.random() * (Karten.length - 0 + 1)) + 0];
+            handkarte.textContent += zufall;
+            r = r + 1;
             handkartenListe[r] = zufall;
 
-            handkarte.addEventListener("click",  function (_event: Event): void {
-        let aktiv: HTMLDivElement = <HTMLDivElement>_event.target;
-        let sorte: string = aktiv.textContent;
-        aktiv.style.display = "none"; 
-        r= r-1;
-        leg.textContent = sorte; 
-        console.log(sorte, Event);
-    });
+            handkarte.addEventListener("click", ablegen);
+                                                    
+            function ablegen(_event: Event): void {
+                let aktiv: HTMLDivElement = <HTMLDivElement>_event.target;
+                let sorte: string = aktiv.textContent;
+                aktiv.style.display = "none";
+                r = r - 1;
+                leg.textContent = sorte;
+                console.log(sorte, Event);
+            }
         }
         console.log(Event, handkartenListe);
-    });
+    }
+    //__________________________________________
 
 
-   
+  
+
+  
+
 
 });
