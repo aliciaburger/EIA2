@@ -8,22 +8,30 @@ Hiermit versichere ich,
 dass ich diesen Code selbst geschrieben habe.
 Er wurde nicht kopiert und auch nicht diktiert.
 */
-document.addEventListener('DOMContentLoaded', function () {
+var aufgabe4;
+(function (aufgabe4) {
+    window.onload = init;
     let crc2;
     let canvas;
     canvas = document.getElementsByTagName("canvas")[0];
     console.log(canvas);
     crc2 = canvas.getContext("2d");
     console.log(crc2);
-    drawSky();
-    drawMountain();
-    drawGrass();
-    drawSun();
-    drawTree(50, 145);
-    drawTree(110, 155);
-    drawTulpe(240, 200, "#ffa400");
-    drawBlume(290, 175, "#ff4e00", "#ffbfd4");
-    drawBlume(315, 230, "#cb0051", "#d5f3ee");
+    let blaetterFarbe = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
+    let blueteFarbe = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
+    function init(_event) {
+        drawSky();
+        drawMountain();
+        drawGrass();
+        drawSun();
+        drawTree(50, 145);
+        drawTree(110, 155);
+        drawTulpe(240, 200, "#ffa400");
+        drawBlume(290, 175, "#ff4e00", "#ffbfd4");
+        drawBlume(315, 230, "#cb0051", "#d5f3ee");
+        drawZufallsBlumen();
+        console.log("alle fkt ausgeführt");
+    }
     //FKT. Himmel malen
     function drawSky() {
         crc2.beginPath();
@@ -136,29 +144,28 @@ document.addEventListener('DOMContentLoaded', function () {
         crc2.arc(_x + 1.25, _y - 22.5, 3.5, 0, 2 * Math.PI);
         crc2.fill();
     }
-    ;
     // zufällige Blume mit zufälliger Farbe malen
-    //Liste mit verschieden Farben für Blätter und Blütenkopf
-    var blaetterFarbe = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
-    var blueteFarbe = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
+    //Liste mit verschieden Farben für Blätter und Blüten
     // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
-    for (var i = 0; i < 15; i++) {
-        let minX = 0;
-        let maxX = 175;
-        let minY = 166;
-        let maxY = 250;
-        let zufallZahlX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
-        let zufallZahlY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
-        let zufallFarbeBlatt = blaetterFarbe[Math.floor(Math.random() * blaetterFarbe.length)];
-        let zufallFarbeBluete = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
-        let zufallBlume = Math.floor((Math.random() * 2)) + 1;
-        // if für zufällige Blumensorte
-        if (zufallBlume == 1) {
-            drawTulpe(zufallZahlX, zufallZahlY, zufallFarbeBlatt);
-        }
-        else {
-            drawBlume(zufallZahlX, zufallZahlY, zufallFarbeBlatt, zufallFarbeBluete);
+    function drawZufallsBlumen() {
+        for (let i = 0; i < 15; i++) {
+            let minX = 0;
+            let maxX = 175;
+            let minY = 166;
+            let maxY = 250;
+            let zufallZahlX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+            let zufallZahlY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+            let zufallFarbeBlatt = blaetterFarbe[Math.floor(Math.random() * blaetterFarbe.length)];
+            let zufallFarbeBluete = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
+            let zufallBlume = Math.floor((Math.random() * 2)) + 1;
+            // if für zufällige Blumensorte
+            if (zufallBlume == 1) {
+                drawTulpe(zufallZahlX, zufallZahlY, zufallFarbeBlatt);
+            }
+            else {
+                drawBlume(zufallZahlX, zufallZahlY, zufallFarbeBlatt, zufallFarbeBluete);
+            }
         }
     }
-});
+})(aufgabe4 || (aufgabe4 = {}));
 //# sourceMappingURL=a4.js.map
