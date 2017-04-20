@@ -10,7 +10,7 @@ Er wurde nicht kopiert und auch nicht diktiert.
 */
 var aufgabe4;
 (function (aufgabe4) {
-    window.onload = init;
+    window.addEventListener("load", init);
     let crc2;
     let canvas;
     canvas = document.getElementsByTagName("canvas")[0];

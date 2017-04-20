@@ -9,7 +9,7 @@ dass ich diesen Code selbst geschrieben habe.
 Er wurde nicht kopiert und auch nicht diktiert.
 */
 namespace aufgabe4 {
-    window.onload = init;
+    window.addEventListener("load", init);
 
     let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
@@ -164,9 +164,9 @@ namespace aufgabe4 {
 
     //Liste mit verschieden Farben für Blätter und Blüten
 
-    
 
-// Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
+
+    // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
     function drawZufallsBlumen(): void {
 
         for (let i: number = 0; i < 15; i++) {
