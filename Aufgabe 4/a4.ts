@@ -14,16 +14,17 @@ namespace aufgabe4 {
     let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
 
-    canvas = document.getElementsByTagName("canvas")[0];
-    console.log(canvas);
-    crc2 = canvas.getContext("2d");
-    console.log(crc2);
+
 
     let blaetterFarbe: string[] = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
     let blueteFarbe: string[] = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
 
 
     function init(_event: Event): void {
+        canvas = document.getElementsByTagName("canvas")[0];
+        console.log(canvas);
+        crc2 = canvas.getContext("2d");
+        console.log(crc2);
         drawSky();
         drawMountain();
         drawGrass();
