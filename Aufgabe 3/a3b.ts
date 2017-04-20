@@ -8,55 +8,57 @@ Hiermit versichere ich,
 dass ich diesen Code selbst geschrieben habe. 
 Er wurde nicht kopiert und auch nicht diktiert.
 */
-document.addEventListener('DOMContentLoaded', function() {
+namespace aufgabe3b {
+window.addEventListener("load", init);
 
-    let Karten: string[] = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Ass", "Karo Bube", "Karo Dame",
-        "Herz 7", "Herz 8", "Herz 9", "Herz 10", "Herz Ass", "Herz Bube", "Herz Dame",
-        "Pik 7", "Pik 8", "Pik 9", "Pik 10", "Pik Ass", "Pik Bube", "Pik Dame",
-        "Kreuz 7", "Kreuz 8", "Kreuz 9", "Karo 10", "Kreuz Ass", "Kreuz Bube", "Kreuz Dame"];
+let karten: string[] = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Ass", "Karo Bube", "Karo Dame",
+    "Herz 7", "Herz 8", "Herz 9", "Herz 10", "Herz Ass", "Herz Bube", "Herz Dame",
+    "Pik 7", "Pik 8", "Pik 9", "Pik 10", "Pik Ass", "Pik Bube", "Pik Dame",
+    "Kreuz 7", "Kreuz 8", "Kreuz 9", "Karo 10", "Kreuz Ass", "Kreuz Bube", "Kreuz Dame"];
 
+let leg: HTMLElement;
+let zieh: HTMLElement;
+let anzahlHandkarten: number = 0;
 
-
-    let leg: HTMLElement = document.getElementById("ablegstapel");
-    let zieh: HTMLElement = document.getElementById("nachziehstapel");
-    let handkartenListe: string[] = [];
-    let hand = document.getElementById("hand");
-    let r: number = 0;
-
-
+function init(): void {
+    leg = document.getElementById("ablegstapel");
+    zieh = document.getElementById("nachziehstapel");
     zieh.addEventListener("click", ziehen);
+}
 
-    function ziehen(_event: Event): void {
-        //        for(let r: number = 0;r<5;i++){
-        //            }
-        if (r < 5) {
-            let handkarte: HTMLElement = document.createElement("div");
-            document.body.appendChild(handkarte);
+function ziehen(_event: Event): void {
 
-            let zufall = Karten[Math.floor(Math.random() * (Karten.length - 0 + 1)) + 0];
-            handkarte.textContent += zufall;
-            r = r + 1;
-            handkartenListe[r] = zufall;
+    if (anzahlHandkarten < 5 && karten.length > 0) {
+        let handkartenDiv: HTMLElement = document.createElement("div");
 
-            handkarte.addEventListener("click", ablegen);
-                                                    
-            function ablegen(_event: Event): void {
-                let aktiv: HTMLDivElement = <HTMLDivElement>_event.target;
-                let sorte: string = aktiv.textContent;
-                aktiv.style.display = "none";
-                r = r - 1;
-                leg.textContent = sorte;
-                console.log(sorte, Event);
-            }
-        }
-        console.log(Event, handkartenListe);
+        let zufall: number = Math.floor(Math.random() * karten.length);
+        let handKarte: string = karten[zufall];
+        handkartenDiv.textContent += handKarte;
+        
+        // karte aus großem array entfernen
+        karten.splice(zufall, 1);
+        console.log(karten.length);
+        
+        document.body.appendChild(handkartenDiv);
+        anzahlHandkarten++;
+        
+        handkartenDiv.addEventListener("click", ablegen);
+
+       
     }
-    //__________________________________________
+    //console.log(Event, handkartenListe);
+}
+
+ function ablegen(_event: Event): void {
+            let aktiv: HTMLDivElement = <HTMLDivElement>_event.target;
+            let sorte: string = aktiv.textContent;
+            //aktiv.style.display = "none";
+            anzahlHandkarten--;
+            leg.textContent = sorte;
+            aktiv.remove();
+        }
+}
 
 
-  
-
-  
 
 
-});

@@ -8,39 +8,43 @@ Hiermit versichere ich,
 dass ich diesen Code selbst geschrieben habe.
 Er wurde nicht kopiert und auch nicht diktiert.
 */
-document.addEventListener('DOMContentLoaded', function () {
-    let Karten = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Ass", "Karo Bube", "Karo Dame",
+var aufgabe3b;
+(function (aufgabe3b) {
+    window.addEventListener("load", init);
+    let karten = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Ass", "Karo Bube", "Karo Dame",
         "Herz 7", "Herz 8", "Herz 9", "Herz 10", "Herz Ass", "Herz Bube", "Herz Dame",
         "Pik 7", "Pik 8", "Pik 9", "Pik 10", "Pik Ass", "Pik Bube", "Pik Dame",
         "Kreuz 7", "Kreuz 8", "Kreuz 9", "Karo 10", "Kreuz Ass", "Kreuz Bube", "Kreuz Dame"];
-    let leg = document.getElementById("ablegstapel");
-    let zieh = document.getElementById("nachziehstapel");
-    let handkartenListe = [];
-    let hand = document.getElementById("hand");
-    let r = 0;
-    zieh.addEventListener("click", ziehen);
-    function ziehen(_event) {
-        //        for(let r: number = 0;r<5;i++){
-        //            }
-        if (r < 5) {
-            let handkarte = document.createElement("div");
-            document.body.appendChild(handkarte);
-            let zufall = Karten[Math.floor(Math.random() * (Karten.length - 0 + 1)) + 0];
-            handkarte.textContent += zufall;
-            r = r + 1;
-            handkartenListe[r] = zufall;
-            handkarte.addEventListener("click", ablegen);
-            function ablegen(_event) {
-                let aktiv = _event.target;
-                let sorte = aktiv.textContent;
-                aktiv.style.display = "none";
-                r = r - 1;
-                leg.textContent = sorte;
-                console.log(sorte, Event);
-            }
-        }
-        console.log(Event, handkartenListe);
+    let leg;
+    let zieh;
+    let anzahlHandkarten = 0;
+    function init() {
+        leg = document.getElementById("ablegstapel");
+        zieh = document.getElementById("nachziehstapel");
+        zieh.addEventListener("click", ziehen);
     }
-    //__________________________________________
-});
+    function ziehen(_event) {
+        if (anzahlHandkarten < 5 && karten.length > 0) {
+            let handkartenDiv = document.createElement("div");
+            let zufall = Math.floor(Math.random() * karten.length);
+            let handKarte = karten[zufall];
+            handkartenDiv.textContent += handKarte;
+            // karte aus großem array entfernen
+            karten.splice(zufall, 1);
+            console.log(karten.length);
+            document.body.appendChild(handkartenDiv);
+            anzahlHandkarten++;
+            handkartenDiv.addEventListener("click", ablegen);
+        }
+        //console.log(Event, handkartenListe);
+    }
+    function ablegen(_event) {
+        let aktiv = _event.target;
+        let sorte = aktiv.textContent;
+        //aktiv.style.display = "none";
+        anzahlHandkarten--;
+        leg.textContent = sorte;
+        aktiv.remove();
+    }
+})(aufgabe3b || (aufgabe3b = {}));
 //# sourceMappingURL=a3b.js.map
