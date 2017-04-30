@@ -217,31 +217,16 @@ namespace aufgabe4 {
 
         window.setTimeout(animate, 20);
     }
-//    let j: number = 0;
-//    let button: boolean = true;
+
     function animate(): void {
 
         crc2.putImageData(hintergrund, 0, 0);
 
         for (let i: number = 0; i < n; i++) {
-//            if (button == true) {
+
                 x[i] += Math.random() * (- 2);
                 y[i] += Math.random() * 10 - 5;
-//            }
-           
-            //            if (n != 10) {
-            //                x[i] = x[i];
-            //                y[i] = y[i];
-            //            }
-//            j = i;
-//            document.getElementById("stop").addEventListener("click", stop);
-//            console.log(button);
-            
-//            if (button == false) {
-//                console.log("baum");
-//                x[i] = x[i];
-//                y[i] = y[i];
-//            }
+
 
             //if-Abfragen um die Bienen beim erreichen eines Bildrandes auf der anderen Seite wieder erscheinen zu lassen
 
@@ -358,14 +343,10 @@ namespace aufgabe4 {
         y.push(200);
         //anzahl der Bienen um 1 erhöhen
         n++;
-//        animate();
+
         console.log(n);
     }
-//    function stop(_event: Event): void {
-//        console.log(button);
-//        button = false;
-//
-//    }
+
     function drawKorb(_x: number, _y: number): void {
         crc2.beginPath();
         crc2.fillStyle = "#955500";
