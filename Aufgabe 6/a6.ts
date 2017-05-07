@@ -18,7 +18,7 @@ Er wurde nicht kopiert und auch nicht diktiert.
 //  Deshalb programmiere ich aktuell leider blind in der ts Datei, 
 //  ohne dass ich weiß ob das so funktioniert. 
 //  Somit kann ich zwar die ts Datei abgeben, die js datei allerdings nicht.
-  
+
 //---------------------------------------
 
 
@@ -237,9 +237,9 @@ namespace aufgabe4 {
 
             bee.x = 300;
             bee.y = 200;
-            
-            
-            
+
+
+
             bees[i] = bee;
         }
 
@@ -255,7 +255,7 @@ namespace aufgabe4 {
             let bee: Bees = bees[i];
             bee.x += Math.random() * (- 2);
             bee.y += Math.random() * 10 - 5;
-            
+
 
 
             //if-Abfragen um die Bienen beim erreichen eines Bildrandes auf der anderen Seite wieder erscheinen zu lassen
@@ -273,7 +273,7 @@ namespace aufgabe4 {
             if (bee.y > 250) {
                 bee.y = 0;
             }
-            
+
             drawBees(bee.x, bee.y);
         }
 
@@ -284,8 +284,15 @@ namespace aufgabe4 {
     }
     //zusätzliche biene zeichnen     
     function zusatzBiene(_event: Event): void {
+        let minX: number = 10;
+        let maxX: number = 320;
+        let minY: number = 20;
+        let maxY: number = 220;
+        let zufallZahlX: number = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+        let zufallZahlY: number = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
         //Zahlen dem Array hinzufügen
-        bees.push({ x: 300, y: 200 });
+
+        bees.push({ x: zufallZahlX, y: zufallZahlY });
         //anzahl der Bienen um 1 erhöhen
         n++;
 
@@ -293,9 +300,9 @@ namespace aufgabe4 {
     }
     //10 Anfangsbienen zeichnen 
     function drawBees(_x: number, _y: number): void {
-        
-         let zufallFarbeKoerper: string = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
-        
+
+        let zufallFarbeKoerper: string = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
+
         //Schwarzer Körper 
         crc2.beginPath();
         crc2.fillStyle = "#000000";
@@ -314,7 +321,7 @@ namespace aufgabe4 {
         crc2.beginPath();
         //Achtung Flimmerbienen :D
         crc2.fillStyle = zufallFarbeKoerper;
-//        crc2.fillStyle = "yellow";
+        //        crc2.fillStyle = "yellow";
         crc2.moveTo(_x, _y + 3);
         crc2.lineTo(_x + 2, _y + 3);
         crc2.lineTo(_x + 2, _y + 3);

@@ -262,7 +262,7 @@ namespace aufgabe4 {
         crc2.lineTo(_x + 10, _y + 3.5);
         crc2.lineTo(_x, _y + 3.5);
         crc2.moveTo(_x + 10, _y + 3.5);
-        crc2.arc(_x + 10, _y, 3.5, 1.5 * Math.PI, 0.5 * Math.PI)
+        crc2.arc(_x + 10, _y, 3.5, 1.5 * Math.PI, 0.5 * Math.PI);
         crc2.moveTo(_x + 12, _y + 2);
         crc2.lineTo(_x + 15, _y);
         crc2.lineTo(_x + 12, _y - 2);

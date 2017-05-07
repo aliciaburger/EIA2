@@ -219,8 +219,14 @@ var aufgabe4;
     }
     //zusätzliche biene zeichnen     
     function zusatzBiene(_event) {
+        let minX = 10;
+        let maxX = 320;
+        let minY = 20;
+        let maxY = 220;
+        let zufallZahlX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+        let zufallZahlY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
         //Zahlen dem Array hinzufügen
-        bees.push({ x: 300, y: 200 });
+        bees.push({ x: zufallZahlX, y: zufallZahlY });
         //anzahl der Bienen um 1 erhöhen
         n++;
         console.log(n);
