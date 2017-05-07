@@ -18,25 +18,25 @@ document.addEventListener("DOMContentLoaded", function() {
         for (let f: number = 0; f < 8; f++) {
             let div: HTMLDivElement = document.createElement("div");
             document.body.appendChild(div);
-             div.className += "box";
-            if(r==0){
-                r = r + 1 ;
-                div.innerText=""+ r;
-                }
-            else{
-                r = r * 2 ;
-                div.innerText=""+ r;
-                }
-                           
-                                
-          
+            div.className += "box";
+            if (r == 0) {
+                r = r + 1;
+                div.innerText = "" + r;
+            }
+            else {
+                r = r * 2;
+                div.innerText = "" + r;
+            }
+
+
+
             if (black == true) {
                 div.style.backgroundColor = "#000000";
                 div.style.color = "#ffffff";
             }
             else {
                 div.style.backgroundColor = "#ffffff";
-                div.style.color = "#000000";                
+                div.style.color = "#000000";
             }
             black = !black;
         }
