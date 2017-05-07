@@ -28,10 +28,13 @@ namespace aufgabe4 {
 
     let blaetterFarbe: string[] = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
     let blueteFarbe: string[] = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
+    let bienenFabe: string[] = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
 
     interface Bees {
         x: number;
         y: number;
+        color: string;
+
 
     }
 
@@ -229,7 +232,7 @@ namespace aufgabe4 {
 
         //Biene anfangsposition
         for (let i: number = 0; i < n; i++) {
-            let bee: Bees = { x: 0, y: 0, }
+            let bee: Bees = { x: 0, y: 0, color: "" }
 
             bee.x = 300;
             bee.y = 200;
@@ -270,7 +273,7 @@ namespace aufgabe4 {
                 bee.y = 0;
             }
 
-            drawBees(bee.x, bee.y);
+            drawBees(bee.x, bee.y, bee.color);
         }
 
         window.setTimeout(animate, 20);
@@ -288,16 +291,16 @@ namespace aufgabe4 {
         let zufallZahlY: number = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
         //Zahlen dem Array hinzufügen
 
-        bees.push({ x: zufallZahlX, y: zufallZahlY });
+        bees.push({ x: zufallZahlX, y: zufallZahlY, color: "" });
         //anzahl der Bienen um 1 erhöhen
         n++;
 
         console.log(n);
     }
     //10 Anfangsbienen zeichnen 
-    function drawBees(_x: number, _y: number): void {
+    function drawBees(_x: number, _y: number, _color: string): void {
 
-        let zufallFarbeKoerper: string = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
+         _color = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
 
         //Schwarzer Körper 
         crc2.beginPath();
@@ -316,7 +319,7 @@ namespace aufgabe4 {
         //gelbe Streifen
         crc2.beginPath();
         //Achtung Flimmer,-Farbwechsler-bienen :D
-        crc2.fillStyle = zufallFarbeKoerper;
+        crc2.fillStyle = _color;
         //        crc2.fillStyle = "yellow";
         crc2.moveTo(_x, _y + 3);
         crc2.lineTo(_x + 2, _y + 3);
