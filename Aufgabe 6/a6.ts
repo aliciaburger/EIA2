@@ -238,6 +238,8 @@ namespace aufgabe4 {
             bee.x = 300;
             bee.y = 200;
             
+            
+            
             bees[i] = bee;
         }
 
@@ -291,6 +293,9 @@ namespace aufgabe4 {
     }
     //10 Anfangsbienen zeichnen 
     function drawBees(_x: number, _y: number): void {
+        
+         let zufallFarbeKoerper: string = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
+        
         //Schwarzer Körper 
         crc2.beginPath();
         crc2.fillStyle = "#000000";
@@ -307,7 +312,9 @@ namespace aufgabe4 {
 
         //gelbe Streifen
         crc2.beginPath();
-        crc2.fillStyle = "yellow";
+        //Achtung Flimmerbienen :D
+        crc2.fillStyle = zufallFarbeKoerper;
+//        crc2.fillStyle = "yellow";
         crc2.moveTo(_x, _y + 3);
         crc2.lineTo(_x + 2, _y + 3);
         crc2.lineTo(_x + 2, _y + 3);

@@ -227,6 +227,7 @@ var aufgabe4;
     }
     //10 Anfangsbienen zeichnen 
     function drawBees(_x, _y) {
+        let zufallFarbeKoerper = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
         //Schwarzer Körper 
         crc2.beginPath();
         crc2.fillStyle = "#000000";
@@ -242,7 +243,9 @@ var aufgabe4;
         crc2.fill();
         //gelbe Streifen
         crc2.beginPath();
-        crc2.fillStyle = "yellow";
+        //Achtung Flimmerbienen :D
+        crc2.fillStyle = zufallFarbeKoerper;
+        //        crc2.fillStyle = "yellow";
         crc2.moveTo(_x, _y + 3);
         crc2.lineTo(_x + 2, _y + 3);
         crc2.lineTo(_x + 2, _y + 3);
