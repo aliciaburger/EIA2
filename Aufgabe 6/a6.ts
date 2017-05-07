@@ -13,11 +13,7 @@ Er wurde nicht kopiert und auch nicht diktiert.
 
 
 //  Anmerkung: 
-//  Leider erstellt mein Eclipse keine js Dateien mehr.
-//  weder Disable/Eneble TsBuilder, noch project-> clear funktioniert.
-//  Deshalb programmiere ich aktuell leider blind in der ts Datei, 
-//  ohne dass ich weiß ob das so funktioniert. 
-//  Somit kann ich zwar die ts Datei abgeben, die js datei allerdings nicht.
+//  Übersetzung zu js funktioniert wieder:)
 
 //---------------------------------------
 
