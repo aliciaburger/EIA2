@@ -18,7 +18,8 @@ var aufgabe4;
     let canvas;
     let blaetterFarbe = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
     let blueteFarbe = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
-    let bienenFabe = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
+    let bienenFabe = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];
+    let fluegelFabe = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
     let bees = [];
     let n = 10;
     let hintergrund;
@@ -181,9 +182,10 @@ var aufgabe4;
     function biene() {
         //Biene anfangsposition
         for (let i = 0; i < n; i++) {
-            let bee = { x: 0, y: 0, color: "" };
+            let bee = { x: 0, y: 0, color: "", fluegelColor: "" };
             bee.x = 300;
             bee.y = 200;
+            bee.color = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
             bees[i] = bee;
         }
         window.setTimeout(animate, 20);
@@ -207,7 +209,7 @@ var aufgabe4;
             if (bee.y > 250) {
                 bee.y = 0;
             }
-            drawBees(bee.x, bee.y, bee.color);
+            drawBees(bee.x, bee.y, bee.color, bee.fluegelColor);
         }
         window.setTimeout(animate, 20);
         //Eventlistener für zusätzliche biene bei click/touch auf canvas
@@ -216,21 +218,15 @@ var aufgabe4;
     }
     //zusätzliche biene zeichnen     
     function zusatzBiene(_event) {
-        let minX = 10;
-        let maxX = 320;
-        let minY = 20;
-        let maxY = 220;
-        let zufallZahlX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
-        let zufallZahlY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
         //Zahlen dem Array hinzufügen
-        bees.push({ x: zufallZahlX, y: zufallZahlY, color: "" });
+        bees.push({ x: 300, y: 200, color: "#FFDB1F", fluegelColor: "" });
         //anzahl der Bienen um 1 erhöhen
         n++;
         console.log(n);
     }
     //10 Anfangsbienen zeichnen 
-    function drawBees(_x, _y, _color) {
-        _color = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
+    function drawBees(_x, _y, _color, _fluegelColor) {
+        _fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
         //Schwarzer Körper 
         crc2.beginPath();
         crc2.fillStyle = "#000000";
@@ -292,7 +288,8 @@ var aufgabe4;
         crc2.fill();
         //flügel links
         crc2.beginPath();
-        crc2.fillStyle = "lightblue";
+        //        crc2.fillStyle = "lightblue";
+        crc2.fillStyle = _fluegelColor;
         crc2.moveTo(_x + 5, _y - 3.5);
         crc2.bezierCurveTo(_x - 3, _y - 15, _x + 12, _y - 15, _x + 5, _y - 3.5);
         crc2.stroke();
@@ -300,7 +297,8 @@ var aufgabe4;
         crc2.fill();
         //flügel rechts
         crc2.beginPath();
-        crc2.fillStyle = "lightblue";
+        //        crc2.fillStyle = "lightblue";
+        crc2.fillStyle = _fluegelColor;
         crc2.moveTo(_x + 6, _y - 3.5);
         crc2.bezierCurveTo(_x + 3, _y - 15, _x + 18, _y - 15, _x + 6, _y - 3.5);
         crc2.stroke();
