@@ -219,7 +219,8 @@ var aufgabe4;
     //zusätzliche biene zeichnen     
     function zusatzBiene(_event) {
         //Zahlen dem Array hinzufügen
-        bees.push({ x: 300, y: 200, color: "#FFDB1F", fluegelColor: "" });
+        //Bei allen hinzugefügten Bienen durch clicken, sollen Flügel und Körperfarbe gleich bleiben
+        bees.push({ x: 300, y: 200, color: "#FFDB1F", fluegelColor: "72F7FF" });
         //anzahl der Bienen um 1 erhöhen
         n++;
         console.log(n);
