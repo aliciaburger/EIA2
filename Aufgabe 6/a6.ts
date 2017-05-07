@@ -319,7 +319,7 @@ namespace aufgabe4 {
 
         //gelbe Streifen
         crc2.beginPath();
-        //Achtung Flimmerbienen :D
+        //Achtung Flimmer,-Farbwechsler-bienen :D
         crc2.fillStyle = zufallFarbeKoerper;
         //        crc2.fillStyle = "yellow";
         crc2.moveTo(_x, _y + 3);
