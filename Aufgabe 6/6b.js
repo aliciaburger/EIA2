@@ -71,9 +71,11 @@ var StudiVZ;
                 }
                 return "Ausgabe" + students[i].Matrikelnummer + "\nName: " + students[i].Name + "\nVorname: " + students[i].Vorname + "\nAlter: " + students[i].Alter + "\nGeschlecht: " + geschlechtString + "\nKommentar: " + students[i].Kommentar;
             }
+            else {
+                console.log("Fehler");
+                return "Student ist noch nicht im System.";
+            }
         }
-        console.log("Fehler");
-        return "Hier fehlt noch der richtige Code...";
     }
 })(StudiVZ || (StudiVZ = {}));
 //# sourceMappingURL=6b.js.map

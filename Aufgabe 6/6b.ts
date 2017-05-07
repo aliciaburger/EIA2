@@ -70,12 +70,15 @@ namespace StudiVZ {
         console.log("students" + students);
         return "Daten wurden gespeichert!";
     }
-    
+
     function queryData(_matrikel: number): string {
 
         if (isNaN(_matrikel)) {
             return "Bitte die Matrikelnummer als Zahl eingeben.";
         }
+
+
+
         for (let i: number = 0; i <= students.length; i++) {
             if (students[i].Matrikelnummer == _matrikel) {
 
@@ -94,11 +97,15 @@ namespace StudiVZ {
 
                 return "Ausgabe" + students[i].Matrikelnummer + "\nName: " + students[i].Name + "\nVorname: " + students[i].Vorname + "\nAlter: " + students[i].Alter + "\nGeschlecht: " + geschlechtString + "\nKommentar: " + students[i].Kommentar;
             }
+            else {
+                console.log("Fehler");
+                return "Student ist noch nicht im System.";
+            }
 
 
         }
-        console.log("Fehler");
-        return "Hier fehlt noch der richtige Code...";
+        
+
 
     }
 
