@@ -5,7 +5,7 @@ var aufgabe7a;
             console.log("Constructor");
             this.x = _x;
             this.y = _y;
-            this.setRandomColor();
+            //            this.setRandomColor();
             //            this.update();
         }
         update() {

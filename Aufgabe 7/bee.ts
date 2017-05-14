@@ -13,7 +13,7 @@ namespace aufgabe7a {
 
             this.x = _x;
             this.y = _y;
-            this.setRandomColor();
+//            this.setRandomColor();
 //            this.update();
             
             

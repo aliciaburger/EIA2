@@ -46,6 +46,7 @@ var aufgabe7a;
             console.log(aufgabe7a.n);
             let b = new aufgabe7a.Bee(300, 200);
             bees[i] = b;
+            this.setRandomColor();
         }
         console.log(bees);
         window.setTimeout(animate, 20);
