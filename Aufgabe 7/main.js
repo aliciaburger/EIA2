@@ -41,8 +41,7 @@ var aufgabe7a;
         for (let i = 0; i < 15; i++) {
             let f = new aufgabe7a.Flower(0, 0);
             console.log("zufallsblume");
-            flowers[i] = f;
-            f.setRandomColor();
+            //            flowers[i] = f;
             f.drawRandomFlowers();
         }
         for (let i = 0; i < 5; i++) {
@@ -51,6 +50,8 @@ var aufgabe7a;
             f.drawStaticFlower();
             flowers.push(f);
         }
+        //der Teil mit den Bienen funktioniert eigentlich das nichts dargestellt wird muss an bei
+        //dem Teil mit den Blumen liegen. 
         drawKorb(290, 210);
         hintergrund = aufgabe7a.crc2.getImageData(0, 0, canvas.width, canvas.height);
         console.log("alle fkt für Blumenwiese ausgeführt");

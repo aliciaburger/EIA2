@@ -66,9 +66,7 @@ namespace aufgabe7a {
         for (let i: number = 0; i < 15; i++) {
             let f: Flower = new Flower(0, 0);
             console.log("zufallsblume");
-
-            flowers[i] = f;
-            f.setRandomColor();
+//            flowers[i] = f;
             f.drawRandomFlowers();
         }
 
@@ -84,7 +82,8 @@ namespace aufgabe7a {
             flowers.push(f);
         }
 
-
+//der Teil mit den Bienen funktioniert eigentlich das nichts dargestellt wird muss an bei
+//dem Teil mit den Blumen liegen. 
 
         drawKorb(290, 210);
         hintergrund = crc2.getImageData(0, 0, canvas.width, canvas.height);
