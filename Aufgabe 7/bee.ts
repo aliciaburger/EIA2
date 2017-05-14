@@ -1,6 +1,6 @@
 namespace aufgabe7a {
 
-    
+     
       export class Bee {
         x: number;
         y: number;

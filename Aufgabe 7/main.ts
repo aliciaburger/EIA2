@@ -28,6 +28,7 @@ namespace aufgabe7a {
     export let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
     let bees: Bee[] = [];
+
     export let n: number = 10;
     let hintergrund: ImageData;
 
@@ -218,7 +219,7 @@ namespace aufgabe7a {
     function drawZufallsBlumen(): void { 
 
         for (let i: number = 0; i < 15; i++) {
-
+   
             let minX: number = 0;
             let maxX: number = 175;
             let minY: number = 166;
