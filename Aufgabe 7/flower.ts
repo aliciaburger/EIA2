@@ -11,7 +11,7 @@ namespace aufgabe7a {
 
 
         constructor(_x: number, _y: number) {
-            console.log("Hey");
+            console.log("constructor");
             //            this.setRandomStyle();
             //this.setRandomPosition();
            
@@ -20,7 +20,171 @@ namespace aufgabe7a {
             this.y = _y;
         }
 
-       
+        drawNectarFlower(): void {
+
+            this.setRandomPosition();
+            this.drawBlume();
+            //            flower
+   
+        
+        }
+
+        drawBlume(): void {
+            let _x: number = this.x;
+            let _y: number = this.y;
+            let _blueteFarbe: string = this.zufallFarbeBluete;
+            let _blaetterFarbe: string = this.zufallFarbeBlatt;
+           
+
+
+            //Blumenstengel
+            crc2.beginPath();
+            crc2.fillStyle = "#006e11";
+            crc2.moveTo(_x, _y);
+            crc2.lineTo(_x, _y - 16);
+            crc2.lineTo(_x + 2.5, _y - 16);
+            crc2.lineTo(_x + 2.5, _y);
+            crc2.closePath();
+            crc2.fill();
+
+            //Blütenblätter
+            crc2.beginPath();
+            crc2.fillStyle = _blaetterFarbe;
+            crc2.arc(_x - 2, _y - 18, 3.5, 0, 2 * Math.PI);
+            crc2.moveTo(_x - 4, _y - 24);
+            crc2.arc(_x - 4, _y - 24, 3.5, 0, 2 * Math.PI);
+            crc2.moveTo(_x + 1, _y - 27);
+            crc2.arc(_x + 1, _y - 27, 3.5, 0, 2 * Math.PI);
+            crc2.moveTo(_x + 6.5, _y - 24);
+            crc2.arc(_x + 6.5, _y - 24, 3.5, 0, 2 * Math.PI);
+            crc2.moveTo(_x + 4.5, _y - 18);
+            crc2.arc(_x + 4.5, _y - 18, 3.5, 0, 2 * Math.PI);
+            crc2.fill();
+
+            //Blütenkopf
+            crc2.beginPath();
+            crc2.fillStyle = _blueteFarbe;
+            crc2.moveTo(_x + 1.25, _y - 22.5);
+            crc2.arc(_x + 1.25, _y - 22.5, 3.5, 0, 2 * Math.PI);
+            crc2.fill();
+        }
+
+        drawTulpe(): void {
+            let _x: number = this.x;
+            let _y: number  = this.y;
+            let _blueteFarbe: string  = this.zufallFarbeBluete;
+            //Blumenstengel
+            crc2.beginPath();
+            crc2.fillStyle = "#006e11";
+            crc2.moveTo(_x, _y);
+            crc2.lineTo(_x, _y - 18);
+            crc2.lineTo(_x + 2.5, _y - 18);
+            crc2.lineTo(_x + 2.5, _y);
+            crc2.closePath();
+            crc2.fill();
+
+            //Blütenkopf
+            crc2.beginPath();
+            crc2.fillStyle = _blueteFarbe;
+            crc2.moveTo(_x + 4, _y - 22);
+            crc2.arc(_x + 1.25, _y - 22, 10, - 0.15 * Math.PI, 1.15 * Math.PI);
+            crc2.lineTo(_x - 2.75, _y - 22);
+            crc2.lineTo(_x + 1.25, _y - 28);
+            crc2.fill();
+        }
+        //BLUME
+//        drawFlower(_centerColor: string): void {
+//
+//            //stalk
+//            crc2.beginPath();
+//            crc2.strokeStyle = this.stalkColor;
+//            crc2.moveTo(this.x, this.y);
+//            crc2.lineTo(this.x, this.y - 20);
+//            crc2.stroke();
+//            crc2.closePath();
+//            //leafs
+//            crc2.beginPath();
+//            crc2.strokeStyle = this.stalkColor;
+//            crc2.moveTo(this.x, this.y);
+//            crc2.lineTo(this.x, this.y - 7);
+//            crc2.lineTo(this.x + 5, this.y - 7);
+//            crc2.lineTo(this.x, this.y);
+//            crc2.stroke();
+//            crc2.closePath();
+//            crc2.fillStyle = this.stalkColor;
+//            crc2.fill();
+//            //petals
+//            crc2.fillStyle = this.petalColor;
+//            crc2.beginPath();
+//            crc2.arc(this.x, this.y - 25, 5, 0, 2 * Math.PI);
+//            crc2.fill();
+//
+//            crc2.beginPath();
+//            crc2.arc(this.x - 5, this.y - 20, 5, 0, 2 * Math.PI);
+//            crc2.fill();
+//
+//            crc2.beginPath();
+//            crc2.arc(this.x + 5, this.y - 20, 5, 0, 2 * Math.PI);
+//            crc2.fill();
+//
+//            crc2.beginPath();
+//            crc2.arc(this.x, this.y - 15, 5, 0, 2 * Math.PI);
+//            crc2.fill();
+//
+//            //center
+//            crc2.beginPath();
+//            crc2.arc(this.x, this.y - 20, 5, 0, 2 * Math.PI);
+//            crc2.fillStyle = _centerColor;
+//            crc2.fill();
+//        }
+
+
+//        drawTulip(): void {
+//            //stalk
+//            crc2.beginPath();
+//            crc2.strokeStyle = this.stalkColor;
+//            crc2.moveTo(this.x, this.y);
+//            crc2.lineTo(this.x, this.y - 20);
+//            crc2.stroke();
+//            crc2.closePath();
+//            //leafs
+//            crc2.beginPath();
+//            crc2.strokeStyle = this.stalkColor;
+//            crc2.moveTo(this.x, this.y);
+//            crc2.lineTo(this.x, this.y - 12);
+//            crc2.lineTo(this.x - 5, this.y - 18);
+//            crc2.lineTo(this.x, this.y - 5);
+//            crc2.stroke();
+//            crc2.closePath();
+//            crc2.fillStyle = this.stalkColor;
+//            crc2.fill();
+//
+//            crc2.beginPath();
+//            crc2.strokeStyle = this.stalkColor;
+//            crc2.moveTo(this.x, this.y);
+//            crc2.lineTo(this.x, this.y - 12);
+//            crc2.lineTo(this.x + 5, this.y - 18);
+//            crc2.lineTo(this.x, this.y - 5);
+//            crc2.stroke();
+//            crc2.closePath();
+//            crc2.fillStyle = this.stalkColor;
+//            crc2.fill();
+//            //blossom
+//            crc2.fillStyle = this.petalColor;
+//            crc2.beginPath();
+//            crc2.moveTo(this.x, this.y - 25);
+//            crc2.arc(this.x, this.y - 30, 10, 0, Math.PI);
+//            crc2.fillStyle = this.petalColor;
+//            crc2.fill();
+//            crc2.beginPath();
+//            crc2.fillStyle = this.petalColor;
+//
+//            crc2.moveTo(this.x - 5, this.y - 25);
+//            crc2.lineTo(this.x, this.y - 32);
+//            crc2.lineTo(this.x + 5, this.y - 25);
+//            crc2.closePath();
+//            crc2.fill();
+//        }
 
         setRandomColor(): void {
             
@@ -60,11 +224,11 @@ namespace aufgabe7a {
             if (zufallBlume == 1) {
                 this.setRandomColor();
                 this.setRandomPosition();
-//                drawTulpe();
+                this.drawTulpe();
             } else {
                 this.setRandomColor();
-//                this.setRandomPosition();
-//                drawBlume();
+                this.setRandomPosition();
+                this.drawBlume();
             }
             }
             

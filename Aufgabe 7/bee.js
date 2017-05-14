@@ -96,17 +96,17 @@ var aufgabe7a;
             this.x += Math.random() * (-2);
             this.y += Math.random() * 10 - 5;
             //if-Abfragen um die Bienen beim erreichen eines Bildrandes auf der anderen Seite wieder erscheinen zu lassen
-            if (this.x > aufgabe7a.crc2.canvas.width) {
+            if (this.x >= aufgabe7a.crc2.canvas.width) {
                 this.x = 0;
+            }
+            if (this.y <= 0) {
+                this.y = aufgabe7a.crc2.canvas.height;
+            }
+            if (this.x < 0) {
+                this.x = aufgabe7a.crc2.canvas.width;
             }
             if (this.y > aufgabe7a.crc2.canvas.height) {
                 this.y = 0;
-            }
-            if (this.y < 0) {
-                this.y = aufgabe7a.crc2.canvas.width;
-            }
-            if (this.y < 0) {
-                this.y = aufgabe7a.crc2.canvas.height;
             }
         }
         setRandomColor() {
