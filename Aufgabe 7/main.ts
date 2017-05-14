@@ -60,25 +60,25 @@ namespace aufgabe7a {
         //        f.drawTulpe(240, 200, "#ffa400");
         //        drawBlume(290, 175, "#ff4e00", "#ffbfd4");
         //        drawBlume(315, 230, ", "#d5f3ee");
-        
-//        drawZufallsBlumen();
-        
+
+        //        drawZufallsBlu        
 
         for (let i: number = 0; i < 15; i++) {
             let f: Flower = new Flower(0, 0);
             console.log("zufallsblume");
-            
+
             flowers[i] = f;
+            f.setRandomColor();
             f.drawRandomFlowers();
         }
 
 
 
-        
+
 
         for (let i: number = 0; i < 5; i++) {
             let f: Flower = new Flower(200, 150);
-           
+
             f.setRandomColor();
             f.drawStaticFlower();
             flowers.push(f);
@@ -184,17 +184,17 @@ namespace aufgabe7a {
 
 
     // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
-//    function drawZufallsBlumen(): void {
-//        console.log("zufallsblume");
-//
-//        for (let i: number = 0; i < 15; i++) {
-//
-//            let f: Flower = new Flower(0, 0);
-//            f.drawRandomFlowers();
-//
-//
-//        }
-//    }
+    //    function drawZufallsBlumen(): void {
+    //        console.log("zufallsblume");
+    //
+    //        for (let i: number = 0; i < 15; i++) {
+    //
+    //            let f: Flower = new Flower(0, 0);
+    //            f.drawRandomFlowers();
+    //
+    //
+    //        }
+    //    }
 
 
 
