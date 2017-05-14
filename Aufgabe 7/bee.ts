@@ -23,7 +23,7 @@ namespace aufgabe7a {
         update(): void {
             this.move();
             this.draw();
-        }
+        } 
             draw(): void {
             let _x: number = this.x;
             let _y: number = this.y;

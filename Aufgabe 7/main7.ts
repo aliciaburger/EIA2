@@ -215,7 +215,7 @@ namespace aufgabe7a {
 
 
     // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
-    function drawZufallsBlumen(): void {
+    function drawZufallsBlumen(): void { 
 
         for (let i: number = 0; i < 15; i++) {
 
