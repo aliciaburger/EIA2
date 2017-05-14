@@ -20,7 +20,7 @@ namespace aufgabe7a {
             this.y = _y;
         }
 
-        drawNectarFlower(): void {
+        drawStaticFlower(): void {
 
             this.setRandomPosition();
             this.drawBlume();

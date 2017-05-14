@@ -9,7 +9,7 @@ var aufgabe7a;
             this.x = _x;
             this.y = _y;
         }
-        drawNectarFlower() {
+        drawStaticFlower() {
             this.setRandomPosition();
             this.drawBlume();
             //            flower

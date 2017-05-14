@@ -16,6 +16,7 @@ var aufgabe7a;
     window.addEventListener("load", init);
     let canvas;
     let bees = [];
+    let flowers = [];
     aufgabe7a.n = 10;
     let hintergrund;
     let blaetterFarbe = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
@@ -37,6 +38,11 @@ var aufgabe7a;
         drawBlume(290, 175, "#ff4e00", "#ffbfd4");
         drawBlume(315, 230, "#cb0051", "#d5f3ee");
         drawZufallsBlumen();
+        for (let i = 0; i < 5; i++) {
+            let f = new aufgabe7a.Flower(200, 200);
+            f.drawStaticFlower();
+            flowers.push(f);
+        }
         drawKorb(290, 210);
         hintergrund = aufgabe7a.crc2.getImageData(0, 0, canvas.width, canvas.height);
         console.log("alle fkt für Blumenwiese ausgeführt");
@@ -46,13 +52,12 @@ var aufgabe7a;
             console.log(aufgabe7a.n);
             let b = new aufgabe7a.Bee(300, 200);
             bees[i] = b;
-            this.setRandomColor();
+            b.setRandomColor();
         }
         console.log(bees);
         window.setTimeout(animate, 20);
-        //        window.setTimeout(animate, 20);
-        //        canvas.addEventListener("click", zusatzBiene);
-        //        canvas.addEventListener("touch", zusatzBiene);
+        canvas.addEventListener("click", zusatzBiene);
+        canvas.addEventListener("touch", zusatzBiene);
     }
     //FKT. Himmel malen
     function drawSky() {
@@ -134,7 +139,6 @@ var aufgabe7a;
         aufgabe7a.crc2.lineTo(_x + 1.25, _y - 28);
         aufgabe7a.crc2.fill();
     }
-    ;
     //FKT. 5 Blättrige Blume mit Blütenkopf malen 
     function drawBlume(_x, _y, _blaetterFarbe, _blueteFarbe) {
         //Blumenstengel
@@ -202,7 +206,7 @@ var aufgabe7a;
     //
     //        window.setTimeout(animate, 20);
     //        canvas.addEventListener("click", zusatzBiene);
-    //        canvas.addEventListener("touch", zusatzBiene);
+    //        canvas.vestr(chusatzBiene);
     //
     //    }
     function animate() {

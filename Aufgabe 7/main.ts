@@ -16,10 +16,10 @@ Er wurde nicht kopiert und auch nicht diktiert.
 //  Übersetzung zu js funktioniert wieder:)
 
 //---------------------------------------
- 
-   
 
-   
+
+
+
 
 
 namespace aufgabe7a {
@@ -28,7 +28,7 @@ namespace aufgabe7a {
     export let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
     let bees: Bee[] = [];
-
+    let flowers: Flower[] = [];
     export let n: number = 10;
     let hintergrund: ImageData;
 
@@ -39,12 +39,12 @@ namespace aufgabe7a {
     //    let bienenFabe: string[] = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];
     //    let fluegelFabe: string[] = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
 
-    
+
 
 
     function init(_event: Event): void {
 
-        
+
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
         crc2 = canvas.getContext("2d");
@@ -55,34 +55,44 @@ namespace aufgabe7a {
         drawSun();
         drawTree(50, 145);
         drawTree(110, 155);
+        
+        
         drawTulpe(240, 200, "#ffa400");
         drawBlume(290, 175, "#ff4e00", "#ffbfd4");
         drawBlume(315, 230, "#cb0051", "#d5f3ee");
+        
         drawZufallsBlumen();
+        
+        
+        
+        for (let i: number = 0; i < 5; i++) {
+            let f: Flower = new Flower(200, 200);
+            f.drawStaticFlower();
+            flowers.push(f);
+        }
+        
+        
+        
         drawKorb(290, 210);
         hintergrund = crc2.getImageData(0, 0, canvas.width, canvas.height);
         console.log("alle fkt für Blumenwiese ausgeführt");
-//        biene();
-                //Biene anfangsposition
-        
-        
+        //        biene();
+        //Biene anfangsposition
+
+
         for (let i: number = 0; i < n; i++) {
             console.log(n);
             let b: Bee = new Bee(300, 200);
             bees[i] = b;
-            this.setRandomColor();
-            
+            b.setRandomColor();
+
         }
         console.log(bees);
         window.setTimeout(animate, 20);
 
-        
-        
 
-
-//        window.setTimeout(animate, 20);
-//        canvas.addEventListener("click", zusatzBiene);
-//        canvas.addEventListener("touch", zusatzBiene);
+        canvas.addEventListener("click", zusatzBiene);
+        canvas.addEventListener("touch", zusatzBiene);
 
     }
 
@@ -174,7 +184,7 @@ namespace aufgabe7a {
         crc2.lineTo(_x - 2.75, _y - 22);
         crc2.lineTo(_x + 1.25, _y - 28);
         crc2.fill();
-    };
+    }
     //FKT. 5 Blättrige Blume mit Blütenkopf malen 
     function drawBlume(_x: number, _y: number, _blaetterFarbe: string, _blueteFarbe: string): void {
 
@@ -216,10 +226,10 @@ namespace aufgabe7a {
 
 
     // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
-    function drawZufallsBlumen(): void { 
+    function drawZufallsBlumen(): void {
 
         for (let i: number = 0; i < 15; i++) {
-   
+
             let minX: number = 0;
             let maxX: number = 175;
             let minY: number = 166;
@@ -238,33 +248,33 @@ namespace aufgabe7a {
             }
         }
     }
-   
-    
-//    //Überfunktion für Animation und bienenzeichnen
-//    function biene(): void {
-//
-//        //Biene anfangsposition
-//        for (let i: number = 0; i < n; i++) {
-//            let b: Bee = new Bee(300, 200);
-//            bees[i] = b;
-//            b.setRandomColor();
-//
-//        }
-//
-//        window.setTimeout(animate, 20);
-//        canvas.addEventListener("click", zusatzBiene);
-//        canvas.addEventListener("touch", zusatzBiene);
-//
-//    }
 
-    
-    
-   
-    
-    
+
+    //    //Überfunktion für Animation und bienenzeichnen
+    //    function biene(): void {
+    //
+    //        //Biene anfangsposition
+    //        for (let i: number = 0; i < n; i++) {
+    //            let b: Bee = new Bee(300, 200);
+    //            bees[i] = b;
+    //            b.setRandomColor();
+    //
+    //        }
+    //
+    //        window.setTimeout(animate, 20);
+    //        canvas.addEventListener("click", zusatzBiene);
+    //        canvas.vestr(chusatzBiene);
+    //
+    //    }
+
+
+
+
+
+
     function animate(): void {
- 
-        
+
+
         crc2.putImageData(hintergrund, 0, 0);
 
         for (let i: number = 0; i < n; i++) {
@@ -274,28 +284,29 @@ namespace aufgabe7a {
         }
 
         window.setTimeout(animate, 20);
-        
+
 
     }
 
- 
+
 
     //zusätzliche biene zeichnen     
     function zusatzBiene(_event: Event): void {
 
         //Zahlen dem Array hinzufügen
-       
-        
-                 //neue Biene bei Klick
-   
+
+
+        //neue Biene bei Klick
         let b: Bee = new Bee(300, 200);
         b.setRandomColor();
+
+
         bees.push(b);
         //anzahl der Bienen um 1 erhöhen
         n++;
-        
+
         console.log(n);
-         
+
 
     }
 
