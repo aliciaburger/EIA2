@@ -55,24 +55,37 @@ namespace aufgabe7a {
         drawSun();
         drawTree(50, 145);
         drawTree(110, 155);
+
+
+        //        f.drawTulpe(240, 200, "#ffa400");
+        //        drawBlume(290, 175, "#ff4e00", "#ffbfd4");
+        //        drawBlume(315, 230, ", "#d5f3ee");
         
+//        drawZufallsBlumen();
         
-        drawTulpe(240, 200, "#ffa400");
-        drawBlume(290, 175, "#ff4e00", "#ffbfd4");
-        drawBlume(315, 230, "#cb0051", "#d5f3ee");
+
+        for (let i: number = 0; i < 15; i++) {
+            let f: Flower = new Flower(0, 0);
+            console.log("zufallsblume");
+            
+            flowers[i] = f;
+            f.drawRandomFlowers();
+        }
+
+
+
         
-        drawZufallsBlumen();
-        
-        
-        
+
         for (let i: number = 0; i < 5; i++) {
-            let f: Flower = new Flower(200, 200);
+            let f: Flower = new Flower(200, 150);
+           
+            f.setRandomColor();
             f.drawStaticFlower();
             flowers.push(f);
         }
-        
-        
-        
+
+
+
         drawKorb(290, 210);
         hintergrund = crc2.getImageData(0, 0, canvas.width, canvas.height);
         console.log("alle fkt für Blumenwiese ausgeführt");
@@ -163,62 +176,7 @@ namespace aufgabe7a {
         crc2.arc(_x + 8, _y - 39, 11, 0, 2 * Math.PI);
         crc2.fill();
     }
-    //FKT. Tulpe malen
-    function drawTulpe(_x: number, _y: number, _blueteFarbe: string): void {
 
-        //Blumenstengel
-        crc2.beginPath();
-        crc2.fillStyle = "#006e11";
-        crc2.moveTo(_x, _y);
-        crc2.lineTo(_x, _y - 18);
-        crc2.lineTo(_x + 2.5, _y - 18);
-        crc2.lineTo(_x + 2.5, _y);
-        crc2.closePath();
-        crc2.fill();
-
-        //Blütenkopf
-        crc2.beginPath();
-        crc2.fillStyle = _blueteFarbe;
-        crc2.moveTo(_x + 4, _y - 22);
-        crc2.arc(_x + 1.25, _y - 22, 10, - 0.15 * Math.PI, 1.15 * Math.PI);
-        crc2.lineTo(_x - 2.75, _y - 22);
-        crc2.lineTo(_x + 1.25, _y - 28);
-        crc2.fill();
-    }
-    //FKT. 5 Blättrige Blume mit Blütenkopf malen 
-    function drawBlume(_x: number, _y: number, _blaetterFarbe: string, _blueteFarbe: string): void {
-
-        //Blumenstengel
-        crc2.beginPath();
-        crc2.fillStyle = "#006e11";
-        crc2.moveTo(_x, _y);
-        crc2.lineTo(_x, _y - 16);
-        crc2.lineTo(_x + 2.5, _y - 16);
-        crc2.lineTo(_x + 2.5, _y);
-        crc2.closePath();
-        crc2.fill();
-
-        //Blütenblätter
-        crc2.beginPath();
-        crc2.fillStyle = _blaetterFarbe;
-        crc2.arc(_x - 2, _y - 18, 3.5, 0, 2 * Math.PI);
-        crc2.moveTo(_x - 4, _y - 24);
-        crc2.arc(_x - 4, _y - 24, 3.5, 0, 2 * Math.PI);
-        crc2.moveTo(_x + 1, _y - 27);
-        crc2.arc(_x + 1, _y - 27, 3.5, 0, 2 * Math.PI);
-        crc2.moveTo(_x + 6.5, _y - 24);
-        crc2.arc(_x + 6.5, _y - 24, 3.5, 0, 2 * Math.PI);
-        crc2.moveTo(_x + 4.5, _y - 18);
-        crc2.arc(_x + 4.5, _y - 18, 3.5, 0, 2 * Math.PI);
-        crc2.fill();
-
-        //Blütenkopf
-        crc2.beginPath();
-        crc2.fillStyle = _blueteFarbe;
-        crc2.moveTo(_x + 1.25, _y - 22.5);
-        crc2.arc(_x + 1.25, _y - 22.5, 3.5, 0, 2 * Math.PI);
-        crc2.fill();
-    }
     // zufällige Blume mit zufälliger Farbe malen
 
     //Liste mit verschieden Farben für Blätter und Blüten
@@ -226,46 +184,19 @@ namespace aufgabe7a {
 
 
     // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
-    function drawZufallsBlumen(): void {
-
-        for (let i: number = 0; i < 15; i++) {
-
-            let minX: number = 0;
-            let maxX: number = 175;
-            let minY: number = 166;
-            let maxY: number = 250;
-            let zufallZahlX: number = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
-            let zufallZahlY: number = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
-            let zufallFarbeBlatt: string = blaetterFarbe[Math.floor(Math.random() * blaetterFarbe.length)];
-            let zufallFarbeBluete: string = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
-            let zufallBlume: number = Math.floor((Math.random() * 2)) + 1;
-
-            // if für zufällige Blumensorte
-            if (zufallBlume == 1) {
-                drawTulpe(zufallZahlX, zufallZahlY, zufallFarbeBlatt);
-            } else {
-                drawBlume(zufallZahlX, zufallZahlY, zufallFarbeBlatt, zufallFarbeBluete);
-            }
-        }
-    }
+//    function drawZufallsBlumen(): void {
+//        console.log("zufallsblume");
+//
+//        for (let i: number = 0; i < 15; i++) {
+//
+//            let f: Flower = new Flower(0, 0);
+//            f.drawRandomFlowers();
+//
+//
+//        }
+//    }
 
 
-    //    //Überfunktion für Animation und bienenzeichnen
-    //    function biene(): void {
-    //
-    //        //Biene anfangsposition
-    //        for (let i: number = 0; i < n; i++) {
-    //            let b: Bee = new Bee(300, 200);
-    //            bees[i] = b;
-    //            b.setRandomColor();
-    //
-    //        }
-    //
-    //        window.setTimeout(animate, 20);
-    //        canvas.addEventListener("click", zusatzBiene);
-    //        canvas.vestr(chusatzBiene);
-    //
-    //    }
 
 
 

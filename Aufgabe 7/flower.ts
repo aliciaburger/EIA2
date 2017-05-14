@@ -12,10 +12,8 @@ namespace aufgabe7a {
 
         constructor(_x: number, _y: number) {
             console.log("constructor");
-            //            this.setRandomStyle();
-            //this.setRandomPosition();
            
-            this.setRandomColor();
+//            this.setRandomColor();
             this.x = _x;
             this.y = _y;
         }
@@ -24,7 +22,7 @@ namespace aufgabe7a {
 
             this.setRandomPosition();
             this.drawBlume();
-            //            flower
+
    
         
         }

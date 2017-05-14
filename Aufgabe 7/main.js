@@ -34,12 +34,19 @@ var aufgabe7a;
         drawSun();
         drawTree(50, 145);
         drawTree(110, 155);
-        drawTulpe(240, 200, "#ffa400");
-        drawBlume(290, 175, "#ff4e00", "#ffbfd4");
-        drawBlume(315, 230, "#cb0051", "#d5f3ee");
-        drawZufallsBlumen();
+        //        f.drawTulpe(240, 200, "#ffa400");
+        //        drawBlume(290, 175, "#ff4e00", "#ffbfd4");
+        //        drawBlume(315, 230, ", "#d5f3ee");
+        //        drawZufallsBlumen();
+        for (let i = 0; i < 15; i++) {
+            let f = new aufgabe7a.Flower(0, 0);
+            console.log("zufallsblume");
+            flowers[i] = f;
+            f.drawRandomFlowers();
+        }
         for (let i = 0; i < 5; i++) {
-            let f = new aufgabe7a.Flower(200, 200);
+            let f = new aufgabe7a.Flower(200, 150);
+            f.setRandomColor();
             f.drawStaticFlower();
             flowers.push(f);
         }
@@ -119,95 +126,19 @@ var aufgabe7a;
         aufgabe7a.crc2.arc(_x + 8, _y - 39, 11, 0, 2 * Math.PI);
         aufgabe7a.crc2.fill();
     }
-    //FKT. Tulpe malen
-    function drawTulpe(_x, _y, _blueteFarbe) {
-        //Blumenstengel
-        aufgabe7a.crc2.beginPath();
-        aufgabe7a.crc2.fillStyle = "#006e11";
-        aufgabe7a.crc2.moveTo(_x, _y);
-        aufgabe7a.crc2.lineTo(_x, _y - 18);
-        aufgabe7a.crc2.lineTo(_x + 2.5, _y - 18);
-        aufgabe7a.crc2.lineTo(_x + 2.5, _y);
-        aufgabe7a.crc2.closePath();
-        aufgabe7a.crc2.fill();
-        //Blütenkopf
-        aufgabe7a.crc2.beginPath();
-        aufgabe7a.crc2.fillStyle = _blueteFarbe;
-        aufgabe7a.crc2.moveTo(_x + 4, _y - 22);
-        aufgabe7a.crc2.arc(_x + 1.25, _y - 22, 10, -0.15 * Math.PI, 1.15 * Math.PI);
-        aufgabe7a.crc2.lineTo(_x - 2.75, _y - 22);
-        aufgabe7a.crc2.lineTo(_x + 1.25, _y - 28);
-        aufgabe7a.crc2.fill();
-    }
-    //FKT. 5 Blättrige Blume mit Blütenkopf malen 
-    function drawBlume(_x, _y, _blaetterFarbe, _blueteFarbe) {
-        //Blumenstengel
-        aufgabe7a.crc2.beginPath();
-        aufgabe7a.crc2.fillStyle = "#006e11";
-        aufgabe7a.crc2.moveTo(_x, _y);
-        aufgabe7a.crc2.lineTo(_x, _y - 16);
-        aufgabe7a.crc2.lineTo(_x + 2.5, _y - 16);
-        aufgabe7a.crc2.lineTo(_x + 2.5, _y);
-        aufgabe7a.crc2.closePath();
-        aufgabe7a.crc2.fill();
-        //Blütenblätter
-        aufgabe7a.crc2.beginPath();
-        aufgabe7a.crc2.fillStyle = _blaetterFarbe;
-        aufgabe7a.crc2.arc(_x - 2, _y - 18, 3.5, 0, 2 * Math.PI);
-        aufgabe7a.crc2.moveTo(_x - 4, _y - 24);
-        aufgabe7a.crc2.arc(_x - 4, _y - 24, 3.5, 0, 2 * Math.PI);
-        aufgabe7a.crc2.moveTo(_x + 1, _y - 27);
-        aufgabe7a.crc2.arc(_x + 1, _y - 27, 3.5, 0, 2 * Math.PI);
-        aufgabe7a.crc2.moveTo(_x + 6.5, _y - 24);
-        aufgabe7a.crc2.arc(_x + 6.5, _y - 24, 3.5, 0, 2 * Math.PI);
-        aufgabe7a.crc2.moveTo(_x + 4.5, _y - 18);
-        aufgabe7a.crc2.arc(_x + 4.5, _y - 18, 3.5, 0, 2 * Math.PI);
-        aufgabe7a.crc2.fill();
-        //Blütenkopf
-        aufgabe7a.crc2.beginPath();
-        aufgabe7a.crc2.fillStyle = _blueteFarbe;
-        aufgabe7a.crc2.moveTo(_x + 1.25, _y - 22.5);
-        aufgabe7a.crc2.arc(_x + 1.25, _y - 22.5, 3.5, 0, 2 * Math.PI);
-        aufgabe7a.crc2.fill();
-    }
     // zufällige Blume mit zufälliger Farbe malen
     //Liste mit verschieden Farben für Blätter und Blüten
     // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
-    function drawZufallsBlumen() {
-        for (let i = 0; i < 15; i++) {
-            let minX = 0;
-            let maxX = 175;
-            let minY = 166;
-            let maxY = 250;
-            let zufallZahlX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
-            let zufallZahlY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
-            let zufallFarbeBlatt = blaetterFarbe[Math.floor(Math.random() * blaetterFarbe.length)];
-            let zufallFarbeBluete = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
-            let zufallBlume = Math.floor((Math.random() * 2)) + 1;
-            // if für zufällige Blumensorte
-            if (zufallBlume == 1) {
-                drawTulpe(zufallZahlX, zufallZahlY, zufallFarbeBlatt);
-            }
-            else {
-                drawBlume(zufallZahlX, zufallZahlY, zufallFarbeBlatt, zufallFarbeBluete);
-            }
-        }
-    }
-    //    //Überfunktion für Animation und bienenzeichnen
-    //    function biene(): void {
+    //    function drawZufallsBlumen(): void {
+    //        console.log("zufallsblume");
     //
-    //        //Biene anfangsposition
-    //        for (let i: number = 0; i < n; i++) {
-    //            let b: Bee = new Bee(300, 200);
-    //            bees[i] = b;
-    //            b.setRandomColor();
+    //        for (let i: number = 0; i < 15; i++) {
+    //
+    //            let f: Flower = new Flower(0, 0);
+    //            f.drawRandomFlowers();
+    //
     //
     //        }
-    //
-    //        window.setTimeout(animate, 20);
-    //        canvas.addEventListener("click", zusatzBiene);
-    //        canvas.vestr(chusatzBiene);
-    //
     //    }
     function animate() {
         aufgabe7a.crc2.putImageData(hintergrund, 0, 0);

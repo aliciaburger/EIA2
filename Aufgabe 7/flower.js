@@ -3,16 +3,13 @@ var aufgabe7a;
     class Flower {
         constructor(_x, _y) {
             console.log("constructor");
-            //            this.setRandomStyle();
-            //this.setRandomPosition();
-            this.setRandomColor();
+            //            this.setRandomColor();
             this.x = _x;
             this.y = _y;
         }
         drawStaticFlower() {
             this.setRandomPosition();
             this.drawBlume();
-            //            flower
         }
         drawBlume() {
             let _x = this.x;
