@@ -83,7 +83,7 @@ namespace aufgabe7a {
         }
 
 //der Teil mit den Bienen funktioniert eigentlich das nichts dargestellt wird muss an bei
-//dem Teil mit den Blumen liegen. 
+//dem Teil mit den Blumen liegen. Das programm stoppt sobald new Flower erzeugt werden soll
 
         drawKorb(290, 210);
         hintergrund = crc2.getImageData(0, 0, canvas.width, canvas.height);

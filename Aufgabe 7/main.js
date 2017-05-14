@@ -51,7 +51,7 @@ var aufgabe7a;
             flowers.push(f);
         }
         //der Teil mit den Bienen funktioniert eigentlich das nichts dargestellt wird muss an bei
-        //dem Teil mit den Blumen liegen. 
+        //dem Teil mit den Blumen liegen. Das programm stoppt sobald new Flower erzeugt werden soll
         drawKorb(290, 210);
         hintergrund = aufgabe7a.crc2.getImageData(0, 0, canvas.width, canvas.height);
         console.log("alle fkt für Blumenwiese ausgeführt");
