@@ -29,7 +29,7 @@ namespace aufgabe7a {
             let _y: number = this.y;
             crc2.beginPath();
             crc2.fillStyle = "#000000";
-            crc2.arc(this.x, _y, 3.5, 0.5 * Math.PI, 1.5 * Math.PI);
+            crc2.arc(_x, _y, 3.5, 0.5 * Math.PI, 1.5 * Math.PI);
             crc2.lineTo(_x + 10, _y - 3.5);
             crc2.lineTo(_x + 10, _y + 3.5);
             crc2.lineTo(_x, _y + 3.5);

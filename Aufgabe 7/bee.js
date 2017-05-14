@@ -17,7 +17,7 @@ var aufgabe7a;
             let _y = this.y;
             aufgabe7a.crc2.beginPath();
             aufgabe7a.crc2.fillStyle = "#000000";
-            aufgabe7a.crc2.arc(this.x, _y, 3.5, 0.5 * Math.PI, 1.5 * Math.PI);
+            aufgabe7a.crc2.arc(_x, _y, 3.5, 0.5 * Math.PI, 1.5 * Math.PI);
             aufgabe7a.crc2.lineTo(_x + 10, _y - 3.5);
             aufgabe7a.crc2.lineTo(_x + 10, _y + 3.5);
             aufgabe7a.crc2.lineTo(_x, _y + 3.5);
