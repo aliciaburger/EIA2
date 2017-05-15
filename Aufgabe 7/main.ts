@@ -71,7 +71,7 @@ namespace aufgabe7a {
 
         for (let i: number = 0; i < 5; i++) {
             console.log("vor new");
-            let f: Flower = new Flower(200, 150);
+            let f: Flower = new Flower();
             console.log("nach new");
             flowers[i] = f;
             f.setRandomColor();
@@ -186,7 +186,7 @@ namespace aufgabe7a {
         for (let i: number = 0; i < 15; i++) {
             console.log("zufallsblume");
 //            let f: Flower = flowers[i];
-            let f: Flower = new Flower(0, 0);
+            let f: Flower = new Flower();
             console.log("new Flower");
             
             f.drawRandomFlowers();

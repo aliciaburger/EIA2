@@ -10,17 +10,16 @@ namespace aufgabe7a {
 
 
 
-        constructor(_x: number, _y: number) {
+        constructor() {
             console.log("constructor");
            
 //            this.setRandomColor();
-            this.x = _x;
-            this.y = _y;
+            
         }
 
         drawStaticFlower(): void {
 
-            this.setRandomPosition();
+            this.setRandomPositionStatic();
             this.drawBlume();
 
    
@@ -192,7 +191,16 @@ namespace aufgabe7a {
             this.zufallFarbeBluete = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
            
         }
+        setRandomPositionStatic(): void {
+                        let minX: number = 175;
+                        let maxX: number = 320;
+                        let minY: number = 120;
+                        let maxY: number = 250;
 
+
+                        this.x = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+                        this.y = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+        }
         setRandomPosition(): void {
                         let minX: number = 0;
                         let maxX: number = 175;
@@ -215,7 +223,7 @@ namespace aufgabe7a {
             
             
             
-            for (let i: number = 0; i < 15; i++) {
+
                 
             let zufallBlume: number = Math.floor((Math.random() * 2)) + 1;          
             // if für zufällige Blumensorte
@@ -228,7 +236,7 @@ namespace aufgabe7a {
                 this.setRandomPosition();
                 this.drawBlume();
             }
-            }
+
             
             
             

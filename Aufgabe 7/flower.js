@@ -1,14 +1,12 @@
 var aufgabe7a;
 (function (aufgabe7a) {
     class Flower {
-        constructor(_x, _y) {
+        constructor() {
             console.log("constructor");
             //            this.setRandomColor();
-            this.x = _x;
-            this.y = _y;
         }
         drawStaticFlower() {
-            this.setRandomPosition();
+            this.setRandomPositionStatic();
             this.drawBlume();
         }
         drawBlume() {
@@ -164,6 +162,14 @@ var aufgabe7a;
             this.zufallFarbeBlatt = blaetterFarbe[Math.floor(Math.random() * blaetterFarbe.length)];
             this.zufallFarbeBluete = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
         }
+        setRandomPositionStatic() {
+            let minX = 175;
+            let maxX = 320;
+            let minY = 120;
+            let maxY = 250;
+            this.x = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+            this.y = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+        }
         setRandomPosition() {
             let minX = 0;
             let maxX = 175;
@@ -173,19 +179,17 @@ var aufgabe7a;
             this.y = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
         }
         drawRandomFlowers() {
-            for (let i = 0; i < 15; i++) {
-                let zufallBlume = Math.floor((Math.random() * 2)) + 1;
-                // if für zufällige Blumensorte
-                if (zufallBlume == 1) {
-                    this.setRandomColor();
-                    this.setRandomPosition();
-                    this.drawTulpe();
-                }
-                else {
-                    this.setRandomColor();
-                    this.setRandomPosition();
-                    this.drawBlume();
-                }
+            let zufallBlume = Math.floor((Math.random() * 2)) + 1;
+            // if für zufällige Blumensorte
+            if (zufallBlume == 1) {
+                this.setRandomColor();
+                this.setRandomPosition();
+                this.drawTulpe();
+            }
+            else {
+                this.setRandomColor();
+                this.setRandomPosition();
+                this.drawBlume();
             }
         }
     }
