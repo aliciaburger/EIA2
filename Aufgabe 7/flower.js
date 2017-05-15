@@ -1,13 +1,28 @@
 var aufgabe7a;
 (function (aufgabe7a) {
     class Flower {
-        constructor() {
-            console.log("constructor");
-            //            this.setRandomColor();
-        }
+        //        constructor() {
+        //            console.log("constructor");
+        //           
+        ////            this.setRandomColor();
+        //            
+        //        }
         drawStaticFlower() {
-            this.setRandomPositionStatic();
-            this.drawBlume();
+            let zufallBlume = Math.floor((Math.random() * 2)) + 1;
+            // if für zufällige Blumensorte
+            if (zufallBlume == 1) {
+                this.flowerType = "Blume";
+                this.setRandomColor();
+                this.setRandomPositionStatic();
+                this.drawBlume();
+            }
+            else {
+                this.flowerType = "Tulpe";
+                this.setRandomColor();
+                this.setRandomPositionStatic();
+                this.drawTulpe();
+            }
+            console.log("X = " + this.x + " Y = " + this.y + " flowerType = " + this.flowerType);
         }
         drawBlume() {
             let _x = this.x;
@@ -165,7 +180,7 @@ var aufgabe7a;
         setRandomPositionStatic() {
             let minX = 175;
             let maxX = 320;
-            let minY = 120;
+            let minY = 150;
             let maxY = 250;
             this.x = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
             this.y = Math.floor(Math.random() * (maxY - minY + 1)) + minY;

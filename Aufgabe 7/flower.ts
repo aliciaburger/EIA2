@@ -6,21 +6,37 @@ namespace aufgabe7a {
         y: number;
         zufallFarbeBlatt: string;
         zufallFarbeBluete: string;
+        flowerType: string;
 
 
 
 
-        constructor() {
-            console.log("constructor");
-           
-//            this.setRandomColor();
-            
-        }
+//        constructor() {
+//            console.log("constructor");
+//           
+////            this.setRandomColor();
+//            
+//        }
 
         drawStaticFlower(): void {
-
-            this.setRandomPositionStatic();
-            this.drawBlume();
+            
+             let zufallBlume: number = Math.floor((Math.random() * 2)) + 1;          
+            // if für zufällige Blumensorte
+             if (zufallBlume == 1) {
+                 this.flowerType = "Blume";
+                 this.setRandomColor();
+                 this.setRandomPositionStatic();
+                 this.drawBlume();
+                 
+                 
+             } else {
+                 this.flowerType = "Tulpe";
+                 this.setRandomColor();
+                 this.setRandomPositionStatic();
+                 this.drawTulpe();
+             }
+            console.log("X = " + this.x +" Y = " + this.y +" flowerType = " + this.flowerType );
+           
 
    
         
@@ -194,7 +210,7 @@ namespace aufgabe7a {
         setRandomPositionStatic(): void {
                         let minX: number = 175;
                         let maxX: number = 320;
-                        let minY: number = 120;
+                        let minY: number = 150;
                         let maxY: number = 250;
 
 

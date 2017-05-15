@@ -2,7 +2,6 @@ var aufgabe7a;
 (function (aufgabe7a) {
     class Bee {
         constructor(_x, _y) {
-            console.log("Constructor");
             this.x = _x;
             this.y = _y;
             //            this.setRandomColor();

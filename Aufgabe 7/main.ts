@@ -46,9 +46,7 @@ namespace aufgabe7a {
 
 
         canvas = document.getElementsByTagName("canvas")[0];
-        console.log(canvas);
         crc2 = canvas.getContext("2d");
-        console.log(crc2);
         drawSky();
         drawMountain();
         drawGrass();
@@ -70,9 +68,7 @@ namespace aufgabe7a {
 
 
         for (let i: number = 0; i < 5; i++) {
-            console.log("vor new");
             let f: Flower = new Flower();
-            console.log("nach new");
             flowers[i] = f;
             f.setRandomColor();
             f.drawStaticFlower();
@@ -84,19 +80,17 @@ namespace aufgabe7a {
 
         drawKorb(290, 210);
         hintergrund = crc2.getImageData(0, 0, canvas.width, canvas.height);
-        console.log("alle fkt für Blumenwiese ausgeführt");
         //        biene();
         //Biene anfangsposition
 
 
         for (let i: number = 0; i < n; i++) {
-            console.log(n);
             let b: Bee = new Bee(300, 200);
             bees[i] = b;
             b.setRandomColor();
 
         }
-        console.log(bees);
+        console.log("bees:"+bees);
         window.setTimeout(animate, 20);
 
 
@@ -184,11 +178,8 @@ namespace aufgabe7a {
 
 
         for (let i: number = 0; i < 15; i++) {
-            console.log("zufallsblume");
 //            let f: Flower = flowers[i];
-            let f: Flower = new Flower();
-            console.log("new Flower");
-            
+            let f: Flower = new Flower();            
             f.drawRandomFlowers();
             flowers[i] = f;
 
@@ -230,13 +221,11 @@ namespace aufgabe7a {
         //neue Biene bei Klick
         let b: Bee = new Bee(300, 200);
         b.setRandomColor();
-
-
-        bees.push(b);
+       bees.push(b);
         //anzahl der Bienen um 1 erhöhen
         n++;
 
-        console.log(n);
+
 
 
     }

@@ -9,7 +9,7 @@ namespace aufgabe7a {
 
 
         constructor(_x: number, _y: number) {
-            console.log("Constructor");
+
 
             this.x = _x;
             this.y = _y;

@@ -25,9 +25,7 @@ var aufgabe7a;
     //    let fluegelFabe: string[] = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
-        console.log(canvas);
         aufgabe7a.crc2 = canvas.getContext("2d");
-        console.log(aufgabe7a.crc2);
         drawSky();
         drawMountain();
         drawGrass();
@@ -39,9 +37,7 @@ var aufgabe7a;
         //        drawBlume(315, 230, ", "#d5f3ee");
         createZufallsBlumen();
         for (let i = 0; i < 5; i++) {
-            console.log("vor new");
-            let f = new aufgabe7a.Flower(200, 150);
-            console.log("nach new");
+            let f = new aufgabe7a.Flower();
             flowers[i] = f;
             f.setRandomColor();
             f.drawStaticFlower();
@@ -51,16 +47,14 @@ var aufgabe7a;
         //dem Teil mit den Blumen liegen. Das programm stoppt sobald new Flower erzeugt werden soll
         drawKorb(290, 210);
         hintergrund = aufgabe7a.crc2.getImageData(0, 0, canvas.width, canvas.height);
-        console.log("alle fkt für Blumenwiese ausgeführt");
         //        biene();
         //Biene anfangsposition
         for (let i = 0; i < aufgabe7a.n; i++) {
-            console.log(aufgabe7a.n);
             let b = new aufgabe7a.Bee(300, 200);
             bees[i] = b;
             b.setRandomColor();
         }
-        console.log(bees);
+        console.log("bees:" + bees);
         window.setTimeout(animate, 20);
         canvas.addEventListener("click", zusatzBiene);
         canvas.addEventListener("touch", zusatzBiene);
@@ -130,10 +124,8 @@ var aufgabe7a;
     // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
     function createZufallsBlumen() {
         for (let i = 0; i < 15; i++) {
-            console.log("zufallsblume");
             //            let f: Flower = flowers[i];
-            let f = new aufgabe7a.Flower(0, 0);
-            console.log("new Flower");
+            let f = new aufgabe7a.Flower();
             f.drawRandomFlowers();
             flowers[i] = f;
         }
@@ -155,7 +147,6 @@ var aufgabe7a;
         bees.push(b);
         //anzahl der Bienen um 1 erhöhen
         aufgabe7a.n++;
-        console.log(aufgabe7a.n);
     }
     function drawKorb(_x, _y) {
         aufgabe7a.crc2.beginPath();
