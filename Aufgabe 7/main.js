@@ -39,7 +39,10 @@ var aufgabe7a;
         //        drawBlume(315, 230, ", "#d5f3ee");
         createZufallsBlumen();
         for (let i = 0; i < 5; i++) {
+            console.log("vor new");
             let f = new aufgabe7a.Flower(200, 150);
+            console.log("nach new");
+            flowers[i] = f;
             f.setRandomColor();
             f.drawStaticFlower();
             flowers.push(f);
