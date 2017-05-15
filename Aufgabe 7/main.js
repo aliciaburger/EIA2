@@ -37,13 +37,7 @@ var aufgabe7a;
         //        f.drawTulpe(240, 200, "#ffa400");
         //        drawBlume(290, 175, "#ff4e00", "#ffbfd4");
         //        drawBlume(315, 230, ", "#d5f3ee");
-        //        drawZufallsBlu        
-        for (let i = 0; i < 15; i++) {
-            let f = new aufgabe7a.Flower(0, 0);
-            console.log("zufallsblume");
-            //            flowers[i] = f;
-            f.drawRandomFlowers();
-        }
+        createZufallsBlumen();
         for (let i = 0; i < 5; i++) {
             let f = new aufgabe7a.Flower(200, 150);
             f.setRandomColor();
@@ -131,17 +125,14 @@ var aufgabe7a;
     // zufällige Blume mit zufälliger Farbe malen
     //Liste mit verschieden Farben für Blätter und Blüten
     // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
-    //    function drawZufallsBlumen(): void {
-    //        console.log("zufallsblume");
-    //
-    //        for (let i: number = 0; i < 15; i++) {
-    //
-    //            let f: Flower = new Flower(0, 0);
-    //            f.drawRandomFlowers();
-    //
-    //
-    //        }
-    //    }
+    function createZufallsBlumen() {
+        for (let i = 0; i < 15; i++) {
+            console.log("zufallsblume");
+            let f = new aufgabe7a.Flower(0, 0);
+            console.log("new Flower");
+            f.drawRandomFlowers();
+        }
+    }
     function animate() {
         aufgabe7a.crc2.putImageData(hintergrund, 0, 0);
         for (let i = 0; i < aufgabe7a.n; i++) {

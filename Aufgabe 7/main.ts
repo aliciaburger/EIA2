@@ -61,14 +61,9 @@ namespace aufgabe7a {
         //        drawBlume(290, 175, "#ff4e00", "#ffbfd4");
         //        drawBlume(315, 230, ", "#d5f3ee");
 
-        //        drawZufallsBlu        
+        createZufallsBlumen();
 
-        for (let i: number = 0; i < 15; i++) {
-            let f: Flower = new Flower(0, 0);
-            console.log("zufallsblume");
-//            flowers[i] = f;
-            f.drawRandomFlowers();
-        }
+
 
 
 
@@ -82,8 +77,8 @@ namespace aufgabe7a {
             flowers.push(f);
         }
 
-//der Teil mit den Bienen funktioniert eigentlich das nichts dargestellt wird muss an bei
-//dem Teil mit den Blumen liegen. Das programm stoppt sobald new Flower erzeugt werden soll
+        //der Teil mit den Bienen funktioniert eigentlich das nichts dargestellt wird muss an bei
+        //dem Teil mit den Blumen liegen. Das programm stoppt sobald new Flower erzeugt werden soll
 
         drawKorb(290, 210);
         hintergrund = crc2.getImageData(0, 0, canvas.width, canvas.height);
@@ -183,17 +178,19 @@ namespace aufgabe7a {
 
 
     // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
-    //    function drawZufallsBlumen(): void {
-    //        console.log("zufallsblume");
-    //
-    //        for (let i: number = 0; i < 15; i++) {
-    //
-    //            let f: Flower = new Flower(0, 0);
-    //            f.drawRandomFlowers();
-    //
-    //
-    //        }
-    //    }
+    function createZufallsBlumen(): void {
+
+
+        for (let i: number = 0; i < 15; i++) {
+            console.log("zufallsblume");
+            let f: Flower = new Flower(0, 0);
+            console.log("new Flower");
+            f.drawRandomFlowers();
+            //            flowers[i] = f;
+
+
+        }
+    }
 
 
 
