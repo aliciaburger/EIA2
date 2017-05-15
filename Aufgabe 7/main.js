@@ -17,47 +17,39 @@ var aufgabe7a;
     let canvas;
     let bees = [];
     let flowers = [];
-    aufgabe7a.n = 10;
+    aufgabe7a.n = 11;
     let hintergrund;
     let blaetterFarbe = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
     let blueteFarbe = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
-    //    let bienenFabe: string[] = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];
-    //    let fluegelFabe: string[] = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
         aufgabe7a.crc2 = canvas.getContext("2d");
+        drawFlowerField();
+        createBees();
+    }
+    function drawFlowerField() {
         drawSky();
         drawMountain();
         drawGrass();
         drawSun();
         drawTree(50, 145);
         drawTree(110, 155);
-        //        f.drawTulpe(240, 200, "#ffa400");
-        //        drawBlume(290, 175, "#ff4e00", "#ffbfd4");
-        //        drawBlume(315, 230, ", "#d5f3ee");
         createZufallsBlumen();
-        for (let i = 0; i < 5; i++) {
-            let f = new aufgabe7a.Flower();
-            flowers[i] = f;
-            f.setRandomColor();
-            f.drawStaticFlower();
-            flowers.push(f);
-        }
-        //der Teil mit den Bienen funktioniert eigentlich das nichts dargestellt wird muss an bei
-        //dem Teil mit den Blumen liegen. Das programm stoppt sobald new Flower erzeugt werden soll
+        createFesteBlumen();
         drawKorb(290, 210);
+        //Hintergrund speichern
         hintergrund = aufgabe7a.crc2.getImageData(0, 0, canvas.width, canvas.height);
-        //        biene();
-        //Biene anfangsposition
-        for (let i = 0; i < aufgabe7a.n; i++) {
-            let b = new aufgabe7a.Bee(300, 200);
-            bees[i] = b;
-            b.setRandomColor();
-        }
-        console.log("bees:" + bees);
+    }
+    // Zusammenfassende FKT. für Bienen erstellen
+    function createBees() {
+        anfangsBienen();
         window.setTimeout(animate, 20);
+        //bei click/touch neue Biene erzeugen
         canvas.addEventListener("click", zusatzBiene);
         canvas.addEventListener("touch", zusatzBiene);
+        // Ausgabe der Arrays in der Konsole
+        console.log("bees:" + bees);
+        console.log("flowers:" + flowers);
     }
     //FKT. Himmel malen
     function drawSky() {
@@ -119,17 +111,32 @@ var aufgabe7a;
         aufgabe7a.crc2.arc(_x + 8, _y - 39, 11, 0, 2 * Math.PI);
         aufgabe7a.crc2.fill();
     }
-    // zufällige Blume mit zufälliger Farbe malen
-    //Liste mit verschieden Farben für Blätter und Blüten
-    // Schleife um 15 Blumen in Festgelegtem Bereich mit zufälligen X und Y Koordinaten zu malen
+    // zufällige Blumen
     function createZufallsBlumen() {
         for (let i = 0; i < 15; i++) {
             //            let f: Flower = flowers[i];
             let f = new aufgabe7a.Flower();
             f.drawRandomFlowers();
-            flowers[i] = f;
         }
     }
+    // feste Blumen
+    function createFesteBlumen() {
+        for (let i = 0; i < 5; i++) {
+            let f = new aufgabe7a.Flower();
+            flowers[i] = f;
+            f.setRandomColor();
+            f.drawStaticFlower();
+        }
+    }
+    //10 Anfangsbienen
+    function anfangsBienen() {
+        for (let i = 0; i < aufgabe7a.n; i++) {
+            let b = new aufgabe7a.Bee(300, 200);
+            bees[i] = b;
+            b.setRandomColor();
+        }
+    }
+    // animate
     function animate() {
         aufgabe7a.crc2.putImageData(hintergrund, 0, 0);
         for (let i = 0; i < aufgabe7a.n; i++) {
@@ -138,29 +145,59 @@ var aufgabe7a;
         }
         window.setTimeout(animate, 20);
     }
-    //zusätzliche biene zeichnen     
+    // zusätzliche Biene      
     function zusatzBiene(_event) {
-        //Zahlen dem Array hinzufügen
-        //neue Biene bei Klick
         let b = new aufgabe7a.Bee(300, 200);
         b.setRandomColor();
         bees.push(b);
-        //anzahl der Bienen um 1 erhöhen
+        console.log("Anzahl der Bienen = " + aufgabe7a.n);
         aufgabe7a.n++;
     }
+    // Bienenkorb
     function drawKorb(_x, _y) {
         aufgabe7a.crc2.beginPath();
         aufgabe7a.crc2.fillStyle = "#955500";
-        aufgabe7a.crc2.moveTo(_x, _y);
-        aufgabe7a.crc2.lineTo(_x + 25, _y);
-        aufgabe7a.crc2.lineTo(_x + 25, _y - 20);
-        aufgabe7a.crc2.lineTo(_x, _y - 20);
-        aufgabe7a.crc2.lineTo(_x, _y);
+        aufgabe7a.crc2.moveTo(_x - 15, _y + 10); //u links
+        aufgabe7a.crc2.lineTo(_x + 40, _y + 10); // u rechts
+        aufgabe7a.crc2.lineTo(_x + 40, _y - 30); //o rechts
+        aufgabe7a.crc2.lineTo(_x - 15, _y - 30); //o links
+        aufgabe7a.crc2.lineTo(_x - 15, _y + 10); //u links
+        aufgabe7a.crc2.fill();
+        // Strich zur Seitenwand
+        aufgabe7a.crc2.beginPath();
+        aufgabe7a.crc2.strokeStyle = "#000000";
+        aufgabe7a.crc2.moveTo(_x + 40, _y - 30);
+        aufgabe7a.crc2.lineTo(_x + 40, _y + 10); // u rechts
+        aufgabe7a.crc2.stroke();
+        // Seitenwand
+        aufgabe7a.crc2.beginPath();
+        aufgabe7a.crc2.fillStyle = "#844B00";
+        aufgabe7a.crc2.moveTo(_x + 40, _y - 30); //o links
+        aufgabe7a.crc2.lineTo(_x + 50, _y - 40); // o rechts
+        aufgabe7a.crc2.lineTo(_x + 50, _y); //u rechts
+        aufgabe7a.crc2.lineTo(_x + 40, _y + 10); //u links
+        aufgabe7a.crc2.lineTo(_x + 40, _y - 30); //o links
+        aufgabe7a.crc2.fill();
+        //Schwrzer strich  unter dem Dach
+        aufgabe7a.crc2.beginPath();
+        aufgabe7a.crc2.strokeStyle = "#000000";
+        aufgabe7a.crc2.moveTo(_x - 20, _y - 25); //u links
+        aufgabe7a.crc2.lineTo(_x + 35, _y - 25); // u rechts
+        aufgabe7a.crc2.lineTo(_x + 50, _y - 40); //o rechts
+        aufgabe7a.crc2.stroke();
+        // Dach
+        aufgabe7a.crc2.beginPath();
+        aufgabe7a.crc2.fillStyle = "#876D4A";
+        aufgabe7a.crc2.moveTo(_x - 20, _y - 25); //u links
+        aufgabe7a.crc2.lineTo(_x + 35, _y - 25); // u rechts
+        aufgabe7a.crc2.lineTo(_x + 50, _y - 40); //o rechts
+        aufgabe7a.crc2.lineTo(_x - 5, _y - 40); //o links
+        aufgabe7a.crc2.lineTo(_x - 20, _y - 25); //u links
         aufgabe7a.crc2.fill();
         //Eingang
         aufgabe7a.crc2.beginPath();
         aufgabe7a.crc2.fillStyle = "#000000";
-        aufgabe7a.crc2.arc(_x + 12, _y - 10, 5, 0, 2 * Math.PI);
+        aufgabe7a.crc2.arc(_x + 12, _y - 10, 10, 0, 2 * Math.PI);
         aufgabe7a.crc2.fill();
         //        
     }
