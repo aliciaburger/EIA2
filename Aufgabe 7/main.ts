@@ -185,10 +185,12 @@ namespace aufgabe7a {
 
         for (let i: number = 0; i < 15; i++) {
             console.log("zufallsblume");
+//            let f: Flower = flowers[i];
             let f: Flower = new Flower(0, 0);
             console.log("new Flower");
+            
             f.drawRandomFlowers();
-            //            flowers[i] = f;
+            flowers[i] = f;
 
 
         }

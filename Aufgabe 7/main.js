@@ -131,9 +131,11 @@ var aufgabe7a;
     function createZufallsBlumen() {
         for (let i = 0; i < 15; i++) {
             console.log("zufallsblume");
+            //            let f: Flower = flowers[i];
             let f = new aufgabe7a.Flower(0, 0);
             console.log("new Flower");
             f.drawRandomFlowers();
+            flowers[i] = f;
         }
     }
     function animate() {
