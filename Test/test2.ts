@@ -131,8 +131,8 @@ namespace Classes {
         }
 
         setRandomPosition(): void {
-            this.x = (Math.random() * (400 - 1)) + 1;
-            this.y = (Math.random() * (300 - 230)) + 230;
+            this.x = (Math.random() * (350 - 1)) + 1;
+            this.y = (Math.random() * (250 - 10)) + 10;
         }
 
         drawRandomFlowers(): void {
