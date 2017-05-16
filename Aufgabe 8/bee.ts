@@ -1,4 +1,4 @@
-namespace aufgabe7a {
+namespace aufgabe8 {
 
      
       export class Bee {
@@ -154,9 +154,15 @@ namespace aufgabe7a {
             this.bienenColor = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
             this.fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
         }
-  
+         
+
+
+
+
     }
 
+
+    
 }
 
 
