@@ -26,7 +26,7 @@ namespace aufgabe7a {
                  this.setRandomPositionStatic();
                  this.drawTulpe();
              }
-            console.log("X = " + this.x +" Y = " + this.y +" flowerType = " + this.flowerType );
+             console.log("X = " + this.x + " Y = " + this.y +" flowerType = " + this.flowerType );
            
 
    

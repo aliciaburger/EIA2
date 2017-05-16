@@ -114,18 +114,45 @@ var aufgabe8;
     // zufällige Blumen
     function createZufallsBlumen() {
         for (let i = 0; i < 15; i++) {
-            //            let f: Flower = flowers[i];
-            let f = new aufgabe8.Flower();
-            f.drawRandomFlowers();
+            let zufallBlume = Math.floor((Math.random() * 2)) + 1;
+            // if für zufällige Blumensorte
+            if (zufallBlume == 1) {
+                let f = new aufgabe8.Bluemchen();
+                f.setRandomColor();
+                f.setRandomPosition();
+                f.drawBlume();
+            }
+            else {
+                let f = new aufgabe8.Tulpe();
+                f.setRandomColor();
+                f.setRandomPosition();
+                f.drawBlume();
+            }
         }
     }
     // feste Blumen
     function createFesteBlumen() {
         for (let i = 0; i < 5; i++) {
-            let f = new aufgabe8.Flower();
-            flowers[i] = f;
-            f.setRandomColor();
-            f.drawStaticFlower();
+            let zufallBlume = Math.floor((Math.random() * 2)) + 1;
+            // if für zufällige Blumensorte
+            if (zufallBlume == 1) {
+                let f = new aufgabe8.Bluemchen();
+                flowers[i] = f;
+                f.setRandomColor();
+                f.flowerType = "Bluemchen";
+                f.setRandomPositionStatic();
+                f.drawBlume();
+                console.log("X = " + f.x + " Y = " + f.y + " flowerType = " + f.flowerType);
+            }
+            else {
+                let f = new aufgabe8.Tulpe();
+                flowers[i] = f;
+                f.setRandomColor();
+                f.flowerType = "Tulpe";
+                f.setRandomPositionStatic();
+                f.drawBlume();
+                console.log("X = " + f.x + " Y = " + f.y + " flowerType = " + f.flowerType);
+            }
         }
     }
     //10 Anfangsbienen
