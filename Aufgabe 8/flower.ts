@@ -8,16 +8,6 @@ namespace aufgabe8 {
         zufallFarbeBluete: string;
         flowerType: string;
 
-
-
-
-//        constructor() {
-//            console.log("constructor");
-//           
-////            this.setRandomColor();
-//            
-//        }
-
         drawStaticFlower(): void {
             
              let zufallBlume: number = Math.floor((Math.random() * 2)) + 1;          
@@ -104,101 +94,7 @@ namespace aufgabe8 {
             crc2.lineTo(_x - 2.75, _y - 22);
             crc2.lineTo(_x + 1.25, _y - 28);
             crc2.fill();
-        }
-        //BLUME
-//        drawFlower(_centerColor: string): void {
-//
-//            //stalk
-//            crc2.beginPath();
-//            crc2.strokeStyle = this.stalkColor;
-//            crc2.moveTo(this.x, this.y);
-//            crc2.lineTo(this.x, this.y - 20);
-//            crc2.stroke();
-//            crc2.closePath();
-//            //leafs
-//            crc2.beginPath();
-//            crc2.strokeStyle = this.stalkColor;
-//            crc2.moveTo(this.x, this.y);
-//            crc2.lineTo(this.x, this.y - 7);
-//            crc2.lineTo(this.x + 5, this.y - 7);
-//            crc2.lineTo(this.x, this.y);
-//            crc2.stroke();
-//            crc2.closePath();
-//            crc2.fillStyle = this.stalkColor;
-//            crc2.fill();
-//            //petals
-//            crc2.fillStyle = this.petalColor;
-//            crc2.beginPath();
-//            crc2.arc(this.x, this.y - 25, 5, 0, 2 * Math.PI);
-//            crc2.fill();
-//
-//            crc2.beginPath();
-//            crc2.arc(this.x - 5, this.y - 20, 5, 0, 2 * Math.PI);
-//            crc2.fill();
-//
-//            crc2.beginPath();
-//            crc2.arc(this.x + 5, this.y - 20, 5, 0, 2 * Math.PI);
-//            crc2.fill();
-//
-//            crc2.beginPath();
-//            crc2.arc(this.x, this.y - 15, 5, 0, 2 * Math.PI);
-//            crc2.fill();
-//
-//            //center
-//            crc2.beginPath();
-//            crc2.arc(this.x, this.y - 20, 5, 0, 2 * Math.PI);
-//            crc2.fillStyle = _centerColor;
-//            crc2.fill();
-//        }
-
-
-//        drawTulip(): void {
-//            //stalk
-//            crc2.beginPath();
-//            crc2.strokeStyle = this.stalkColor;
-//            crc2.moveTo(this.x, this.y);
-//            crc2.lineTo(this.x, this.y - 20);
-//            crc2.stroke();
-//            crc2.closePath();
-//            //leafs
-//            crc2.beginPath();
-//            crc2.strokeStyle = this.stalkColor;
-//            crc2.moveTo(this.x, this.y);
-//            crc2.lineTo(this.x, this.y - 12);
-//            crc2.lineTo(this.x - 5, this.y - 18);
-//            crc2.lineTo(this.x, this.y - 5);
-//            crc2.stroke();
-//            crc2.closePath();
-//            crc2.fillStyle = this.stalkColor;
-//            crc2.fill();
-//
-//            crc2.beginPath();
-//            crc2.strokeStyle = this.stalkColor;
-//            crc2.moveTo(this.x, this.y);
-//            crc2.lineTo(this.x, this.y - 12);
-//            crc2.lineTo(this.x + 5, this.y - 18);
-//            crc2.lineTo(this.x, this.y - 5);
-//            crc2.stroke();
-//            crc2.closePath();
-//            crc2.fillStyle = this.stalkColor;
-//            crc2.fill();
-//            //blossom
-//            crc2.fillStyle = this.petalColor;
-//            crc2.beginPath();
-//            crc2.moveTo(this.x, this.y - 25);
-//            crc2.arc(this.x, this.y - 30, 10, 0, Math.PI);
-//            crc2.fillStyle = this.petalColor;
-//            crc2.fill();
-//            crc2.beginPath();
-//            crc2.fillStyle = this.petalColor;
-//
-//            crc2.moveTo(this.x - 5, this.y - 25);
-//            crc2.lineTo(this.x, this.y - 32);
-//            crc2.lineTo(this.x + 5, this.y - 25);
-//            crc2.closePath();
-//            crc2.fill();
-//        }
-
+        }    
         setRandomColor(): void {
             
             let blaetterFarbe: string[] = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
