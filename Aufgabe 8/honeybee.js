@@ -11,10 +11,17 @@ var aufgabe8;
         move() {
             let xDiff = this.hfx - this.x;
             let yDiff = this.hfy - this.y;
-            this.x += xDiff * 0.03;
-            this.y += yDiff * 0.03;
-            //             console.log("position honigbiene x: " + this.x + " y: " + this.y);
+            //             if (this.x == this.hfx && this.y == this.hfy) {
+            if (Math.abs(xDiff) < 0.3 && Math.abs(yDiff) < 0.3) {
+                this.x = 300;
+                this.y = 200;
+            }
+            else {
+                this.x += xDiff * 0.03;
+                this.y += yDiff * 0.03;
+            }
         }
+        //             console.log("position honigbiene x: " + this.x + " y: " + this.y);
         askHoneyflower() {
             let i = Math.floor(Math.random() * aufgabe8.flowers.length);
             for (let j = 0; j > aufgabe8.flowers.length; j++) {

@@ -13,18 +13,26 @@ namespace aufgabe8 {
 //             
 //         }
          move(): void {
-           
-             
-            let xDiff: number = this.hfx - this.x; 
-            let yDiff: number = this.hfy - this.y; 
+             let xDiff: number = this.hfx - this.x;
+             let yDiff: number = this.hfy - this.y;
+             //             if (this.x == this.hfx && this.y == this.hfy) {
+             if (Math.abs(xDiff) < 0.3 && Math.abs(yDiff) < 0.3) {
+                 
+                 this.x = 300;
+                 this.y = 200;
+             }
+
+             else {
 
 
-            this.x += xDiff * 0.03;
-            this.y += yDiff * 0.03;
 
-            
-//             console.log("position honigbiene x: " + this.x + " y: " + this.y);
+
+                 this.x += xDiff * 0.03;
+                 this.y += yDiff * 0.03;
+             }
          }
+//             console.log("position honigbiene x: " + this.x + " y: " + this.y);
+         
 
             askHoneyflower(): void {
                 
