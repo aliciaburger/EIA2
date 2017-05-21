@@ -1,6 +1,9 @@
 var aufgabe8;
 (function (aufgabe8) {
     class Flower {
+        constructor() {
+            this.blumenstatus = true;
+        }
         drawBlume() {
             // Klasse Bluemchen- bluemchen.ts/ Tulpe- tulpe.ts
         }

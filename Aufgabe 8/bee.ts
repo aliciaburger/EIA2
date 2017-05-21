@@ -1,30 +1,28 @@
 namespace aufgabe8 {
 
-     
-      export class Bee {
+
+    export class Bee {
         x: number;
         y: number;
         bienenColor: string;
         fluegelColor: string;
-
+        beetype: boolean;
 
         constructor(_x: number, _y: number) {
 
 
             this.x = _x;
             this.y = _y;
-//            this.setRandomColor();
-//            this.update();
-            
-            
-}
-    
-    
+
+                   
+
+        }
+
         update(): void {
             this.move();
             this.draw();
-        } 
-            draw(): void {
+        }
+        draw(): void {
             let _x: number = this.x;
             let _y: number = this.y;
             crc2.beginPath();
@@ -114,7 +112,7 @@ namespace aufgabe8 {
 
 
 
-       
+
 
 
 
@@ -143,18 +141,18 @@ namespace aufgabe8 {
                 this.y = 0;
             }
 
-            
+
 
 
         }
-          
-           setRandomColor(): void {
+
+        setRandomColor(): void {
             let bienenFabe: string[] = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];
             let fluegelFabe: string[] = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
             this.bienenColor = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
             this.fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
         }
-         
+
 
 
 
@@ -162,7 +160,7 @@ namespace aufgabe8 {
     }
 
 
-    
+
 }
 
 

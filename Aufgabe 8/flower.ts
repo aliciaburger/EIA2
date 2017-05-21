@@ -7,6 +7,7 @@ namespace aufgabe8 {
         zufallFarbeBlatt: string;
         zufallFarbeBluete: string;
         flowerType: string;
+        blumenstatus: boolean = true;
 
         
 

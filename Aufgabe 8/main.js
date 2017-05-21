@@ -8,16 +8,19 @@ Hiermit versichere ich,
 dass ich diesen Code selbst geschrieben habe.
 Er wurde nicht kopiert und auch nicht diktiert.
 */
-//  Anmerkung: 
-//  Übersetzung zu js funktioniert wieder:)
 //---------------------------------------
 var aufgabe8;
 (function (aufgabe8) {
     window.addEventListener("load", init);
     let canvas;
-    let bees = [];
-    let flowers = [];
-    aufgabe8.n = 11;
+    aufgabe8.bees = [];
+    aufgabe8.honeybees = [];
+    aufgabe8.flowers = [];
+    aufgabe8.fBlumen = 5;
+    aufgabe8.n = 10;
+    //    export let hfx: number;
+    //    export let hfy: number;
+    //    let beetype: number;
     let hintergrund;
     let blaetterFarbe = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
     let blueteFarbe = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
@@ -26,6 +29,15 @@ var aufgabe8;
         aufgabe8.crc2 = canvas.getContext("2d");
         drawFlowerField();
         createBees();
+        //bei click/touch neue Biene erzeugen
+        canvas.addEventListener("click", zusatzBiene);
+        canvas.addEventListener("touch", zusatzBiene);
+        // Ausgabe der Arrays in der Konsole
+        console.log("bees:" + aufgabe8.bees);
+        console.log("flowers:" + aufgabe8.flowers);
+        window.setTimeout(animate, 20);
+        console.log(aufgabe8.bees);
+        console.log(aufgabe8.bees.length);
     }
     function drawFlowerField() {
         drawSky();
@@ -43,13 +55,7 @@ var aufgabe8;
     // Zusammenfassende FKT. für Bienen erstellen
     function createBees() {
         anfangsBienen();
-        window.setTimeout(animate, 20);
-        //bei click/touch neue Biene erzeugen
-        canvas.addEventListener("click", zusatzBiene);
-        canvas.addEventListener("touch", zusatzBiene);
-        // Ausgabe der Arrays in der Konsole
-        console.log("bees:" + bees);
-        console.log("flowers:" + flowers);
+        createHoneybees();
     }
     //FKT. Himmel malen
     function drawSky() {
@@ -132,12 +138,12 @@ var aufgabe8;
     }
     // feste Blumen
     function createFesteBlumen() {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < aufgabe8.fBlumen; i++) {
             let zufallBlume = Math.floor((Math.random() * 2)) + 1;
             // if für zufällige Blumensorte
             if (zufallBlume == 1) {
                 let f = new aufgabe8.Bluemchen();
-                flowers[i] = f;
+                aufgabe8.flowers[i] = f;
                 f.setRandomColor();
                 f.flowerType = "Bluemchen";
                 f.setRandomPositionStatic();
@@ -146,7 +152,7 @@ var aufgabe8;
             }
             else {
                 let f = new aufgabe8.Tulpe();
-                flowers[i] = f;
+                aufgabe8.flowers[i] = f;
                 f.setRandomColor();
                 f.flowerType = "Tulpe";
                 f.setRandomPositionStatic();
@@ -154,29 +160,64 @@ var aufgabe8;
                 console.log("X = " + f.x + " Y = " + f.y + " flowerType = " + f.flowerType);
             }
         }
+        console.log(aufgabe8.flowers);
     }
     //10 Anfangsbienen
     function anfangsBienen() {
         for (let i = 0; i < aufgabe8.n; i++) {
             let b = new aufgabe8.Bee(300, 200);
-            bees[i] = b;
             b.setRandomColor();
+            aufgabe8.bees[i] = b;
+            console.log("neue Bee");
+            b.beetype = true;
+        }
+    }
+    function createHoneybees() {
+        for (let i = 0; i < 5; i++) {
+            let b = new aufgabe8.Honeybee(300, 200);
+            b.askHoneyflower();
+            console.log("neue honigbiene x: " + b.hfx + " y: " + b.hfy);
+            b.setRandomColor();
+            //            bees[i] = b;
+            aufgabe8.bees.push(b);
+            b.beetype = false;
         }
     }
     // animate
     function animate() {
+        //        for (let j: number = 0; j < bees.length; j++) {
+        //            let ab: Bee = bees[j];
+        //            crc2.putImageData(hintergrund, 0, 0);
+        //            if (ab.beetype == false) {
+        //                for (let i: number = 0; i < 5; i++) {
+        //                    let b: Honeybee = bees[i];
+        //                    b.update();
+        //                }
+        //            }
+        //            if (ab.beetype == true) {
         aufgabe8.crc2.putImageData(hintergrund, 0, 0);
-        for (let i = 0; i < aufgabe8.n; i++) {
-            let b = bees[i];
+        for (let i = 0; i < aufgabe8.bees.length; i++) {
+            let b = aufgabe8.bees[i];
             b.update();
         }
+        //                for (let i: number = 0; i < n; i++) {
+        //                    let b: Bee = bees[i];
+        //                    b.update();
+        //                }
+        //                for (let i: number = 0; i < shapes.length; i++) {
+        //                    let s: MovingShape = shapes[i];
+        //                    s.update();
+        //                }
+        //
+        //            }
+        //        }
         window.setTimeout(animate, 20);
     }
     // zusätzliche Biene      
     function zusatzBiene(_event) {
         let b = new aufgabe8.Bee(300, 200);
         b.setRandomColor();
-        bees.push(b);
+        aufgabe8.bees.push(b);
         console.log("Anzahl der Bienen = " + aufgabe8.n);
         aufgabe8.n++;
     }

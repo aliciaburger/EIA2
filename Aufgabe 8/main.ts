@@ -11,25 +11,22 @@ Er wurde nicht kopiert und auch nicht diktiert.
 
 
 
-
-//  Anmerkung: 
-//  Übersetzung zu js funktioniert wieder:)
-
 //---------------------------------------
-
-
-
-
-
 
 namespace aufgabe8 {
     window.addEventListener("load", init);
 
     export let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
-    let bees: Bee[] = [];
-    let flowers: Flower[] = [];
-    export let n: number = 11;
+    export let bees: Bee[] = [];
+    export let honeybees: Honeybee[] = [];
+    export let flowers: Flower[] = [];
+    export let fBlumen: number = 5;
+    export let n: number = 10;
+//    export let hfx: number;
+//    export let hfy: number;
+    //    let beetype: number;
+
     let hintergrund: ImageData;
     let blaetterFarbe: string[] = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
     let blueteFarbe: string[] = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
@@ -40,6 +37,17 @@ namespace aufgabe8 {
         crc2 = canvas.getContext("2d");
         drawFlowerField();
         createBees();
+
+        //bei click/touch neue Biene erzeugen
+        canvas.addEventListener("click", zusatzBiene);
+        canvas.addEventListener("touch", zusatzBiene);
+        // Ausgabe der Arrays in der Konsole
+        console.log("bees:" + bees);
+        console.log("flowers:" + flowers);
+        window.setTimeout(animate, 20);
+
+        console.log(bees);
+        console.log(bees.length);
     }
 
     function drawFlowerField(): void {
@@ -56,18 +64,19 @@ namespace aufgabe8 {
         drawKorb(290, 210);
         //Hintergrund speichern
         hintergrund = crc2.getImageData(0, 0, canvas.width, canvas.height);
+
+
+
+
     }
     // Zusammenfassende FKT. für Bienen erstellen
     function createBees(): void {
         anfangsBienen();
-        window.setTimeout(animate, 20);
-        //bei click/touch neue Biene erzeugen
-        canvas.addEventListener("click", zusatzBiene);
-        canvas.addEventListener("touch", zusatzBiene);
-        // Ausgabe der Arrays in der Konsole
-        console.log("bees:" + bees);
-        console.log("flowers:" + flowers);
+        createHoneybees();
+
     }
+
+  
 
     //FKT. Himmel malen
     function drawSky(): void {
@@ -156,13 +165,13 @@ namespace aufgabe8 {
                 f.setRandomPosition();
                 f.drawBlume();
 
-            }                 
+            }
         }
     }
-    
+
     // feste Blumen
     function createFesteBlumen(): void {
-        for (let i: number = 0; i < 5; i++) {
+        for (let i: number = 0; i < fBlumen; i++) {
 
 
 
@@ -190,24 +199,72 @@ namespace aufgabe8 {
 
             //            flowers.push(f);
         }
+        console.log(flowers);
     }
     //10 Anfangsbienen
     function anfangsBienen(): void {
 
         for (let i: number = 0; i < n; i++) {
             let b: Bee = new Bee(300, 200);
-            bees[i] = b;
             b.setRandomColor();
+            bees[i] = b;
+            console.log("neue Bee");
+            b.beetype = true;
+
+        }
+    }
+    function createHoneybees(): void {
+        for (let i: number = 0; i < 5; i++) {
+             
+            let b: Honeybee = new Honeybee(300, 200);
+            b.askHoneyflower();
+            console.log("neue honigbiene x: " + b.hfx + " y: " + b.hfy);
+            b.setRandomColor();
+            
+            //            bees[i] = b;
+            bees.push(b);
+            
+            b.beetype = false;
         }
     }
     // animate
     function animate(): void {
 
+//        for (let j: number = 0; j < bees.length; j++) {
+//            let ab: Bee = bees[j];
+//            crc2.putImageData(hintergrund, 0, 0);
+//            if (ab.beetype == false) {
+//                for (let i: number = 0; i < 5; i++) {
+//                    let b: Honeybee = bees[i];
+//                    b.update();
+//                }
+//            }
+//            if (ab.beetype == true) {
         crc2.putImageData(hintergrund, 0, 0);
-        for (let i: number = 0; i < n; i++) {
+        for (let i: number = 0; i < bees.length; i++) {
             let b: Bee = bees[i];
             b.update();
-        }
+//            b.move();
+
+}
+//                for (let i: number = 0; i < n; i++) {
+//                    let b: Bee = bees[i];
+//                    b.update();
+//                }
+//                for (let i: number = 0; i < shapes.length; i++) {
+//                    let s: MovingShape = shapes[i];
+//                    s.update();
+//                }
+//
+//            }
+//        }
+
+
+        
+        
+
+
+
         window.setTimeout(animate, 20);
     }
     // zusätzliche Biene      
