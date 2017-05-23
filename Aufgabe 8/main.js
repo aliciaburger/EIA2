@@ -16,7 +16,7 @@ var aufgabe8;
     aufgabe8.bees = [];
     aufgabe8.honeybees = [];
     aufgabe8.flowers = [];
-    aufgabe8.fBlumen = 5;
+    aufgabe8.fBlumen = 10;
     aufgabe8.n = 10;
     //    export let hfx: number;
     //    export let hfy: number;

@@ -21,7 +21,7 @@ namespace aufgabe8 {
     export let bees: Bee[] = [];
     export let honeybees: Honeybee[] = [];
     export let flowers: Flower[] = [];
-    export let fBlumen: number = 5;
+    export let fBlumen: number = 10;
     export let n: number = 10;
 //    export let hfx: number;
 //    export let hfy: number;

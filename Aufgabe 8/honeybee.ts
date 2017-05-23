@@ -18,15 +18,14 @@ namespace aufgabe8 {
              //             if (this.x == this.hfx && this.y == this.hfy) {
              if (Math.abs(xDiff) < 0.3 && Math.abs(yDiff) < 0.3) {
                  
-                 this.x = 300;
-                 this.y = 200;
+                  this.askHoneyflower();
              }
 
              else {
 
+               
 
-
-
+                    
                  this.x += xDiff * 0.03;
                  this.y += yDiff * 0.03;
              }
@@ -39,12 +38,13 @@ namespace aufgabe8 {
                 let i: number = Math.floor(Math.random() * flowers.length);
                 
                 for (let j: number = 0; j > flowers.length; j++) {
+                    let i: number = Math.floor(Math.random() * flowers.length);
                     if (flowers[i].blumenstatus == true) {
                         break;
                     }
-                    else {
-                        i = Math.floor(Math.random() * flowers.length);
-                    }
+//                    else {
+//                        i = Math.floor(Math.random() * flowers.length);
+//                    }
                     
                 }    
                 this.hfx = flowers[i].x;

@@ -13,8 +13,7 @@ var aufgabe8;
             let yDiff = this.hfy - this.y;
             //             if (this.x == this.hfx && this.y == this.hfy) {
             if (Math.abs(xDiff) < 0.3 && Math.abs(yDiff) < 0.3) {
-                this.x = 300;
-                this.y = 200;
+                this.askHoneyflower();
             }
             else {
                 this.x += xDiff * 0.03;
@@ -25,11 +24,9 @@ var aufgabe8;
         askHoneyflower() {
             let i = Math.floor(Math.random() * aufgabe8.flowers.length);
             for (let j = 0; j > aufgabe8.flowers.length; j++) {
+                let i = Math.floor(Math.random() * aufgabe8.flowers.length);
                 if (aufgabe8.flowers[i].blumenstatus == true) {
                     break;
-                }
-                else {
-                    i = Math.floor(Math.random() * aufgabe8.flowers.length);
                 }
             }
             this.hfx = aufgabe8.flowers[i].x;
