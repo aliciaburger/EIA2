@@ -13,7 +13,7 @@ Er wurde nicht kopiert und auch nicht diktiert.
 
 //---------------------------------------
 
-namespace aufgabe8 {
+namespace aufgabe8  {
     window.addEventListener("load", init);
 
     export let crc2: CanvasRenderingContext2D;
