@@ -13,7 +13,8 @@ head {
 	display: none;
 }
 input:invalid {
-	background: #F0C060;
+	background: #FF6363;
+	
 }
 input:valid {
 	background: white;

@@ -8,7 +8,8 @@
 </head>
 <body>
 <!-- -->
-	<fieldset id="text">
+<!-- <form></form> -->
+	<form name="Formular" id="text">
 		<legend> Text-Input </legend>
 		Simple
 		<input type="text" name="Text" placeholder="type here" required/>
@@ -17,7 +18,7 @@
 		<input type="password" name="Password" placeholder="type password here"/>
 		<hr/>
 		Pattern
-		<input type="text" name="Pattern" pattern="[0-9]{3}" placeholder="use RegEx"/>
+		<input id="kugel" type="number" name="Kugeln" min="1" max="3" step="1" value="1" />
 		<hr/>
 		Mail
 		<input type="email" name="Mail" placeholder="place @ between"/>
@@ -27,7 +28,7 @@
 		<hr/>
 		Area
 		<textarea name="Area" cols="30" rows="3" placeholder="long text here"></textarea>
-	</fieldset>
+	</form>
 <!-- -->
 	<fieldset id="radio">
 		<legend> Radiobutton Group </legend>
