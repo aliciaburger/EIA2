@@ -23,7 +23,7 @@ namespace Form {
         //*/
         //*/
         if (target.name == "Slider") {
-            let progress: HTMLProgressElem0ent = <HTMLProgressElement>document.getElementsByTagName("progress")[0];
+            let progress: HTMLProgressElement = <HTMLProgressElement>document.getElementsByTagName("progress")[0];
             progress.value = parseFloat(target.value);
         }
         //*/
@@ -33,9 +33,17 @@ namespace Form {
             progress.value = parseFloat(target.value);
         }
         //*/
-        if (target.name == "Kugeln") {
-          var x:number = document.getElementById("kugel").value;
-//            var x: <HTMLInputElement> = document.getElementByName("ugel");
+        if (this.id == "kugeln") {
+          let k: number = parseInt(document.getElementById("kugeln").innerHTML = target.value);
+           
+          for (let i: number = 0; i >= k; i++) {
+                createFieldsetSorte(i);
+          }
+            
+//            let x: HTMLInputElement = <HTMLInputElement>document.getElementById("kugel");
+//            x.value = 5;
+//          var x = document.getElementById("kugel").value;
+//            var x: <HTMLInputElement> = document.getElementByName("Kugel");
 //            if(x == 1) {
 //                
 //            }
@@ -53,4 +61,29 @@ namespace Form {
 //        }
     
        }
+     let sorten: string[] = ["Vanille", "Strawberry", "Schokolade", "Walnuss"];
+//     let flavorSelect: string[] = [];
+     let flavorSelect: NodeListOf<Element> = document.getElementsByClassName("taste");
+    
+    function createFieldsetSorte(_i: number): void {
+//        select Element erstellen
+        let sorte: HTMLSelectElement = document.createElement("select");
+       
+//        this flavorSelect[i];
+        sorte.name = "Sorte";
+        sorte.className = "taste";
+        let select: Element = flavorSelect[_i];
+        let geschmacksrichtung: HTMLElement = document.getElementById("geschmacksrichtung");
+        this.appendChild(geschmacksrichtung);
+        
+//        Option element im select element erstellen
+        for (let i: number = 1; i > sorten.length; i++) {
+            let flavor: HTMLOptionElement = document.createElement("option");
+            flavor.value = sorten[_i];
+            flavor.text = sorten[_i];
+            this.appendChild(select);
+        }
+       
+        
+    }
 }
