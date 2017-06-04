@@ -1,89 +1,193 @@
 namespace Form {
+    export let sorten: string[] = ["Vanille", "Erdbeere", "Schokolade", "Walnuss"];
+    export let wahlSorte: string[] = [];
+    export let wahlSorteZahl: string[] = [];
+    export let auswahlS: HTMLInputElement[] = [];
+    export let toppings1: string[] = ["Erdbeeren", "Himbeern", "Schokostreusel", "Cookie Stückchen"];
+    export let auswahlT1: HTMLInputElement[] = [];
+    export let toppings2: string[] = ["nichts", "Schoko Souce", "Erdbeer Souce", "Sahne", "Karamell Souce"];
+    export let auswahlT2: HTMLInputElement[] = [];
+    let checkbox: HTMLInputElement;
+    let summe: HTMLDivElement;
+    let liste: HTMLDivElement;
+    export let warenkorbInhalt: string[] = [];
+    let eisPreis: number = 1;
+    let toppingPreis: string = "0.50";
+
     window.addEventListener("load", init);
 
     function init(_event: Event): void {
         console.log("Init");
         let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
-
+        createSorte();
+        createTopping1();
+        createTopping2();
+        createWarenKorb();
         for (let i: number = 0; i < fieldsets.length; i++) {
             let fieldset: HTMLFieldSetElement = fieldsets[i];
             fieldset.addEventListener("change", handleChange);
+            berechnePreis();
         }
     }
 
     function handleChange(_event: Event): void {
-        //console.log(_event);
-        //*/
-        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-        console.log("Changed " + target.name + " to " + target.value);
-        //*/
-        //*/ note: this == _event.currentTarget in an event-handler
-        if (this.id == "checkbox")
-            console.log("Changed " + target.name + " to " + target.checked);
-        //*/
-        //*/
-        if (target.name == "Slider") {
-            let progress: HTMLProgressElement = <HTMLProgressElement>document.getElementsByTagName("progress")[0];
-            progress.value = parseFloat(target.value);
+
+        let betrag: number = 0;
+
+        for (let i: number = 0; i < auswahlS.length; i++) {
+            betrag += Number(auswahlS[i].value) * eisPreis;
+            if (Number(auswahlS[i].value) > 0) {
+                warenkorbInhalt.push("1 Kugel " + sorten[i] + "eis     " + eisPreis + " €");
+                //            console.log("warenkorbInhalt[i]: " + sorten[i] + "     " + auswahlS[i].value);
+                //                console.log("warenkorbInhalt[i]: " + warenkorbInhalt);
+//                warenkorbAusgeben(i);
+                liste.textContent += "1 Kugel " + sorten[i] + "eis     " + eisPreis + " €" + "\n";
+            }
+
+
         }
-        //*/
-        //*/
-        if (target.name == "Stepper") {
-            let progress: HTMLProgressElement = <HTMLProgressElement>document.getElementsByTagName("meter")[0];
-            progress.value = parseFloat(target.value);
+        for (let i: number = 0; i < auswahlT1.length; i++) {
+            if (auswahlT1[i].checked) {
+                //            console.log("handleChange auswahlT1[i] : " + Number(auswahlT1[i].value));
+                betrag += Number(auswahlT1[i].value);
+                warenkorbInhalt.push("Topping " + toppings1[i] + toppingPreis + " €");
+                liste.textContent += "Topping   " + toppings1[i] + "    " + toppingPreis + " €" + "\n";
+            }
         }
-        //*/
-        if (this.id == "kugeln") {
-          let k: number = parseInt(document.getElementById("kugeln").innerHTML = target.value);
-           
-          for (let i: number = 0; i >= k; i++) {
-                createFieldsetSorte(i);
-          }
-            
-//            let x: HTMLInputElement = <HTMLInputElement>document.getElementById("kugel");
-//            x.value = 5;
-//          var x = document.getElementById("kugel").value;
-//            var x: <HTMLInputElement> = document.getElementByName("Kugel");
-//            if(x == 1) {
-//                
-//            }
-//            alert("Altersangabe keine Zahl!");
+        for (let i: number = 0; i < auswahlT2.length; i++) {
+            if (auswahlT2[i].checked) {
+                betrag += Number(auswahlT2[i].value);
+                liste.textContent += "Topping   " + toppings2[i] + "    " + toppingPreis + " €" + "\n";
+            }
         }
-//        var chkZ: number = 1;
-//        for (i = 0; i < document.Formular.Kugeln.value.length; ++i)
-//            if (document.Formular.Kugeln.value.charAt(i) < "0"
-//                || document.Formular.Alter.value.charAt(i) > "9")
-//                chkZ = -1;
-//        if (chkZ == -1) {
-//            alert("Altersangabe keine Zahl!");
-//            document.Formular.Alter.focus();
-//            return false;
-//        }
-    
-       }
-     let sorten: string[] = ["Vanille", "Strawberry", "Schokolade", "Walnuss"];
-//     let flavorSelect: string[] = [];
-     let flavorSelect: NodeListOf<Element> = document.getElementsByClassName("taste");
-    
-    function createFieldsetSorte(_i: number): void {
-//        select Element erstellen
-        let sorte: HTMLSelectElement = document.createElement("select");
-       
-//        this flavorSelect[i];
-        sorte.name = "Sorte";
-        sorte.className = "taste";
-        let select: Element = flavorSelect[_i];
-        let geschmacksrichtung: HTMLElement = document.getElementById("geschmacksrichtung");
-        this.appendChild(geschmacksrichtung);
-        
-//        Option element im select element erstellen
-        for (let i: number = 1; i > sorten.length; i++) {
-            let flavor: HTMLOptionElement = document.createElement("option");
-            flavor.value = sorten[_i];
-            flavor.text = sorten[_i];
-            this.appendChild(select);
-        }
-       
-        
+
+        console.log("summe : " + betrag);
+
+
+
+        //          let summeHtml: HTMLElement = document.getElementById("Summe");
+        summe.textContent = betrag.toString() + " €";
+
+
     }
+
+    function warenkorbAusgeben(_i: number): void {
+
+
+
+        
+
+
+
+//        for (let j: number = 0; j < warenkorbInhalt.length; j++) {
+//            let produkt: HTMLDivElement = document.createElement("div");
+//        //        liste.id = "warensumme";        
+//        liste.appendChild(produkt);
+//            //             console.log("warenkorbInhalt[j]: " + warenkorbInhalt[j]+ j);
+//            produkt.textContent += warenkorbInhalt;
+//
+//        }
+        //        Number(auswahal  
+        
+    
+    }
+
+
+
+
+
+
+    function createWarenKorb(): void {
+        let warenkorb: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementById("warenkorb");
+
+        liste = document.createElement("div");
+          
+        warenkorb.appendChild(liste);
+
+        summe = document.createElement("div");
+        summe.id = "warensumme";
+        warenkorb.appendChild(summe);
+
+    }
+
+    function createSorte(): void {
+        for (let i: number = 0; i < sorten.length; i++) {
+            //        Variable um select und div element dem Fieldset unterzuordnen
+            let geschmacksrichtung: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementById("geschmacksrichtung");
+            //        Div Element erstellen           
+            let sorte: HTMLDivElement = document.createElement("div");
+            sorte.className = "taste";
+            console.log(sorten[i]);
+            sorte.textContent = sorten[i];
+            geschmacksrichtung.appendChild(sorte);
+            //        number Input erstellen 
+            let kugelZahl: HTMLInputElement = document.createElement("input");
+            kugelZahl.type = "number";
+            kugelZahl.id = sorten[i];
+            kugelZahl.min = "0";
+            kugelZahl.max = "3";
+            kugelZahl.step = "1";
+            kugelZahl.value = "0";
+            sorte.appendChild(kugelZahl);
+            auswahlS.push(kugelZahl);
+            //            console.log("auswahlS[i] : " + auswahlS[i]);                   
+        }
+    }
+    function createTopping1(): void {
+        for (let i: number = 0; i < toppings1.length; i++) {
+            //         Variable um Checkbox und Label  dem Fieldset unterzuordnen
+            let topping1: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementById("topping1");
+            //         Label erstellen 
+            let text: HTMLLabelElement = document.createElement("label");
+            text.className = "taste";
+            console.log(toppings1[i]);
+            text.textContent = toppings1[i];
+            //         Checkbox
+            checkbox = document.createElement("input");
+            text.appendChild(checkbox);
+            checkbox.type = "checkbox";
+            text.id = toppings1[i];
+            checkbox.value = toppingPreis;
+            topping1.appendChild(text);
+            auswahlT1.push(checkbox);
+            console.log(checkbox.value);
+        }
+    }
+
+
+    function createTopping2(): void {
+        for (let i: number = 0; i < toppings2.length; i++) {
+            //         Variable um Checkbox und Label  dem Fieldset unterzuordnen
+            let topping2: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementById("topping2");
+            //         Label erstellen 
+            let text: HTMLLabelElement = document.createElement("label");
+            text.className = "taste";
+            //             console.log(toppings2[i]);
+            text.textContent = toppings2[i];
+            //         Checkbox
+            let radioButton: HTMLInputElement = document.createElement("input");
+            text.appendChild(radioButton);
+            radioButton.type = "radio";
+            radioButton.name = "Radiogroup";
+            text.id = toppings2[i];
+            if (i == 0) {
+                radioButton.value = "0";
+            }
+            else {
+                radioButton.value = "0.50";
+            }
+            topping2.appendChild(text);
+            auswahlT2.push(radioButton);
+        }
+    }
+
+    function berechnePreis(): void {
+        let ausgabe: HTMLDivElement = <HTMLDivElement>document.getElementById("ausgabe");
+        let s1: HTMLInputElement = <HTMLInputElement>document.getElementById(sorten[0]);
+        //      ausgabe.textContent = sorten[0] +  ;
+    }
+
+
+
+
 }

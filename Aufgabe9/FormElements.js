@@ -1,72 +1,153 @@
 var Form;
 (function (Form) {
+    Form.sorten = ["Vanille", "Erdbeere", "Schokolade", "Walnuss"];
+    Form.wahlSorte = [];
+    Form.wahlSorteZahl = [];
+    Form.auswahlS = [];
+    Form.toppings1 = ["Erdbeeren", "Himbeern", "Schokostreusel", "Cookie Stückchen"];
+    Form.auswahlT1 = [];
+    Form.toppings2 = ["nichts", "Schoko Souce", "Erdbeer Souce", "Sahne", "Karamell Souce"];
+    Form.auswahlT2 = [];
+    let checkbox;
+    let summe;
+    let liste;
+    Form.warenkorbInhalt = [];
+    let eisPreis = 1;
+    let toppingPreis = "0.50";
     window.addEventListener("load", init);
     function init(_event) {
         console.log("Init");
         let fieldsets = document.getElementsByTagName("fieldset");
+        createSorte();
+        createTopping1();
+        createTopping2();
+        createWarenKorb();
         for (let i = 0; i < fieldsets.length; i++) {
             let fieldset = fieldsets[i];
             fieldset.addEventListener("change", handleChange);
+            berechnePreis();
         }
     }
     function handleChange(_event) {
-        //console.log(_event);
-        //*/
-        let target = _event.target;
-        console.log("Changed " + target.name + " to " + target.value);
-        //*/
-        //*/ note: this == _event.currentTarget in an event-handler
-        if (this.id == "checkbox")
-            console.log("Changed " + target.name + " to " + target.checked);
-        //*/
-        //*/
-        if (target.name == "Slider") {
-            let progress = document.getElementsByTagName("progress")[0];
-            progress.value = parseFloat(target.value);
-        }
-        //*/
-        //*/
-        if (target.name == "Stepper") {
-            let progress = document.getElementsByTagName("meter")[0];
-            progress.value = parseFloat(target.value);
-        }
-        //*/
-        if (this.id == "kugeln") {
-            let k = parseInt(document.getElementById("kugeln").innerHTML = target.value);
-            for (let i = 0; i >= k; i++) {
-                createFieldsetSorte(i);
+        let betrag = 0;
+        for (let i = 0; i < Form.auswahlS.length; i++) {
+            betrag += Number(Form.auswahlS[i].value) * eisPreis;
+            if (Number(Form.auswahlS[i].value) > 0) {
+                Form.warenkorbInhalt.push("1 Kugel " + Form.sorten[i] + "eis     " + eisPreis + " €");
+                //            console.log("warenkorbInhalt[i]: " + sorten[i] + "     " + auswahlS[i].value);
+                //                console.log("warenkorbInhalt[i]: " + warenkorbInhalt);
+                //                warenkorbAusgeben(i);
+                liste.textContent += "1 Kugel " + Form.sorten[i] + "eis     " + eisPreis + " €" + "\n";
             }
         }
-        //        var chkZ: number = 1;
-        //        for (i = 0; i < document.Formular.Kugeln.value.length; ++i)
-        //            if (document.Formular.Kugeln.value.charAt(i) < "0"
-        //                || document.Formular.Alter.value.charAt(i) > "9")
-        //                chkZ = -1;
-        //        if (chkZ == -1) {
-        //            alert("Altersangabe keine Zahl!");
-        //            document.Formular.Alter.focus();
-        //            return false;
-        //        }
-    }
-    let sorten = ["Vanille", "Strawberry", "Schokolade", "Walnuss"];
-    //     let flavorSelect: string[] = [];
-    let flavorSelect = document.getElementsByClassName("taste");
-    function createFieldsetSorte(_i) {
-        //        select Element erstellen
-        let sorte = document.createElement("select");
-        //        this flavorSelect[i];
-        sorte.name = "Sorte";
-        sorte.className = "taste";
-        let select = flavorSelect[_i];
-        let geschmacksrichtung = document.getElementById("geschmacksrichtung");
-        this.appendChild(geschmacksrichtung);
-        //        Option element im select element erstellen
-        for (let i = 1; i > sorten.length; i++) {
-            let flavor = document.createElement("option");
-            flavor.value = sorten[_i];
-            flavor.text = sorten[_i];
-            this.appendChild(select);
+        for (let i = 0; i < Form.auswahlT1.length; i++) {
+            if (Form.auswahlT1[i].checked) {
+                //            console.log("handleChange auswahlT1[i] : " + Number(auswahlT1[i].value));
+                betrag += Number(Form.auswahlT1[i].value);
+                Form.warenkorbInhalt.push("Topping " + Form.toppings1[i] + toppingPreis + " €");
+                liste.textContent += "Topping   " + Form.toppings1[i] + "    " + toppingPreis + " €" + "\n";
+            }
         }
+        for (let i = 0; i < Form.auswahlT2.length; i++) {
+            if (Form.auswahlT2[i].checked) {
+                betrag += Number(Form.auswahlT2[i].value);
+                liste.textContent += "Topping   " + Form.toppings2[i] + "    " + toppingPreis + " €" + "\n";
+            }
+        }
+        console.log("summe : " + betrag);
+        //          let summeHtml: HTMLElement = document.getElementById("Summe");
+        summe.textContent = betrag.toString() + " €";
+    }
+    function warenkorbAusgeben(_i) {
+        //        for (let j: number = 0; j < warenkorbInhalt.length; j++) {
+        //            let produkt: HTMLDivElement = document.createElement("div");
+        //        //        liste.id = "warensumme";        
+        //        liste.appendChild(produkt);
+        //            //             console.log("warenkorbInhalt[j]: " + warenkorbInhalt[j]+ j);
+        //            produkt.textContent += warenkorbInhalt;
+        //
+        //        }
+        //        Number(auswahal  
+    }
+    function createWarenKorb() {
+        let warenkorb = document.getElementById("warenkorb");
+        liste = document.createElement("div");
+        warenkorb.appendChild(liste);
+        summe = document.createElement("div");
+        summe.id = "warensumme";
+        warenkorb.appendChild(summe);
+    }
+    function createSorte() {
+        for (let i = 0; i < Form.sorten.length; i++) {
+            //        Variable um select und div element dem Fieldset unterzuordnen
+            let geschmacksrichtung = document.getElementById("geschmacksrichtung");
+            //        Div Element erstellen           
+            let sorte = document.createElement("div");
+            sorte.className = "taste";
+            console.log(Form.sorten[i]);
+            sorte.textContent = Form.sorten[i];
+            geschmacksrichtung.appendChild(sorte);
+            //        number Input erstellen 
+            let kugelZahl = document.createElement("input");
+            kugelZahl.type = "number";
+            kugelZahl.id = Form.sorten[i];
+            kugelZahl.min = "0";
+            kugelZahl.max = "3";
+            kugelZahl.step = "1";
+            kugelZahl.value = "0";
+            sorte.appendChild(kugelZahl);
+            Form.auswahlS.push(kugelZahl);
+        }
+    }
+    function createTopping1() {
+        for (let i = 0; i < Form.toppings1.length; i++) {
+            //         Variable um Checkbox und Label  dem Fieldset unterzuordnen
+            let topping1 = document.getElementById("topping1");
+            //         Label erstellen 
+            let text = document.createElement("label");
+            text.className = "taste";
+            console.log(Form.toppings1[i]);
+            text.textContent = Form.toppings1[i];
+            //         Checkbox
+            checkbox = document.createElement("input");
+            text.appendChild(checkbox);
+            checkbox.type = "checkbox";
+            text.id = Form.toppings1[i];
+            checkbox.value = toppingPreis;
+            topping1.appendChild(text);
+            Form.auswahlT1.push(checkbox);
+            console.log(checkbox.value);
+        }
+    }
+    function createTopping2() {
+        for (let i = 0; i < Form.toppings2.length; i++) {
+            //         Variable um Checkbox und Label  dem Fieldset unterzuordnen
+            let topping2 = document.getElementById("topping2");
+            //         Label erstellen 
+            let text = document.createElement("label");
+            text.className = "taste";
+            //             console.log(toppings2[i]);
+            text.textContent = Form.toppings2[i];
+            //         Checkbox
+            let radioButton = document.createElement("input");
+            text.appendChild(radioButton);
+            radioButton.type = "radio";
+            radioButton.name = "Radiogroup";
+            text.id = Form.toppings2[i];
+            if (i == 0) {
+                radioButton.value = "0";
+            }
+            else {
+                radioButton.value = "0.50";
+            }
+            topping2.appendChild(text);
+            Form.auswahlT2.push(radioButton);
+        }
+    }
+    function berechnePreis() {
+        let ausgabe = document.getElementById("ausgabe");
+        let s1 = document.getElementById(Form.sorten[0]);
+        //      ausgabe.textContent = sorten[0] +  ;
     }
 })(Form || (Form = {}));
 //# sourceMappingURL=FormElements.js.map

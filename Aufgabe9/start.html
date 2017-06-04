@@ -8,133 +8,172 @@
 </head>
 <body>
 	<fieldset id="geschmacksrichtung">
-		<input id="kugeln" type="number" name="Kugeln" min="1" max="3" step="1"
-			value="1" />
-		<button name="Button" type="button">weiter zu Topping 1</button>
+<!-- 		<input id="kugeln" type="number" name="Kugeln" min="1" max="3" step="1" -->
+<!-- 			value="1" /> -->
+					
+<!-- 		<button name="t1" type="button">weiter zu Topping 1</button> -->
 
 	</fieldset>
-	
+	<div id="ausgabe"></div> 
 	<fieldset id="topping1">
 		<legend> Topping 1 </legend>
-		<input type="checkbox" name="Checkbox1" value="nichts" id="check1" />
-			<label for="check1">nichts</label> 
-		<input type="checkbox" name="Checkbox2" value="Erdbeer" id="check2" /> 
-			<label for="check2">Erdbeer</label> 
-		<input type="checkbox" name="Checkbox3" value="Vanille" id="check3" />
-			<label for="check3">Vanille</label>
-		<input type="checkbox" name="Checkbox4" value="Schoko" id="check4" />
-			<label for="check4">Schoko</label>
-		<input type="checkbox" name="Checkbox5" value="Walnuss" id="check5" />
-			<label for="check5">Walnuss</label>
-		<button name="Button" type="button">weiter zu Topping 2</button>
+<!-- 		<input type="checkbox" name="Checkbox1" value="nichts" id="check1" /> -->
+<!-- 			<label for="check1">nichts</label>  -->
+<!-- 		<input type="checkbox" name="Checkbox2" value="Erdbeeren" id="check2" />  -->
+<!-- 			<label for="check2">Erdbeeren</label>  -->
+<!-- 		<input type="checkbox" name="Checkbox3" value="Himbeern" id="check3" /> -->
+<!-- 			<label for="check3">Himbeern</label> -->
+<!-- 		<input type="checkbox" name="Checkbox4" value="Schokostreusel" id="check4" /> -->
+<!-- 			<label for="check4">Schokostreusel</label> -->
+<!-- 		<input type="checkbox" name="Checkbox5" value="Cookie Stückchen" id="check5" /> -->
+<!-- 			<label for="check5">Cookie Stückchen</label> -->
+<!-- 		<button name="t2" type="button">weiter zu Topping 2</button> -->
 
 	</fieldset>
 	
 	<fieldset id="topping2">
 		<legend> Topping2 </legend>
 <!-- 		<legend> Radiobutton Group </legend> -->
-		<input type="radio" name="Radiogroup" value="nichts" id="radio1" />
-		<label for="radio1">nichts</label>
-		<input type="radio" name="Radiogroup" value="Schoko Souce" id="radio2"/>
-		<label for="radio2">Schoko Souce</label>
-		<input type="radio" name="Radiogroup" value="Erdbeer Souce" id="radio3"/>
-		<label for="radio3">Erdbeer Souce</label>
-		<input type="radio" name="Radiogroup" value="Sahne" id="radio3"/>
-		<label for="radio3">Sahne</label>
-		<input type="radio" name="Radiogroup" value="Karamell Souce" id="radio3"/>
-		<label for="radio3">Karamell Souce</label>
-		<button name="Button" type="button">weiter zu Lieferoptionen</button>
+<!-- 		<input type="radio" name="Radiogroup" value="nichts" id="radio1" /> -->
+<!-- 		<label for="radio1">nichts</label> -->
+<!-- 		<input type="radio" name="Radiogroup" value="Schoko Souce" id="radio2"/> -->
+<!-- 		<label for="radio2">Schoko Souce</label> -->
+<!-- 		<input type="radio" name="Radiogroup" value="Erdbeer Souce" id="radio3"/> -->
+<!-- 		<label for="radio3">Erdbeer Souce</label> -->
+<!-- 		<input type="radio" name="Radiogroup" value="Sahne" id="radio3"/> -->
+<!-- 		<label for="radio3">Sahne</label> -->
+<!-- 		<input type="radio" name="Radiogroup" value="Karamell Souce" id="radio3"/> -->
+<!-- 		<label for="radio3">Karamell Souce</label> -->
+<!-- 		<button name="liefer" type="button">weiter zu Lieferoptionen</button> -->
 
 	</fieldset>
 	
 
 
-	<form name="Formular" id="text">
-		<legend> Text-Input </legend>
-		Simple
-		<input type="text" name="Text" placeholder="type here" required/>
-		<hr/>
-		Password
-		<input type="password" name="Password" placeholder="type password here"/>
-		<hr/>
-		Pattern
-		
-		<hr/>
-		Mail
-		<input type="email" name="Mail" placeholder="place @ between"/>
-		<hr/>
-		Url
-		<input type="url" name="Url" placeholder="start with http:"/>
-		<hr/>
-		Area
-		<textarea name="Area" cols="30" rows="3" placeholder="long text here"></textarea>
-	</form>
-<!-- -->
-	<fieldset id="radio">
-		<legend> Radiobutton Group </legend>
-		<input type="radio" name="Radiogroup" value="radio1" id="radio1" />
-		<label for="radio1">Radio Button 1</label>
-		<input type="radio" name="Radiogroup" value="radio2" id="radio2"/>
-		<label for="radio2">Radio Button 2</label>
-		<input type="radio" name="Radiogroup" value="radio3" id="radio3"/>
-		<label for="radio3">Radio Button 3</label>
-	</fieldset>
-<!-- -->
-	<fieldset id="checkbox">
-		<legend> Checkbox Group </legend>
-		<input type="checkbox" name="Checkbox1" value="check1" id="check1"/>
-		<label for="check1">Checkbox 1</label>
-		<input type="checkbox" name="Checkbox2" value="check2" id="check2"/>
-		<label for="check2">Checkbox 2</label>
-		<input type="checkbox" name="Checkbox3" value="check3" id="check3"/>
-		<label for="check3">Checkbox 3</label>
-	</fieldset>
-<!-- -->
-	<fieldset id="select">
-		<legend> Selection &amp; Interaction </legend>
-		Slider
-		<input type="range" name="Slider" min="0" max="1" step="0.1" value="0"/>
-		<hr/>
-		Stepper
-		<input type="number" name="Stepper" step="0.1" min="-1" max="1" value="0"/>
-		<hr/>
-		Datalist
-		<input type="text" name="Datalist" list="options" placeholder="what to buy?"/>
-		<datalist id="options">
-			<option value="Butter"> </option>
-			<option value="Milk"> </option>
-			<option value="Flour"> </option>
-			<option value="Sugar"> </option>
-			<option value="Eggs"> </option>
-			<option value="Salt"> </option>
-			<option value="Bread"> </option>
-		</datalist>
-		<hr/>
-		Select Box
-		<select name="Select" id="select">
-			<optgroup label="OptGroup1"></optgroup>
-			<option value="option1">First Option</option>
-			<option value="option2" selected>Second Option</option>
-			<optgroup label="OptGroup2"></optgroup>
-			<option value="option3">Third Option</option>
-			<option value="option4">Fourth Option</option>
+	<fieldset id="lieferdaten">
+		<legend> Lieferdaten </legend>
+		<select name="Select" id="lieferoptionen">
+			<option value="Standardlieferung">Standardlieferung</option> 
+			<option value="Expresslieferung" selected>Expresslieferung</option>			
 		</select>
+		Nachname
+		<input type="text" name="Nachname" placeholder="Nachname" required/>
 		<hr/>
-		Button
-		<button name="Button" type="button">Click me!</button>
+		Vorname
+		<input type="text" name="Vorname" placeholder="Vorname" required/>
+		<hr/>
+		Postleizahl
+		<input type="number" name="Postleizahl" min="00001" max="99999" step="1" placeholder="Postleizahl" required/>
+		<hr/>
+		Stadt
+		<input type="text" name="Stadt" placeholder="Stadt" required/>
+		<hr/>
+		Straße
+		<input type="text" name="Strasse" placeholder="Straße" required/>
+		<hr/>
+		Hausnummer
+		<input type="number" name="Hausnummer" min="00001" max="99999" step="1" placeholder="Hausnummer" required/>
+		<hr/>
+		<button name="Überprüfen" type="button">Überprüfen</button>
+		
+		
+<!-- 		Password -->
+<!-- 		<input type="password" name="Password" placeholder="type password here"/> -->
+<!-- 		<hr/> -->
+<!-- 		Pattern -->
+		
+<!-- 		<hr/> -->
+<!-- 		Mail -->
+<!-- 		<input type="email" name="Mail" placeholder="place @ between"/> -->
+<!-- 		<hr/> -->
+<!-- 		Url -->
+<!-- 		<input type="url" name="Url" placeholder="start with http:"/> -->
+<!-- 		<hr/> -->
+<!-- 		Area -->
+<!-- 		<textarea name="Area" cols="30" rows="3" placeholder="long text here"></textarea> -->
 	</fieldset>
-<!-- -->
-	<fieldset id="output">
-		<legend> Output </legend>
-		Output
-		<output name="out">---	Here's a result</output>
-		<hr/>
-		Progress
-		<progress value="0" max="1"> </progress>
-		<hr/>
-		Meter
-		<meter value="0" min="-1" max="1"> </meter>
+	<fieldset id="warenkorb">
+<!-- 	<div  id="liste"> -->
+<!-- 	</div> -->
+	
 	</fieldset>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 <!-- -->
+<!-- 	<fieldset id="radio"> -->
+<!-- 		<legend> Radiobutton Group </legend> -->
+<!-- 		<input type="radio" name="Radiogroup" value="radio1" id="radio1" /> -->
+<!-- 		<label for="radio1">Radio Button 1</label> -->
+<!-- 		<input type="radio" name="Radiogroup" value="radio2" id="radio2"/> -->
+<!-- 		<label for="radio2">Radio Button 2</label> -->
+<!-- 		<input type="radio" name="Radiogroup" value="radio3" id="radio3"/> -->
+<!-- 		<label for="radio3">Radio Button 3</label> -->
+<!-- 	</fieldset> -->
+<!-- <!-- --> 
+<!-- 	<fieldset id="checkbox"> -->
+<!-- 		<legend> Checkbox Group </legend> -->
+<!-- 		<input type="checkbox" name="Checkbox1" value="check1" id="check1"/> -->
+<!-- 		<label for="check1">Checkbox 1</label> -->
+<!-- 		<input type="checkbox" name="Checkbox2" value="check2" id="check2"/> -->
+<!-- 		<label for="check2">Checkbox 2</label> -->
+<!-- 		<input type="checkbox" name="Checkbox3" value="check3" id="check3"/> -->
+<!-- 		<label for="check3">Checkbox 3</label> -->
+<!-- 	</fieldset> -->
+<!-- <!-- --> 
+<!-- 	<fieldset id="select"> -->
+<!-- 		<legend> Selection &amp; Interaction </legend> -->
+<!-- 		Slider -->
+<!-- 		<input type="range" name="Slider" min="0" max="1" step="0.1" value="0"/> -->
+<!-- 		<hr/> -->
+<!-- 		Stepper -->
+<!-- 		<input type="number" name="Stepper" step="0.1" min="-1" max="1" value="0"/> -->
+<!-- 		<hr/> -->
+<!-- 		Datalist -->
+<!-- 		<input type="text" name="Datalist" list="options" placeholder="what to buy?"/> -->
+<!-- 		<datalist id="options"> -->
+<!-- 			<option value="Butter"> </option> -->
+<!-- 			<option value="Milk"> </option> -->
+<!-- 			<option value="Flour"> </option> -->
+<!-- 			<option value="Sugar"> </option> -->
+<!-- 			<option value="Eggs"> </option> -->
+<!-- 			<option value="Salt"> </option> -->
+<!-- 			<option value="Bread"> </option> -->
+<!-- 		</datalist> -->
+<!-- 		<hr/> -->
+<!-- 		Select Box -->
+<!-- 		<select name="Select" id="select"> -->
+<!-- 			<optgroup label="OptGroup1"></optgroup> -->
+<!-- 			<option value="option1">First Option</option> -->
+<!-- 			<option value="option2" selected>Second Option</option> -->
+<!-- 			<optgroup label="OptGroup2"></optgroup> -->
+<!-- 			<option value="option3">Third Option</option> -->
+<!-- 			<option value="option4">Fourth Option</option> -->
+<!-- 		</select> -->
+<!-- 		<hr/> -->
+<!-- 		Button -->
+<!-- 		<button name="Button" type="button">Click me!</button> -->
+<!-- 	</fieldset> -->
+<!-- <!-- --> 
+<!-- 	<fieldset id="output"> -->
+<!-- 		<legend> Output </legend> -->
+<!-- 		Output -->
+<!-- 		<output name="out">---	Here's a result</output> -->
+<!-- 		<hr/> -->
+<!-- 		Progress -->
+<!-- 		<progress value="0" max="1"> </progress> -->
+<!-- 		<hr/> -->
+<!-- 		Meter -->
+<!-- 		<meter value="0" min="-1" max="1"> </meter> -->
+<!-- 	</fieldset> -->
+
 </body>
 </html>
