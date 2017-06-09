@@ -25,50 +25,67 @@ var Form;
         for (let i = 0; i < fieldsets.length; i++) {
             let fieldset = fieldsets[i];
             fieldset.addEventListener("change", handleChange);
-            berechnePreis();
         }
     }
     function handleChange(_event) {
         let betrag = 0;
+        // bisherige Liste des Warenkorbs leeren, um Elemente nicht doppelt zu haben.
+        Form.warenkorbInhalt = [];
         for (let i = 0; i < Form.auswahlS.length; i++) {
             betrag += Number(Form.auswahlS[i].value) * eisPreis;
             if (Number(Form.auswahlS[i].value) > 0) {
-                Form.warenkorbInhalt.push("1 Kugel " + Form.sorten[i] + "eis     " + eisPreis + " €");
-                //            console.log("warenkorbInhalt[i]: " + sorten[i] + "     " + auswahlS[i].value);
-                //                console.log("warenkorbInhalt[i]: " + warenkorbInhalt);
-                //                warenkorbAusgeben(i);
-                liste.textContent += "1 Kugel " + Form.sorten[i] + "eis     " + eisPreis + " €" + "\n";
+                //                warenkorbInhalt[i].className = "nj";
+                Form.warenkorbInhalt.push(" 1 Kugel " + Form.auswahlS[i].id + "eis     " + eisPreis + " €");
             }
         }
         for (let i = 0; i < Form.auswahlT1.length; i++) {
             if (Form.auswahlT1[i].checked) {
                 //            console.log("handleChange auswahlT1[i] : " + Number(auswahlT1[i].value));
                 betrag += Number(Form.auswahlT1[i].value);
-                Form.warenkorbInhalt.push("Topping " + Form.toppings1[i] + toppingPreis + " €");
-                liste.textContent += "Topping   " + Form.toppings1[i] + "    " + toppingPreis + " €" + "\n";
+                Form.warenkorbInhalt.push(" Topping " + Form.toppings1[i] + " = " + toppingPreis + " €");
             }
         }
         for (let i = 0; i < Form.auswahlT2.length; i++) {
             if (Form.auswahlT2[i].checked) {
                 betrag += Number(Form.auswahlT2[i].value);
-                liste.textContent += "Topping   " + Form.toppings2[i] + "    " + toppingPreis + " €" + "\n";
+                Form.warenkorbInhalt.push(" Topping " + Form.toppings2[i] + " = " + toppingPreis + " €");
             }
         }
-        console.log("summe : " + betrag);
-        //          let summeHtml: HTMLElement = document.getElementById("Summe");
-        summe.textContent = betrag.toString() + " €";
-    }
-    function warenkorbAusgeben(_i) {
-        //        for (let j: number = 0; j < warenkorbInhalt.length; j++) {
-        //            let produkt: HTMLDivElement = document.createElement("div");
-        //        //        liste.id = "warensumme";        
-        //        liste.appendChild(produkt);
-        //            //             console.log("warenkorbInhalt[j]: " + warenkorbInhalt[j]+ j);
-        //            produkt.textContent += warenkorbInhalt;
-        //
+        let j;
+        //        warenkorbAusgeben();
+        //        for (let i: number = 0; i < warenkorbInhalt.length; i++) {
+        ////                    let produkt: HTMLDivElement = document.createElement("div");
+        ////                    liste.appendChild(produkt);
+        //        
+        //            
+        //            console.log("warenkorbInhalt[i]" + warenkorbInhalt[i] + "i : " + i);
+        ////            warenkorbInhalt.shift();
         //        }
-        //        Number(auswahal  
+        liste.textContent = Form.warenkorbInhalt.toString();
+        console.log("summe = " + betrag);
+        //          let summeHtml: HTMLElement = document.getElementById("Summe");
+        summe.textContent = "\n" + "Gesammtsumme =   " + betrag.toString() + " €";
     }
+    //    function warenkorbAusgeben(): void {
+    //
+    //    
+    //
+    //        
+    //
+    //
+    //
+    ////        for (let j: number = 0; j < warenkorbInhalt.length; j++) {
+    ////            let produkt: HTMLDivElement = document.createElement("div");
+    ////        //        liste.id = "warensumme";        
+    ////        liste.appendChild(produkt);
+    ////            //             console.log("warenkorbInhalt[j]: " + warenkorbInhalt[j]+ j);
+    ////            produkt.textContent += warenkorbInhalt;
+    ////
+    ////        }
+    //        //        Number(auswahal  
+    //        
+    //    
+    //    }
     function createWarenKorb() {
         let warenkorb = document.getElementById("warenkorb");
         liste = document.createElement("div");
@@ -84,13 +101,14 @@ var Form;
             //        Div Element erstellen           
             let sorte = document.createElement("div");
             sorte.className = "taste";
-            console.log(Form.sorten[i]);
+            //            console.log(sorten[i]);
             sorte.textContent = Form.sorten[i];
             geschmacksrichtung.appendChild(sorte);
             //        number Input erstellen 
             let kugelZahl = document.createElement("input");
             kugelZahl.type = "number";
             kugelZahl.id = Form.sorten[i];
+            //            kugelZahl.className = "hj";
             kugelZahl.min = "0";
             kugelZahl.max = "3";
             kugelZahl.step = "1";
@@ -106,7 +124,7 @@ var Form;
             //         Label erstellen 
             let text = document.createElement("label");
             text.className = "taste";
-            console.log(Form.toppings1[i]);
+            //            console.log(toppings1[i]);
             text.textContent = Form.toppings1[i];
             //         Checkbox
             checkbox = document.createElement("input");
@@ -116,7 +134,6 @@ var Form;
             checkbox.value = toppingPreis;
             topping1.appendChild(text);
             Form.auswahlT1.push(checkbox);
-            console.log(checkbox.value);
         }
     }
     function createTopping2() {
@@ -143,11 +160,6 @@ var Form;
             topping2.appendChild(text);
             Form.auswahlT2.push(radioButton);
         }
-    }
-    function berechnePreis() {
-        let ausgabe = document.getElementById("ausgabe");
-        let s1 = document.getElementById(Form.sorten[0]);
-        //      ausgabe.textContent = sorten[0] +  ;
     }
 })(Form || (Form = {}));
 //# sourceMappingURL=FormElements.js.map
