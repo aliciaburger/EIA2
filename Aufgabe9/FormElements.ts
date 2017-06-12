@@ -14,6 +14,8 @@ namespace Form {
     let eisPreis: number = 1;
     let toppingPreis: string = "0.50";
 
+    let pruefen:  HTMLElement; 
+    
     window.addEventListener("load", init);
 
     function init(_event: Event): void {
@@ -23,11 +25,18 @@ namespace Form {
         createTopping1();
         createTopping2();
         createWarenKorb();
+        
+       
         for (let i: number = 0; i < fieldsets.length; i++) {
             let fieldset: HTMLFieldSetElement = fieldsets[i];
             fieldset.addEventListener("change", handleChange);
 //            berechnePreis();
+            
+             
         }
+        pruefen = document.getElementById("pruefen");
+        pruefen.addEventListener("click", senden);
+//          Bestellung.addEventListener("click", senden);
     }
 
     function handleChange(_event: Event): void {
@@ -39,13 +48,10 @@ namespace Form {
             betrag += Number(auswahlS[i].value) * eisPreis;
            
             if (Number(auswahlS[i].value) > 0) {
-                 
-//                warenkorbInhalt[i].className = "nj";
-                warenkorbInhalt.push(" 1 Kugel " + auswahlS[i].id + "eis     " + eisPreis + " €");
-//                warenkorbInhalt.push("1 Kugel " + sorten[i] + "eis     " + eisPreis + " €");
-                //            console.log("warenkorbInhalt[i]: " + sorten[i] + "     " + auswahlS[i].value);
-                //                console.log("warenkorbInhalt[i]: " + warenkorbInhalt);
-//                warenkorbAusgeben(i);
+                 let kugelanzahl: number = Number(auswahlS[i].value);
+
+                 warenkorbInhalt.push(" " + kugelanzahl + " Kugel " + auswahlS[i].id + "eis  =   " + (eisPreis * kugelanzahl) + " €  \n");
+
                 
             }
 
@@ -55,7 +61,7 @@ namespace Form {
             if (auswahlT1[i].checked) {
                 //            console.log("handleChange auswahlT1[i] : " + Number(auswahlT1[i].value));
                 betrag += Number(auswahlT1[i].value);
-                warenkorbInhalt.push(" Topping " + toppings1[i] + " = " + toppingPreis + " €");
+                warenkorbInhalt.push(" Topping 1 " + toppings1[i] + " = " + toppingPreis + " €");
                 
 //               
             }
@@ -63,20 +69,11 @@ namespace Form {
         for (let i: number = 0; i < auswahlT2.length; i++) {
             if (auswahlT2[i].checked) {
                 betrag += Number(auswahlT2[i].value);
-                warenkorbInhalt.push(" Topping " + toppings2[i] + " = " + toppingPreis + " €");
+                warenkorbInhalt.push(" Topping 2 " + toppings2[i] + " = " + toppingPreis + " €");
 //                liste.textContent += "Topping   " + toppings2[i] + "    " + toppingPreis + " €" + "\n";
             }
         }
         let j: number;
-//        warenkorbAusgeben();
-//        for (let i: number = 0; i < warenkorbInhalt.length; i++) {
-////                    let produkt: HTMLDivElement = document.createElement("div");
-////                    liste.appendChild(produkt);
-//        
-//            
-//            console.log("warenkorbInhalt[i]" + warenkorbInhalt[i] + "i : " + i);
-////            warenkorbInhalt.shift();
-//        }
 
         liste.textContent = warenkorbInhalt.toString();
         
@@ -86,28 +83,6 @@ namespace Form {
 
         
     }
-
-//    function warenkorbAusgeben(): void {
-//
-//    
-//
-//        
-//
-//
-//
-////        for (let j: number = 0; j < warenkorbInhalt.length; j++) {
-////            let produkt: HTMLDivElement = document.createElement("div");
-////        //        liste.id = "warensumme";        
-////        liste.appendChild(produkt);
-////            //             console.log("warenkorbInhalt[j]: " + warenkorbInhalt[j]+ j);
-////            produkt.textContent += warenkorbInhalt;
-////
-////        }
-//        //        Number(auswahal  
-//        
-//    
-//    }
-
 
 
 
@@ -198,13 +173,115 @@ namespace Form {
         }
     }
 
-//    function berechnePreis(): void {
-//        let ausgabe: HTMLDivElement = <HTMLDivElement>document.getElementById("ausgabe");
-//        let s1: HTMLInputElement = <HTMLInputElement>document.getElementById(sorten[0]);
-//        //      ausgabe.textContent = sorten[0] +  ;
-//    }
 
+    
+function senden(): void {
 
+    let korrektur: string[] = [];
+        
+    let nachname: HTMLInputElement = <HTMLInputElement> document.getElementById("Nachname");
+    let vorname: HTMLInputElement = <HTMLInputElement>document.getElementById("Vorname");
+    let postleizahl: HTMLInputElement = <HTMLInputElement>document.getElementById("Postleizahl");
+    let stadt: HTMLInputElement = <HTMLInputElement>document.getElementById("Stadt");
+    let strasse: HTMLInputElement = <HTMLInputElement>document.getElementById("Strasse");
+    let hausnummer: HTMLInputElement = <HTMLInputElement> document.getElementById("Hausnummer");    
+    let eMail: HTMLInputElement = <HTMLInputElement> document.getElementById("EMail");
+    let fehlerZaehler: number = 0;    
+
+    if (nachname.validity.valid == false) {
+        nachname.style.backgroundColor = "#E6003D";
+        nachname.style.borderColor = "#E6003D";
+        fehlerZaehler ++;
+    }
+    else {
+        nachname.style.backgroundColor = "#00E664";
+        nachname.style.borderColor = "#00E664";
+        if (fehlerZaehler > 0) {
+         fehlerZaehler --;   
+        }
+    }
+    if (vorname.validity.valid == false) {
+        vorname.style.backgroundColor = "#E6003D";
+        vorname.style.borderColor = "#E6003D";
+        fehlerZaehler ++;
+    }
+    else {
+        vorname.style.backgroundColor = "#00E664";
+        vorname.style.borderColor = "#00E664";
+        if (fehlerZaehler > 0) {
+         fehlerZaehler --;   
+        }
+    }
+    if (postleizahl.validity.valid == false) {
+        postleizahl.style.backgroundColor = "#E6003D";
+        postleizahl.style.borderColor = "#E6003D";
+        fehlerZaehler ++;
+    }
+    else {
+        postleizahl.style.backgroundColor = "#00E664";
+        postleizahl.style.borderColor = "#00E664";
+        if (fehlerZaehler > 0) {
+         fehlerZaehler --;   
+        }
+    }
+    if (stadt.validity.valid == false) {
+        stadt.style.backgroundColor = "#E6003D";
+        stadt.style.borderColor = "#E6003D";
+        fehlerZaehler ++;
+    }
+    else {
+        stadt.style.backgroundColor = "#00E664";
+        stadt.style.borderColor = "#00E664";
+        if (fehlerZaehler > 0) {
+         fehlerZaehler --;   
+        }
+    }
+    if (strasse.validity.valid == false) {
+        strasse.style.backgroundColor = "#E6003D";
+        strasse.style.borderColor = "#E6003D";
+        fehlerZaehler ++;
+    }
+    else {
+        strasse.style.backgroundColor = "#00E664";
+        strasse.style.borderColor = "#00E664";
+        if (fehlerZaehler > 0) {
+         fehlerZaehler --;   
+        }
+    }
+    if (hausnummer.validity.valid == false) {
+        hausnummer.style.backgroundColor = "#E6003D";
+        hausnummer.style.borderColor = "#E6003D";
+        fehlerZaehler ++;
+        
+    }
+    else {
+        hausnummer.style.backgroundColor = "#00E664";
+        hausnummer.style.borderColor = "#00E664";
+        if (fehlerZaehler > 0) {
+         fehlerZaehler --;   
+        }
+    }
+    if (eMail.validity.valid == false) {
+        eMail.style.backgroundColor = "#E6003D";
+        eMail.style.borderColor = "#E6003D";
+        fehlerZaehler ++;
+    }
+    else {
+        eMail.style.backgroundColor = "#00E664";
+        eMail.style.borderColor = "#00E664";
+        if (fehlerZaehler > 0) {
+         fehlerZaehler --;   
+        }
+    }
+    
+    if (fehlerZaehler > 0) {
+        alert("Bitte ueberprüfen sie ihre Bestellung.");
+    }
+    else {
+        alert("Vielen Dank! Ihre Bestellung wird jetzt bearbeitet.");
+    }
+  
+}
 
 
 }

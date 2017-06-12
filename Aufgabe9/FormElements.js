@@ -14,6 +14,7 @@ var Form;
     Form.warenkorbInhalt = [];
     let eisPreis = 1;
     let toppingPreis = "0.50";
+    let pruefen;
     window.addEventListener("load", init);
     function init(_event) {
         console.log("Init");
@@ -26,6 +27,9 @@ var Form;
             let fieldset = fieldsets[i];
             fieldset.addEventListener("change", handleChange);
         }
+        pruefen = document.getElementById("pruefen");
+        pruefen.addEventListener("click", senden);
+        //          Bestellung.addEventListener("click", senden);
     }
     function handleChange(_event) {
         let betrag = 0;
@@ -34,58 +38,29 @@ var Form;
         for (let i = 0; i < Form.auswahlS.length; i++) {
             betrag += Number(Form.auswahlS[i].value) * eisPreis;
             if (Number(Form.auswahlS[i].value) > 0) {
-                //                warenkorbInhalt[i].className = "nj";
-                Form.warenkorbInhalt.push(" 1 Kugel " + Form.auswahlS[i].id + "eis     " + eisPreis + " €");
+                let kugelanzahl = Number(Form.auswahlS[i].value);
+                Form.warenkorbInhalt.push(" " + kugelanzahl + " Kugel " + Form.auswahlS[i].id + "eis  =   " + (eisPreis * kugelanzahl) + " €  \n");
             }
         }
         for (let i = 0; i < Form.auswahlT1.length; i++) {
             if (Form.auswahlT1[i].checked) {
                 //            console.log("handleChange auswahlT1[i] : " + Number(auswahlT1[i].value));
                 betrag += Number(Form.auswahlT1[i].value);
-                Form.warenkorbInhalt.push(" Topping " + Form.toppings1[i] + " = " + toppingPreis + " €");
+                Form.warenkorbInhalt.push(" Topping 1 " + Form.toppings1[i] + " = " + toppingPreis + " €");
             }
         }
         for (let i = 0; i < Form.auswahlT2.length; i++) {
             if (Form.auswahlT2[i].checked) {
                 betrag += Number(Form.auswahlT2[i].value);
-                Form.warenkorbInhalt.push(" Topping " + Form.toppings2[i] + " = " + toppingPreis + " €");
+                Form.warenkorbInhalt.push(" Topping 2 " + Form.toppings2[i] + " = " + toppingPreis + " €");
             }
         }
         let j;
-        //        warenkorbAusgeben();
-        //        for (let i: number = 0; i < warenkorbInhalt.length; i++) {
-        ////                    let produkt: HTMLDivElement = document.createElement("div");
-        ////                    liste.appendChild(produkt);
-        //        
-        //            
-        //            console.log("warenkorbInhalt[i]" + warenkorbInhalt[i] + "i : " + i);
-        ////            warenkorbInhalt.shift();
-        //        }
         liste.textContent = Form.warenkorbInhalt.toString();
         console.log("summe = " + betrag);
         //          let summeHtml: HTMLElement = document.getElementById("Summe");
         summe.textContent = "\n" + "Gesammtsumme =   " + betrag.toString() + " €";
     }
-    //    function warenkorbAusgeben(): void {
-    //
-    //    
-    //
-    //        
-    //
-    //
-    //
-    ////        for (let j: number = 0; j < warenkorbInhalt.length; j++) {
-    ////            let produkt: HTMLDivElement = document.createElement("div");
-    ////        //        liste.id = "warensumme";        
-    ////        liste.appendChild(produkt);
-    ////            //             console.log("warenkorbInhalt[j]: " + warenkorbInhalt[j]+ j);
-    ////            produkt.textContent += warenkorbInhalt;
-    ////
-    ////        }
-    //        //        Number(auswahal  
-    //        
-    //    
-    //    }
     function createWarenKorb() {
         let warenkorb = document.getElementById("warenkorb");
         liste = document.createElement("div");
@@ -159,6 +134,107 @@ var Form;
             }
             topping2.appendChild(text);
             Form.auswahlT2.push(radioButton);
+        }
+    }
+    function senden() {
+        let korrektur = [];
+        let nachname = document.getElementById("Nachname");
+        let vorname = document.getElementById("Vorname");
+        let postleizahl = document.getElementById("Postleizahl");
+        let stadt = document.getElementById("Stadt");
+        let strasse = document.getElementById("Strasse");
+        let hausnummer = document.getElementById("Hausnummer");
+        let eMail = document.getElementById("EMail");
+        let fehlerZaehler = 0;
+        if (nachname.validity.valid == false) {
+            nachname.style.backgroundColor = "#E6003D";
+            nachname.style.borderColor = "#E6003D";
+            fehlerZaehler++;
+        }
+        else {
+            nachname.style.backgroundColor = "#00E664";
+            nachname.style.borderColor = "#00E664";
+            if (fehlerZaehler > 0) {
+                fehlerZaehler--;
+            }
+        }
+        if (vorname.validity.valid == false) {
+            vorname.style.backgroundColor = "#E6003D";
+            vorname.style.borderColor = "#E6003D";
+            fehlerZaehler++;
+        }
+        else {
+            vorname.style.backgroundColor = "#00E664";
+            vorname.style.borderColor = "#00E664";
+            if (fehlerZaehler > 0) {
+                fehlerZaehler--;
+            }
+        }
+        if (postleizahl.validity.valid == false) {
+            postleizahl.style.backgroundColor = "#E6003D";
+            postleizahl.style.borderColor = "#E6003D";
+            fehlerZaehler++;
+        }
+        else {
+            postleizahl.style.backgroundColor = "#00E664";
+            postleizahl.style.borderColor = "#00E664";
+            if (fehlerZaehler > 0) {
+                fehlerZaehler--;
+            }
+        }
+        if (stadt.validity.valid == false) {
+            stadt.style.backgroundColor = "#E6003D";
+            stadt.style.borderColor = "#E6003D";
+            fehlerZaehler++;
+        }
+        else {
+            stadt.style.backgroundColor = "#00E664";
+            stadt.style.borderColor = "#00E664";
+            if (fehlerZaehler > 0) {
+                fehlerZaehler--;
+            }
+        }
+        if (strasse.validity.valid == false) {
+            strasse.style.backgroundColor = "#E6003D";
+            strasse.style.borderColor = "#E6003D";
+            fehlerZaehler++;
+        }
+        else {
+            strasse.style.backgroundColor = "#00E664";
+            strasse.style.borderColor = "#00E664";
+            if (fehlerZaehler > 0) {
+                fehlerZaehler--;
+            }
+        }
+        if (hausnummer.validity.valid == false) {
+            hausnummer.style.backgroundColor = "#E6003D";
+            hausnummer.style.borderColor = "#E6003D";
+            fehlerZaehler++;
+        }
+        else {
+            hausnummer.style.backgroundColor = "#00E664";
+            hausnummer.style.borderColor = "#00E664";
+            if (fehlerZaehler > 0) {
+                fehlerZaehler--;
+            }
+        }
+        if (eMail.validity.valid == false) {
+            eMail.style.backgroundColor = "#E6003D";
+            eMail.style.borderColor = "#E6003D";
+            fehlerZaehler++;
+        }
+        else {
+            eMail.style.backgroundColor = "#00E664";
+            eMail.style.borderColor = "#00E664";
+            if (fehlerZaehler > 0) {
+                fehlerZaehler--;
+            }
+        }
+        if (fehlerZaehler > 0) {
+            alert("Bitte ueberprüfen sie ihre Bestellung.");
+        }
+        else {
+            alert("Vielen Dank! Ihre Bestellung wird jetzt bearbeitet.");
         }
     }
 })(Form || (Form = {}));
