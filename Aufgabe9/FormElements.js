@@ -145,92 +145,72 @@ var Form;
         let strasse = document.getElementById("Strasse");
         let hausnummer = document.getElementById("Hausnummer");
         let eMail = document.getElementById("EMail");
-        let fehlerZaehler = 0;
+        let fehler = false;
         if (nachname.validity.valid == false) {
             nachname.style.backgroundColor = "#E6003D";
             nachname.style.borderColor = "#E6003D";
-            fehlerZaehler++;
+            fehler = true;
         }
         else {
             nachname.style.backgroundColor = "#00E664";
             nachname.style.borderColor = "#00E664";
-            if (fehlerZaehler > 0) {
-                fehlerZaehler--;
-            }
         }
         if (vorname.validity.valid == false) {
             vorname.style.backgroundColor = "#E6003D";
             vorname.style.borderColor = "#E6003D";
-            fehlerZaehler++;
+            fehler = true;
         }
         else {
             vorname.style.backgroundColor = "#00E664";
             vorname.style.borderColor = "#00E664";
-            if (fehlerZaehler > 0) {
-                fehlerZaehler--;
-            }
         }
         if (postleizahl.validity.valid == false) {
             postleizahl.style.backgroundColor = "#E6003D";
             postleizahl.style.borderColor = "#E6003D";
-            fehlerZaehler++;
+            fehler = true;
         }
         else {
             postleizahl.style.backgroundColor = "#00E664";
             postleizahl.style.borderColor = "#00E664";
-            if (fehlerZaehler > 0) {
-                fehlerZaehler--;
-            }
         }
         if (stadt.validity.valid == false) {
             stadt.style.backgroundColor = "#E6003D";
             stadt.style.borderColor = "#E6003D";
-            fehlerZaehler++;
+            fehler = true;
         }
         else {
             stadt.style.backgroundColor = "#00E664";
             stadt.style.borderColor = "#00E664";
-            if (fehlerZaehler > 0) {
-                fehlerZaehler--;
-            }
         }
         if (strasse.validity.valid == false) {
             strasse.style.backgroundColor = "#E6003D";
             strasse.style.borderColor = "#E6003D";
-            fehlerZaehler++;
+            fehler = true;
         }
         else {
             strasse.style.backgroundColor = "#00E664";
             strasse.style.borderColor = "#00E664";
-            if (fehlerZaehler > 0) {
-                fehlerZaehler--;
-            }
         }
         if (hausnummer.validity.valid == false) {
             hausnummer.style.backgroundColor = "#E6003D";
             hausnummer.style.borderColor = "#E6003D";
-            fehlerZaehler++;
+            fehler = true;
         }
         else {
             hausnummer.style.backgroundColor = "#00E664";
             hausnummer.style.borderColor = "#00E664";
-            if (fehlerZaehler > 0) {
-                fehlerZaehler--;
-            }
         }
         if (eMail.validity.valid == false) {
             eMail.style.backgroundColor = "#E6003D";
             eMail.style.borderColor = "#E6003D";
-            fehlerZaehler++;
+            fehler = true;
         }
         else {
             eMail.style.backgroundColor = "#00E664";
             eMail.style.borderColor = "#00E664";
-            if (fehlerZaehler > 0) {
-                fehlerZaehler--;
-            }
         }
-        if (fehlerZaehler > 0) {
+        if (fehler == true) {
+            console.log("fehlerZaehler bei alert" + fehler);
             alert("Bitte ueberprüfen sie ihre Bestellung.");
         }
         else {
