@@ -114,7 +114,7 @@ namespace aufgabe10 {
             let kugelZahl: HTMLInputElement = document.createElement("input");
             kugelZahl.type = "number";
             kugelZahl.id = sorten[i];
-            kugelZahl.name = "eissorte";
+            kugelZahl.name = sorten[i];
             kugelZahl.min = "0";
             kugelZahl.max = "3";
             kugelZahl.step = "1";

@@ -83,7 +83,7 @@ var aufgabe10;
             let kugelZahl = document.createElement("input");
             kugelZahl.type = "number";
             kugelZahl.id = aufgabe10.sorten[i];
-            kugelZahl.name = "eissorte";
+            kugelZahl.name = aufgabe10.sorten[i];
             kugelZahl.min = "0";
             kugelZahl.max = "3";
             kugelZahl.step = "1";
