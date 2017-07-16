@@ -10,6 +10,7 @@ var aufgabe12;
     let j = 0;
     let stopper = false;
     let id;
+    //init
     function init(_event) {
         canvas = document.getElementsByTagName("canvas")[0];
         aufgabe12.crc2 = canvas.getContext("2d");

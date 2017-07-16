@@ -2,7 +2,7 @@ namespace aufgabe12 {
     window.addEventListener("load", init);
 
 
-
+//Variabeln
 
     export let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
@@ -14,6 +14,8 @@ namespace aufgabe12 {
     let j: number = 0;
     let stopper: boolean = false;
     let id: number;
+    
+    //init
     function init(_event: Event): void {
 
         canvas = document.getElementsByTagName("canvas")[0];
@@ -41,8 +43,7 @@ namespace aufgabe12 {
             //Anonyme Funktion weil innerhalb von setInterval
             id = setInterval(function(): void { j++; console.log(j); createThings(j); window.setTimeout(animate, 20); stopGame(); }, 3000);
        
-       
-
+  
 
     }
     function stopGame(): void {
@@ -72,12 +73,6 @@ namespace aufgabe12 {
         }
         window.setTimeout(animate, 20);
     }
-
-
-
-
-
-
 
 
 
