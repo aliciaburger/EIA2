@@ -36,21 +36,19 @@ namespace aufgabe12 {
     function installInterval(): void {
 
 
-        if (stopper == false) {
+       
 
             //Anonyme Funktion weil innerhalb von setInterval
-            id = setInterval(function(): void { j++; console.log(j); createThings(j); window.setTimeout(animate, 20); test(); }, 3000);
-        }
-        else {
-            clearInterval(id);
-        }
+            id = setInterval(function(): void { j++; console.log(j); createThings(j); window.setTimeout(animate, 20); stopGame(); }, 3000);
+       
+       
 
 
     }
-    function test(): void {
+    function stopGame(): void {
         if (j == 5) {
             stopper = true;
-            installInterval();
+            clearInterval(id);
         }
     }
     function createThings(_i: number): void {

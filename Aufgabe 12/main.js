@@ -24,18 +24,13 @@ var aufgabe12;
         hintergrund = aufgabe12.crc2.getImageData(0, 0, canvas.width, canvas.height);
     }
     function installInterval() {
-        if (stopper == false) {
-            //Anonyme Funktion weil innerhalb von setInterval
-            id = setInterval(function () { j++; console.log(j); createThings(j); window.setTimeout(animate, 20); test(); }, 3000);
-        }
-        else {
-            clearInterval(id);
-        }
+        //Anonyme Funktion weil innerhalb von setInterval
+        id = setInterval(function () { j++; console.log(j); createThings(j); window.setTimeout(animate, 20); stopGame(); }, 3000);
     }
-    function test() {
+    function stopGame() {
         if (j == 5) {
             stopper = true;
-            installInterval();
+            clearInterval(id);
         }
     }
     function createThings(_i) {
