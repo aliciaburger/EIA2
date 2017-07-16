@@ -6,12 +6,10 @@ var aufgabe12;
     aufgabe12.n = 3;
     let hintergrund;
     aufgabe12.counter = 0;
-    let k = 0;
     let j = 0;
     let stopper = false;
     let id;
-    //init
-    function init(_event) {
+    function init() {
         canvas = document.getElementsByTagName("canvas")[0];
         aufgabe12.crc2 = canvas.getContext("2d");
         drawBackground();
@@ -25,13 +23,24 @@ var aufgabe12;
         hintergrund = aufgabe12.crc2.getImageData(0, 0, canvas.width, canvas.height);
     }
     function installInterval() {
-        //Anonyme Funktion weil innerhalb von setInterval
-        id = setInterval(function () { j++; console.log(j); createThings(j); window.setTimeout(animate, 20); stopGame(); }, 3000);
+        if (stopper == false) {
+            //Anonyme Funktion weil innerhalb von setInterval
+            id = setInterval(myFunction, 3000);
+        }
+        else {
+            clearInterval(id);
+        }
+        window.setTimeout(animate, 20);
+    }
+    function myFunction() {
+        console.log(j);
+        createThings(j);
+        j++;
+        stopGame();
     }
     function stopGame() {
         if (j == 5) {
             stopper = true;
-            clearInterval(id);
         }
     }
     function createThings(_i) {
@@ -45,7 +54,7 @@ var aufgabe12;
     }
     function animate() {
         aufgabe12.crc2.putImageData(hintergrund, 0, 0);
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < things.length; i++) {
             let b = things[i];
             b.update();
         }
