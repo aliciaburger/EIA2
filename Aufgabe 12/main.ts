@@ -2,9 +2,6 @@
 namespace aufgabe12 {
     window.addEventListener("load", init);
 
-
-
-
     export let crc2: CanvasRenderingContext2D;
     let canvas: HTMLCanvasElement;
     let things: Thing[] = [];
@@ -50,10 +47,10 @@ namespace aufgabe12 {
         j++;
         test();
     }
-    function test(): void {
+    function stopGame(): void {
         if (j == 5) {
             stopper = true;
-            installInterval();
+            clearInterval(id);
         }
     }
     function createThings(_i: number): void {
@@ -77,14 +74,4 @@ namespace aufgabe12 {
         }
         window.setTimeout(animate, 20);
     }
-
-
-
-
-
-
-
-
-
-
 }
