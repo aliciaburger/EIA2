@@ -23,7 +23,7 @@ namespace aufgabe12 {
         crc2 = canvas.getContext("2d");
         drawBackground();
         createFigur();
-        installInterval();
+        id = setInterval(createThings, 3000);
 
         let buttonlist: NodeListOf<HTMLButtonElement> = document.getElementsByTagName("button");
         for (let i: number = 0; i < buttonlist.length; i++) {
@@ -38,20 +38,29 @@ namespace aufgabe12 {
 
 
     export function eatThing(_b: Thing, _i: number): void {
-        console.log("eat");
-        //        for (let i: number = 0; i < things.length; i++) {
-        //            let b: Thing = things[i];
-        if (_b.x == f.x && _b.y > (f.y - 2) && _b.y < (f.y + 2)) {
-            console.log(things.length);
+        
+        if (_b.x > (f.x - 5) && _b.x < (f.x + 5 ) && _b.y > (f.y - 4) && _b.y < (f.y )) {
+            console.log("eat");
+            // gefressenes Objekt aus Array entfernen
             things.splice(_i, 1);
-            console.log(things.length);
-            //                delete things[i];
+            // counter hochzählen
+            counter++;
         }
-        //        }
-
-
-
+        stopGame(_b);
     }
+
+    function stopGame(_b:Thing): void {
+
+        // werden nur keine neuen sachen mehr geworfen.
+
+        if (_b.y > (277) && _b.y < (280)) {
+                stopper = true;
+                clearInterval(id);           
+                //Spiel Beenden noch einbauen
+        }
+    }
+
+
 
 
     function buttonClick(_button: HTMLButtonElement): void {
@@ -63,50 +72,31 @@ namespace aufgabe12 {
 
     function createFigur(): void {
 
-        f = new Figur(145.7, 265);
+        f = new Figur(145.7, 255);
         console.log("neue Figur wurde erstellt" + f);
     }
 
-    function installInterval(): void {
-        //        if (stopper == fals        
-        id = setInterval(myFunction, 3000);
-        //        }
-        //        else {
-        //            clearInte;
-        //        }
 
-    }
-
-    function myFunction(): void {
-
-        console.log(j);
-        createThings(j);
-
-        j++;
-        if (j == 5) {
-            stopper = true;
-            clearInterval(id);
-        }
-    }
-
-    function createThings(_i: number): void {
-
+    function createThings(): void {
 
         let z: number;
         z = startposition[Math.floor(Math.random() * startposition.length)];
-        let b: Thing = new Thing(z, canvas.height);
+        let b: Thing = new Thing(z, 0);
         console.log("neues Thing erstellt");
-        things[_i] = b;
+        things.push(b);
         console.log("things.length" + things.length);
 
 
+
     }
+
     function animate(): void {
 
         crc2.putImageData(hintergrund, 0, 0);
         for (let i: number = 0; i < things.length; i++) {
             let b: Thing = things[i];
             b.update();
+            console.log("i : " + i);
             eatThing(b, i);
         }
         f.update();

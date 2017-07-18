@@ -20,22 +20,20 @@ var aufgabe12;
             aufgabe12.crc2.fill();
         }
         move() {
-            //crc2.putImageData(hintergrund, 0, 0);
             this.speed = 2;
+            if (aufgabe12.counter > 3) {
+                this.speed = 2.5;
+                if (aufgabe12.counter > 5) {
+                    this.speed = 3;
+                    if (aufgabe12.counter > 10) {
+                        this.speed = 4;
+                        if (aufgabe12.counter > 15) {
+                            this.speed = 5;
+                        }
+                    }
+                }
+            }
             this.y += Math.random() * this.speed;
-            //if-Abfragen um die Bienen beim erreichen eines Bildrandes auf der anderen Seite wieder erscheinen zu lassen
-            if (this.x >= aufgabe12.crc2.canvas.width) {
-                this.x = 0;
-            }
-            if (this.y <= 0) {
-                this.y = aufgabe12.crc2.canvas.height;
-            }
-            if (this.x < 0) {
-                this.x = aufgabe12.crc2.canvas.width;
-            }
-            if (this.y > aufgabe12.crc2.canvas.height) {
-                this.y = 0;
-            }
         }
         setRandomColor() {
             let bienenFabe = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];

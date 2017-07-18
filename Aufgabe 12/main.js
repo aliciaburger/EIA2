@@ -16,7 +16,7 @@ var aufgabe12;
         aufgabe12.crc2 = aufgabe12.canvas.getContext("2d");
         drawBackground();
         createFigur();
-        installInterval();
+        id = setInterval(createThings, 3000);
         let buttonlist = document.getElementsByTagName("button");
         for (let i = 0; i < buttonlist.length; i++) {
             let button = buttonlist[i];
@@ -25,47 +25,36 @@ var aufgabe12;
         window.setTimeout(animate, 20);
     }
     function eatThing(_b, _i) {
-        console.log("eat");
-        //        for (let i: number = 0; i < things.length; i++) {
-        //            let b: Thing = things[i];
-        if (_b.x == aufgabe12.f.x && _b.y > (aufgabe12.f.y - 2) && _b.y < (aufgabe12.f.y + 2)) {
-            console.log(things.length);
+        if (_b.x > (aufgabe12.f.x - 5) && _b.x < (aufgabe12.f.x + 5) && _b.y > (aufgabe12.f.y - 4) && _b.y < (aufgabe12.f.y)) {
+            console.log("eat");
+            // gefressenes Objekt aus Array entfernen
             things.splice(_i, 1);
-            console.log(things.length);
+            // counter hochzählen
+            aufgabe12.counter++;
         }
-        //        }
+        stopGame(_b);
     }
     aufgabe12.eatThing = eatThing;
-    function buttonClick(_button) {
-        aufgabe12.position = Number(_button.value);
-    }
-    function createFigur() {
-        aufgabe12.f = new aufgabe12.Figur(145.7, 265);
-        console.log("neue Figur wurde erstellt" + aufgabe12.f);
-    }
-    function installInterval() {
-        //        if (stopper == fals        
-        id = setInterval(myFunction, 3000);
-        //        }
-        //        else {
-        //            clearInte;
-        //        }
-    }
-    function myFunction() {
-        console.log(j);
-        createThings(j);
-        j++;
-        if (j == 5) {
+    function stopGame(_b) {
+        // werden nur keine neuen sachen mehr geworfen.
+        if (_b.y > (277) && _b.y < (280)) {
             stopper = true;
             clearInterval(id);
         }
     }
-    function createThings(_i) {
+    function buttonClick(_button) {
+        aufgabe12.position = Number(_button.value);
+    }
+    function createFigur() {
+        aufgabe12.f = new aufgabe12.Figur(145.7, 255);
+        console.log("neue Figur wurde erstellt" + aufgabe12.f);
+    }
+    function createThings() {
         let z;
         z = aufgabe12.startposition[Math.floor(Math.random() * aufgabe12.startposition.length)];
-        let b = new aufgabe12.Thing(z, aufgabe12.canvas.height);
+        let b = new aufgabe12.Thing(z, 0);
         console.log("neues Thing erstellt");
-        things[_i] = b;
+        things.push(b);
         console.log("things.length" + things.length);
     }
     function animate() {
@@ -73,6 +62,7 @@ var aufgabe12;
         for (let i = 0; i < things.length; i++) {
             let b = things[i];
             b.update();
+            console.log("i : " + i);
             eatThing(b, i);
         }
         aufgabe12.f.update();
