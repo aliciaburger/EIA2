@@ -7,7 +7,6 @@ var aufgabe12;
     let hintergrund;
     aufgabe12.counter = 0;
     let j = 0;
-    let f;
     let stopper = false;
     let id;
     aufgabe12.position = 3;
@@ -25,19 +24,24 @@ var aufgabe12;
         }
         window.setTimeout(animate, 20);
     }
-    function drawBackground() {
-        aufgabe12.crc2.beginPath();
-        aufgabe12.crc2.fillStyle = "skyblue";
-        aufgabe12.crc2.rect(0, 0, aufgabe12.canvas.width, aufgabe12.canvas.height);
-        aufgabe12.crc2.fill();
-        hintergrund = aufgabe12.crc2.getImageData(0, 0, aufgabe12.canvas.width, aufgabe12.canvas.height);
+    function eatThing(_b, _i) {
+        console.log("eat");
+        //        for (let i: number = 0; i < things.length; i++) {
+        //            let b: Thing = things[i];
+        if (_b.x == aufgabe12.f.x && _b.y == aufgabe12.f.y) {
+            console.log(things.length);
+            things.splice(_i, 1);
+            console.log(things.length);
+        }
+        //        }
     }
+    aufgabe12.eatThing = eatThing;
     function buttonClick(_button) {
         aufgabe12.position = Number(_button.value);
     }
     function createFigur() {
-        f = new aufgabe12.Figur(145.7, 265);
-        console.log("neue Figur wurde erstellt" + f);
+        aufgabe12.f = new aufgabe12.Figur(145.7, 265);
+        console.log("neue Figur wurde erstellt" + aufgabe12.f);
     }
     function installInterval() {
         //        if (stopper == fals        
@@ -62,16 +66,24 @@ var aufgabe12;
         let b = new aufgabe12.Thing(z, aufgabe12.canvas.height);
         console.log("neues Thing erstellt");
         things[_i] = b;
-        b.setRandomColor();
+        console.log("things.length" + things.length);
     }
     function animate() {
         aufgabe12.crc2.putImageData(hintergrund, 0, 0);
         for (let i = 0; i < things.length; i++) {
             let b = things[i];
             b.update();
+            eatThing(b, i);
         }
-        f.update();
+        aufgabe12.f.update();
         window.setTimeout(animate, 20);
+    }
+    function drawBackground() {
+        aufgabe12.crc2.beginPath();
+        aufgabe12.crc2.fillStyle = "skyblue";
+        aufgabe12.crc2.rect(0, 0, aufgabe12.canvas.width, aufgabe12.canvas.height);
+        aufgabe12.crc2.fill();
+        hintergrund = aufgabe12.crc2.getImageData(0, 0, aufgabe12.canvas.width, aufgabe12.canvas.height);
     }
 })(aufgabe12 || (aufgabe12 = {}));
 //# sourceMappingURL=main.js.map

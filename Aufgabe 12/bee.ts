@@ -16,23 +16,24 @@ namespace aufgabe12 {
             this.y = _y;
             //            this.setRandomColor();
             //    .u          
-            
+
         }
 
 
         update(): void {
             this.move();
             this.draw();
+            
         }
         draw(): void {
             let _x: number = this.x;
             let _y: number = this.y;
-         
+
             crc2.beginPath();
             crc2.fillStyle = "#000000";
             crc2.arc(_x - 3, _y - 4, 5, 0, 2 * Math.PI);
             crc2.fill();
-            
+
         }
 
 

@@ -4,7 +4,7 @@ var aufgabe12;
         constructor(_x, _y) {
             this.x = _x;
             this.y = _y;
-            this.speed = 0.5;
+            this.speed = 0.55;
             this.draw();
         }
         update() {
