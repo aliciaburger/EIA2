@@ -41,7 +41,7 @@ namespace aufgabe12 {
         console.log("eat");
         //        for (let i: number = 0; i < things.length; i++) {
         //            let b: Thing = things[i];
-        if (_b.x == f.x && _b.y == f.y) {
+        if (_b.x == f.x && _b.y > (f.y - 2) && _b.y < (f.y + 2)) {
             console.log(things.length);
             things.splice(_i, 1);
             console.log(things.length);
