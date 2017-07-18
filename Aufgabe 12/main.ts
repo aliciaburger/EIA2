@@ -5,15 +5,17 @@ namespace aufgabe12 {
     //Variabeln
 
     export let crc2: CanvasRenderingContext2D;
-    let canvas: HTMLCanvasElement;
+    export let canvas: HTMLCanvasElement;
     let things: Thing[] = [];
     let figur: Figur[] = [];
     export let n: number = 3;
     let hintergrund: ImageData;
     export let counter: number = 0;
     let j: number = 0;
+    let f: Figur;
     let stopper: boolean = false;
     let id: number;
+    export let position: number = 3;
     export let startposition: number[] = [29.1, 87.4, 145.7];
     function init(): void {
 
@@ -21,9 +23,17 @@ namespace aufgabe12 {
         crc2 = canvas.getContext("2d");
         drawBackground();
         createFigur();
-
         installInterval();
-            }
+        let buttonlist: NodeListOf<HTMLButtonElement> = document.getElementsByTagName("button");
+        for (let i: number = 0; i < buttonlist.length; i++) {
+
+            let button: HTMLButtonElement = buttonlist[i];
+            button.addEventListener("click", function() {; buttonClick(button); });
+        }
+
+        window.setTimeout(animate, 20);
+
+    }
 
     function drawBackground(): void {
         crc2.beginPath();
@@ -33,45 +43,42 @@ namespace aufgabe12 {
 
         hintergrund = crc2.getImageData(0, 0, canvas.width, canvas.height);
     }
-    function createFigur(): void {
-        //
-        //        let f: Figur = new Figur(145.7, 15)
-        //        console.log("neue Figur wurde erstellt");
-        //         figur[0] = f;
+    
+    function buttonClick(_button: HTMLButtonElement): void {
         
-            let f: Figur = new Figur(145.7, 50);
-            console.log("neue Figur wurde erstellt");
-//            figur[0] = f;
-            
         
-
+        position = Number(_button.value);
+       
     }
-    function installInterval(): void {
-        if (stopper == false) {
+    
+    function createFigur(): void {       
 
-            //Anonyme Funktion weil innerhalb von setInterval
-            id = setInterval(myFunction, 3000);
-        }
-        else {
-            clearInterval(id);
-        }
-        window.setTimeout(animate, 20);
+        f = new Figur(145.7, 265);
+        console.log("neue Figur wurde erstellt" + f);
+    }
+    
+    function installInterval(): void {
+        //        if (stopper == fals        
+        id = setInterval(myFunction, 3000);
+        //        }
+        //        else {
+        //            clearInte;
+        //        }
+
     }
 
     function myFunction(): void {
-        
+
         console.log(j);
         createThings(j);
 
         j++;
-        stopGame();
-    }
-    function stopGame(): void {
         if (j == 5) {
             stopper = true;
             clearInterval(id);
         }
     }
+
     function createThings(_i: number): void {
 
 
@@ -90,7 +97,9 @@ namespace aufgabe12 {
         for (let i: number = 0; i < things.length; i++) {
             let b: Thing = things[i];
             b.update();
+
         }
+        f.update();
         window.setTimeout(animate, 20);
     }
 
