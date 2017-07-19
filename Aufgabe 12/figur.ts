@@ -14,7 +14,7 @@ namespace aufgabe12 {
 
             this.x = _x;
             this.y = _y;
-            this.speed = 0.55;
+
             this.draw();
 
         }
@@ -32,8 +32,8 @@ namespace aufgabe12 {
             crc2.fillStyle = "#FFFFFF";
             crc2.arc(_x - 3, _y - 4, 5, 0, 2 * Math.PI);
             crc2.fill();
-            
-            
+
+
         }
 
 
@@ -43,19 +43,23 @@ namespace aufgabe12 {
 
 
         move(): void {
+            this.speed = 0.55;
+            if (counter > 20) {
+                this.speed = 0.7;
+            }
             //crc2.putImageData(hintergrund, 0, 0);
 
 
-//                        this.speed = 2;
-//                        this.y += Math.random() * this.speed;
-//            console.log("Button value: " + position);
+            //                        this.speed = 2;
+            //                        this.y += Math.random() * this.speed;
+            //            console.log("Button value: " + position);
             this.xTarget = startposition[(position - 1)];
-            
+
             this.xDiff = this.xTarget - this.x;
-            
-//            
+
+            //            
             this.x += this.xDiff * this.speed;
-//            this.x += xDiff * 0.03;
+            //            this.x += xDiff * 0.03;
 
             //
             //            //if-Abfragen um die Bienen beim erreichen eines Bildrandes auf der anderen Seite wieder erscheinen zu lassen

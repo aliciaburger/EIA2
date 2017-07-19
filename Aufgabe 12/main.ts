@@ -15,48 +15,78 @@ namespace aufgabe12 {
     export let f: Figur;
     let stopper: boolean = false;
     let id: number;
+    let milliSec: number = 4000;
+
     export let position: number = 3;
     export let startposition: number[] = [29.1, 87.4, 145.7];
     function init(): void {
+        document.getElementById("richtungsButtons").style.display = "none";
+        document.getElementById("load").style.display = "none";
+        document.getElementById("cl6").addEventListener("click", function() {
+            document.getElementById("bild").style.display = "none";
+            document.getElementById("cl6").style.display = "none";
+            document.getElementById("richtungsButtons").style.display = "block";
 
-        canvas = document.getElementsByTagName("canvas")[0];
-        crc2 = canvas.getContext("2d");
-        drawBackground();
-        createFigur();
-        id = setInterval(createThings, 3000);
 
-        let buttonlist: NodeListOf<HTMLButtonElement> = document.getElementsByTagName("button");
-        for (let i: number = 0; i < buttonlist.length; i++) {
 
-            let button: HTMLButtonElement = buttonlist[i];
-            button.addEventListener("click", function() { ; buttonClick(button); });
+            canvas = document.getElementsByTagName("canvas")[0];
+            crc2 = canvas.getContext("2d");
+            drawBackground();
+            createFigur();
+
+
+            installInterval();
+
+            let buttonlist: NodeListOf<HTMLButtonElement> = document.getElementsByTagName("button");
+            for (let i: number = 0; i < buttonlist.length; i++) {
+
+                let button: HTMLButtonElement = buttonlist[i];
+                button.addEventListener("click", function() { ; buttonClick(button); });
+            }
+
+            window.setTimeout(animate, 20);
         }
-
-        window.setTimeout(animate, 20);
-
+        );
+    }
+    function installInterval(): void {
+        id = setTimeout(createThings, milliSec);
     }
 
 
-    export function eatThing(_b: Thing, _i: number): void {
-        
-        if (_b.x > (f.x - 5) && _b.x < (f.x + 5 ) && _b.y > (f.y - 4) && _b.y < (f.y )) {
-            console.log("eat");
-            // gefressenes Objekt aus Array entfernen
-            things.splice(_i, 1);
-            // counter hochzählen
-            counter++;
+    export function eatThing(_t: Thing, _i: number): void {
+
+        if (_t.bad == true && _t.y > (277) && _t.y < (280) || _t.bad == false && _t.x > (f.x - 5) && _t.x < (f.x + 5) && _t.y > (f.y - 4) && _t.y < (f.y)) {
+            if (stopper == false) {
+                // gefressenes Objekt aus Array entfernen
+                things.splice(_i, 1);
+                // counter hochzählen
+                counter++;
+
+            }
+            console.log("counter: " + counter);
+
+            console.log("speed: " + _t.speed);
         }
-        stopGame(_b);
+        stopGame(_t);
     }
 
-    function stopGame(_b:Thing): void {
+    function stopGame(_t: Thing): void {
 
-        // werden nur keine neuen sachen mehr geworfen.
+        // wenn richtige Dinge den Boden berühren, oder wenn falsche Dinge gefangen werden => Spiel verloren
 
-        if (_b.y > (277) && _b.y < (280)) {
-                stopper = true;
-                clearInterval(id);           
-                //Spiel Beenden noch einbauen
+        if (_t.bad == false && _t.y > (277) && _t.y < (280) || _t.bad == true && _t.x > (f.x - 5) && _t.x < (f.x + 5) && _t.y > (f.y - 4) && _t.y < (f.y)) {
+            stopper = true;
+            clearTimeout(id);
+            //Spiel Beenden noch einbauen
+            document.getElementById("bild").style.display = "block";
+            document.getElementById("spielfeld").style.display = "none";
+            document.getElementById("richtungsButtons").style.display = "none";
+            document.getElementById("load").style.display = "block";
+            document.getElementById("load").addEventListener("click", function() {
+                window.location.reload();
+            })
+
+
         }
     }
 
@@ -73,20 +103,47 @@ namespace aufgabe12 {
     function createFigur(): void {
 
         f = new Figur(145.7, 255);
-        console.log("neue Figur wurde erstellt" + f);
+
     }
 
 
     function createThings(): void {
 
+
+        console.log("milliSec: " + milliSec);
         let z: number;
         z = startposition[Math.floor(Math.random() * startposition.length)];
-        let b: Thing = new Thing(z, 0);
-        console.log("neues Thing erstellt");
-        things.push(b);
-        console.log("things.length" + things.length);
 
+        let typ: number = Math.floor((Math.random() * 2) + 1);
+        if (typ == 1) {
+            let g: Good = new Good(z, 0);
 
+            things.push(g);
+
+        }
+        else {
+            let b: Bad = new Bad(z, 0);
+
+            things.push(b);
+
+        }
+
+        if (counter > 2) {
+            milliSec = 3000;
+            if (counter > 6) {
+                milliSec = 2000;
+                if (counter > 12) {
+                    milliSec = 1500;
+                    if (counter > 16) {
+                        milliSec = 1000;
+                        if (counter > 22) {
+                            milliSec = 500;
+                        }
+                    }
+                }
+            }
+        }
+        installInterval();
 
     }
 
@@ -94,10 +151,10 @@ namespace aufgabe12 {
 
         crc2.putImageData(hintergrund, 0, 0);
         for (let i: number = 0; i < things.length; i++) {
-            let b: Thing = things[i];
-            b.update();
-            console.log("i : " + i);
-            eatThing(b, i);
+            let t: Thing = things[i];
+            t.update();
+
+            eatThing(t, i);
         }
         f.update();
 

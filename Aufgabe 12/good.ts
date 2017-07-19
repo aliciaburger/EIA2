@@ -1,25 +1,10 @@
 namespace aufgabe12 {
 
 
-    export class Thing {
-        x: number;
-        y: number;
-        bienenColor: string;
-        fluegelColor: string;
-        speed: number;
+    export class Good extends Thing {
         bad: boolean = false;
+        
 
-
-
-        constructor(_x: number, _y: number) {
-
-
-            this.x = _x;
-            this.y = _y;
-            //            this.setRandomColor();
-            //    .u          
-
-        }
 
 
         update(): void {
@@ -32,7 +17,7 @@ namespace aufgabe12 {
             let _y: number = this.y;
 
             crc2.beginPath();
-            crc2.fillStyle = "#000000";
+            crc2.fillStyle = "pink";
             crc2.arc(_x - 3, _y - 4, 5, 0, 2 * Math.PI);
             crc2.fill();
 
@@ -46,22 +31,16 @@ namespace aufgabe12 {
 
         move(): void {
             this.speed = 2;
-            if (counter > 4) {
-                this.speed = 3;
-                if (counter > 7) {
-                    this.speed = 4;
+            if (counter > 3) {
+                this.speed = 2.5;
+                if (counter > 5) {
+                    this.speed = 3;
                     if (counter > 10) {
-                        this.speed = 5;
+                    this.speed = 4;
                         if (counter > 15) {
-                            this.speed = 6;
-                            if (counter > 20) {
-                                this.speed = 7;
-                                if (counter > 25) {
-                                    this.speed = 8;
-                                }
-                            }
-                        }
-                    }
+                    this.speed = 5;
+                }
+                }
                 }
             }
 

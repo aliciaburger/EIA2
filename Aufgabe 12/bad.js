@@ -1,12 +1,9 @@
 var aufgabe12;
 (function (aufgabe12) {
-    class Thing {
-        constructor(_x, _y) {
-            this.bad = false;
-            this.x = _x;
-            this.y = _y;
-            //            this.setRandomColor();
-            //    .u          
+    class Bad extends aufgabe12.Thing {
+        constructor(...args) {
+            super(...args);
+            this.bad = true;
         }
         update() {
             this.move();
@@ -22,20 +19,14 @@ var aufgabe12;
         }
         move() {
             this.speed = 2;
-            if (aufgabe12.counter > 4) {
-                this.speed = 3;
-                if (aufgabe12.counter > 7) {
-                    this.speed = 4;
+            if (aufgabe12.counter > 3) {
+                this.speed = 2.5;
+                if (aufgabe12.counter > 5) {
+                    this.speed = 3;
                     if (aufgabe12.counter > 10) {
-                        this.speed = 5;
+                        this.speed = 4;
                         if (aufgabe12.counter > 15) {
-                            this.speed = 6;
-                            if (aufgabe12.counter > 20) {
-                                this.speed = 7;
-                                if (aufgabe12.counter > 25) {
-                                    this.speed = 8;
-                                }
-                            }
+                            this.speed = 5;
                         }
                     }
                 }
@@ -49,6 +40,6 @@ var aufgabe12;
             this.fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
         }
     }
-    aufgabe12.Thing = Thing;
+    aufgabe12.Bad = Bad;
 })(aufgabe12 || (aufgabe12 = {}));
-//# sourceMappingURL=bee.js.map
+//# sourceMappingURL=bad.js.map

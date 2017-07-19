@@ -4,7 +4,6 @@ var aufgabe12;
         constructor(_x, _y) {
             this.x = _x;
             this.y = _y;
-            this.speed = 0.55;
             this.draw();
         }
         update() {
@@ -20,6 +19,10 @@ var aufgabe12;
             aufgabe12.crc2.fill();
         }
         move() {
+            this.speed = 0.55;
+            if (aufgabe12.counter > 20) {
+                this.speed = 0.7;
+            }
             //crc2.putImageData(hintergrund, 0, 0);
             //                        this.speed = 2;
             //                        this.y += Math.random() * this.speed;

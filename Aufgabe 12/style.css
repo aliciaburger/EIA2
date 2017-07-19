@@ -41,7 +41,24 @@ button{
     color: #e4e4e4;
     text-align: center;
 }
+/* The Close Button */
+.close {
+  color: #d7d7d7;
+  position: absolute;
 
+  margin-right:20%;
+  top:8px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #01c6ff;
+  text-decoration: none;
+  cursor: pointer;
+}
 @media screen and (min-width:  350px){
 	.ueberschriftGr {
     	font-size: 2.4em;
