@@ -114,19 +114,71 @@ namespace aufgabe12 {
         let z: number;
         z = startposition[Math.floor(Math.random() * startposition.length)];
 
-        let typ: number = Math.floor((Math.random() * 3) + 1);
-        if (typ == 1 || typ == 2) {
+        let typ: number = Math.floor((Math.random() * 2) + 1);
+        if (typ == 1) {
+            //            || typ == 2
             let g: Good = new Good(z, 0);
 
             things.push(g);
 
         }
         else {
-            let b: Bad = new Bad(z, 0);
+            let a: number = Math.floor((Math.random() * 4) + 1);
+            if (a == 1) {
+                let tu: Tulpe = new Tulpe(z, 0);
+                things.push(tu);
 
-            things.push(b);
 
+            }
+            else {
+                if (a == 2) {
+                    let b: Bluemchen = new Bluemchen(z, 0);
+                    things.push(b);
+
+
+                }
+                else {
+                    if (a == 3) {
+                        
+                        let b: Pfirsich = new Pfirsich(z, 0);
+                        things.push(b);
+
+
+                    }
+                    else {
+                        if (a == 4) {
+                        let b: Apfel = new Apfel(z, 0);
+                        things.push(b);
+
+
+                    }
+                        
+
+                    }
+
+
+                }
+
+
+            }
+
+            //            switch (a) {
+            //                case 1:
+            //                    let bl: Bluemchen = new Bluemchen(z, 0);
+            //                    things.push(bl);
+            //                    break;
+            //                    case 2:
+            //                    let tu: Tulpe = new Tulpe(z, 0);
+            //                    things.push(tu);
+            //                    break;
+            //            }
+
+
+
+
+console.log("a: " + a);
         }
+        
 
         if (counter > 2) {
             milliSec = 3000;

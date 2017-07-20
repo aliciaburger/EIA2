@@ -1,9 +1,11 @@
 var aufgabe12;
 (function (aufgabe12) {
     class Bad extends aufgabe12.Thing {
-        constructor(...args) {
-            super(...args);
+        // in den  construktor (mit super)this.setRandomColor();
+        constructor(_x, _y) {
+            super(_x, _y);
             this.bad = true;
+            this.setRandomColor();
         }
         update() {
             this.move();
@@ -34,10 +36,10 @@ var aufgabe12;
             this.y += Math.random() * this.speed;
         }
         setRandomColor() {
-            let bienenFabe = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];
-            let fluegelFabe = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
-            this.bienenColor = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
-            this.fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
+            let blaetterFarbe = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
+            let blueteFarbe = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
+            this.zufallFarbeBlatt = blaetterFarbe[Math.floor(Math.random() * blaetterFarbe.length)];
+            this.zufallFarbeBluete = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
         }
     }
     aufgabe12.Bad = Bad;

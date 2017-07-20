@@ -3,9 +3,16 @@ namespace aufgabe12 {
 
     export class Bad extends Thing {
         bad: boolean = true;
-        
+        zufallFarbeBlatt: string;
+        zufallFarbeBluete: string;
+        // in den  construktor (mit super)this.setRandomColor();
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
+
+            this.setRandomColor();
 
 
+        }
 
         update(): void {
             this.move();
@@ -36,11 +43,11 @@ namespace aufgabe12 {
                 if (counter > 5) {
                     this.speed = 3;
                     if (counter > 10) {
-                    this.speed = 4;
+                        this.speed = 4;
                         if (counter > 15) {
-                    this.speed = 5;
-                }
-                }
+                            this.speed = 5;
+                        }
+                    }
                 }
             }
 
@@ -49,10 +56,10 @@ namespace aufgabe12 {
         }
 
         setRandomColor(): void {
-            let bienenFabe: string[] = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];
-            let fluegelFabe: string[] = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
-            this.bienenColor = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
-            this.fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
+            let blaetterFarbe: string[] = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00"];
+            let blueteFarbe: string[] = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff"];
+            this.zufallFarbeBlatt = blaetterFarbe[Math.floor(Math.random() * blaetterFarbe.length)];
+            this.zufallFarbeBluete = blueteFarbe[Math.floor(Math.random() * blueteFarbe.length)];
         }
 
     }
