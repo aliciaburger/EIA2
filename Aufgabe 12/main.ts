@@ -114,8 +114,8 @@ namespace aufgabe12 {
         let z: number;
         z = startposition[Math.floor(Math.random() * startposition.length)];
 
-        let typ: number = Math.floor((Math.random() * 2) + 1);
-        if (typ == 1) {
+        let typ: number = Math.floor((Math.random() * 3) + 1);
+        if (typ == 1 || typ == 2) {
             let g: Good = new Good(z, 0);
 
             things.push(g);

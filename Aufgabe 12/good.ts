@@ -16,10 +16,131 @@ namespace aufgabe12 {
             let _x: number = this.x;
             let _y: number = this.y;
 
-            crc2.beginPath();
-            crc2.fillStyle = "pink";
-            crc2.arc(_x - 3, _y - 4, 5, 0, 2 * Math.PI);
-            crc2.fill();
+                    //vorne
+        crc2.beginPath();
+        crc2.fillStyle = "#f0475c";
+        crc2.strokeStyle = "#000000";
+        crc2.rect(_x - 10, _y - 6.5, 20, 13);
+        crc2.rect(_x - 11, _y - 8.5, 21, 2);
+        crc2.lineWidth = 0.5;
+        crc2.fill();
+        crc2.stroke();
+        
+        //Seite
+        
+        crc2.beginPath();
+        crc2.fillStyle = "#f0475c";
+        crc2.strokeStyle = "#000000";
+        crc2.moveTo(_x+10,_y-6.5);
+        crc2.lineTo(_x+10,_y+6.5);
+        crc2.lineTo(_x+15,_y+0.5);
+        crc2.lineTo(_x+15,_y-12.5);
+        crc2.lineWidth = 0.5;
+        crc2.fill();
+        crc2.stroke();
+        
+        
+        
+        crc2.beginPath();
+        crc2.fillStyle = "#f0475c";
+        crc2.strokeStyle = "#000000";
+        crc2.moveTo(_x+10,_y-8.5);
+        crc2.lineTo(_x+10,_y-6.5);
+        crc2.lineTo(_x+15,_y-12.5);
+        crc2.lineTo(_x+15,_y-14.5);
+        crc2.lineWidth = 0.5;
+        crc2.fill();
+        crc2.stroke();
+        
+        //Deckel
+        crc2.beginPath();
+        crc2.fillStyle = "#f0475c";
+        crc2.strokeStyle = "#000000";
+        crc2.moveTo(_x - 11, _y - 8.5);
+        crc2.lineTo(_x+10,_y-8.5);
+        crc2.lineTo(_x+15,_y-14.5);
+        crc2.lineTo(_x-5,_y-14.5);
+        crc2.lineTo(_x - 11, _y - 8.5);
+        crc2.lineWidth = 0.5;
+        crc2.fill();
+        crc2.stroke();
+        
+        //Bänder:
+        //vorne
+         crc2.beginPath();
+        crc2.fillStyle = "#68c15d";
+        crc2.strokeStyle = "#000000";
+        crc2.moveTo(_x - 2, _y - 6.5);
+        crc2.lineTo(_x-2,_y+6.5);
+        crc2.lineTo(_x+2,_y+6.5);
+        crc2.lineTo(_x+2,_y-6.5);
+        crc2.lineWidth = 0.5;
+        crc2.fill();
+        crc2.stroke();
+        
+        crc2.beginPath();
+        crc2.fillStyle = "#68c15d";
+        crc2.strokeStyle = "#000000";
+        crc2.moveTo(_x-3,_y-8.5);
+        crc2.lineTo(_x - 3, _y - 6.5);
+        crc2.lineTo(_x+1,_y-6.5);
+        crc2.lineTo(_x+1,_y-8.5);
+        crc2.lineWidth = 0.5;
+        crc2.fill();
+        crc2.stroke();
+        
+        //oben
+        crc2.beginPath();
+        crc2.fillStyle = "#68c15d";
+        crc2.strokeStyle = "#000000";
+        crc2.moveTo(_x+2,_y-14.5);
+        crc2.lineTo(_x-3,_y-8.5);
+        crc2.lineTo(_x+1,_y-8.5);
+        crc2.lineTo(_x+6,_y-14.5);
+        crc2.lineWidth = 0.5;
+        crc2.fill();
+        crc2.stroke();
+        
+        crc2.beginPath();
+        crc2.fillStyle = "#68c15d";
+        crc2.strokeStyle = "#68c15d";
+        crc2.moveTo(_x-7.5,_y-11.5);
+        crc2.moveTo(_x-8,_y-12.5);
+        crc2.lineTo(_x+12.5,_y-12.5);
+        crc2.lineTo(_x+12,_y-11.5);
+        crc2.fill();    
+        crc2.lineWidth = 0.5;   
+        crc2.stroke();
+        
+        //seite
+        crc2.beginPath();
+        crc2.fillStyle = "#68c15d";
+        crc2.strokeStyle = "#68c15d";       
+        crc2.lineTo(_x+11.5,_y-11.5);
+        crc2.moveTo(_x+11.5,_y+3.5);
+        crc2.moveTo(_x+12.5,_y+2.5);
+        crc2.lineTo(_x+12.5,_y-12.5);
+        crc2.fill();
+        crc2.lineWidth = 1;
+        crc2.stroke();
+        //schwarze kontur
+
+        crc2.beginPath();        
+        crc2.strokeStyle = "#000000";
+        crc2.moveTo(_x+10,_y-8.5);
+        crc2.lineTo(_x+10,_y-6.5);
+        crc2.lineTo(_x+15,_y-12.5);
+        crc2.lineTo(_x+15,_y-14.5);
+        crc2.lineTo(_x+10,_y-8.5);
+        crc2.lineWidth = 0.5;
+        crc2.stroke();
+        
+        crc2.beginPath();
+        crc2.strokeStyle = "#000000"; 
+        crc2.moveTo(_x-5,_y-14.5);
+        crc2.lineTo(_x - 11, _y - 8.5);
+        crc2.lineWidth = 0.5;
+        crc2.stroke();
 
         }
 

@@ -36,6 +36,8 @@ var aufgabe7a;
         drawTree(110, 155);
         createZufallsBlumen();
         createFesteBlumen();
+        let _x = 150;
+        let _y = 100;
         drawKorb(290, 210);
         //Hintergrund speichern
         hintergrund = aufgabe7a.crc2.getImageData(0, 0, canvas.width, canvas.height);

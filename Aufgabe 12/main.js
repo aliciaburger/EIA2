@@ -74,8 +74,8 @@ var aufgabe12;
         console.log("milliSec: " + milliSec);
         let z;
         z = aufgabe12.startposition[Math.floor(Math.random() * aufgabe12.startposition.length)];
-        let typ = Math.floor((Math.random() * 2) + 1);
-        if (typ == 1) {
+        let typ = Math.floor((Math.random() * 3) + 1);
+        if (typ == 1 || typ == 2) {
             let g = new aufgabe12.Good(z, 0);
             things.push(g);
         }

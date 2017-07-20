@@ -100,7 +100,6 @@ namespace aufgabe7a {
             crc2.moveTo(_x + 5, _y - 3.5);
             crc2.bezierCurveTo(_x - 3, _y - 15, _x + 12, _y - 15, _x + 5, _y - 3.5);
             crc2.stroke();
-            crc2.stroke();
             crc2.fill();
             //flügel rechts
             crc2.beginPath();

@@ -49,15 +49,27 @@ namespace aufgabe7a {
         drawSun();
         drawTree(50, 145);
         drawTree(110, 155);
-
         createZufallsBlumen();
         createFesteBlumen();
 
+
+
+
+
+
+
+
+        let _x = 150;
+        let _y = 100;
+
+
+        
+        
         drawKorb(290, 210);
         //Hintergrund speichern
         hintergrund = crc2.getImageData(0, 0, canvas.width, canvas.height);
     }
-// Zusammenfassende FKT. für Bienen erstellen
+    // Zusammenfassende FKT. für Bienen erstellen
     function createBees(): void {
         anfangsBienen();
         window.setTimeout(animate, 20);
@@ -199,7 +211,7 @@ namespace aufgabe7a {
         crc2.moveTo(_x + 40, _y - 30);
         crc2.lineTo(_x + 40, _y + 10);  // u rechts
         crc2.stroke();
-        
+
         // Seitenwand
         crc2.beginPath();
         crc2.fillStyle = "#844B00";
@@ -208,8 +220,8 @@ namespace aufgabe7a {
         crc2.lineTo(_x + 50, _y);  //u rechts
         crc2.lineTo(_x + 40, _y + 10);  //u links
         crc2.lineTo(_x + 40, _y - 30);  //o links
-        crc2.fill();    
-        
+        crc2.fill();
+
         //Schwrzer strich  unter dem Dach
         crc2.beginPath();
         crc2.strokeStyle = "#000000";
@@ -217,7 +229,7 @@ namespace aufgabe7a {
         crc2.lineTo(_x + 35, _y - 25);  // u rechts
         crc2.lineTo(_x + 50, _y - 40);  //o rechts
         crc2.stroke();
-   
+
         // Dach
         crc2.beginPath();
         crc2.fillStyle = "#876D4A";
@@ -226,7 +238,7 @@ namespace aufgabe7a {
         crc2.lineTo(_x + 50, _y - 40);  //o rechts
         crc2.lineTo(_x - 5, _y - 40);  //o links
         crc2.lineTo(_x - 20, _y - 25);  //u links
-        crc2.fill();        
+        crc2.fill();
 
         //Eingang
         crc2.beginPath();
