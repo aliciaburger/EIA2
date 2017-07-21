@@ -1,7 +1,7 @@
 namespace aufgabe12 {
 
 
-    export class Figur {
+    export class Rentier {
         x: number;
         y: number;
         bienenColor: string;
@@ -11,15 +11,10 @@ namespace aufgabe12 {
         xDiff: number;
         constructor(_x: number, _y: number) {
 
-
             this.x = _x;
             this.y = _y;
-
             this.draw();
-
         }
-
-
         update(): void {
             this.move();
             this.draw();
@@ -131,19 +126,7 @@ namespace aufgabe12 {
         crc2.lineWidth = 0.35;
         crc2.stroke();
 
-
-
-
-
-
         }
-
-
-
-
-
-
-
         move(): void {
             this.speed = 0.55;
             if (counter > 20) {
@@ -153,11 +136,7 @@ namespace aufgabe12 {
             this.xTarget = startposition[(position - 1)];
             this.xDiff = this.xTarget - this.x;
             this.x += this.xDiff * this.speed;
-
-
         }
-
-
 
         setRandomColor(): void {
             let bienenFabe: string[] = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];

@@ -1,6 +1,6 @@
 var aufgabe12;
 (function (aufgabe12) {
-    class Figur {
+    class Rentier {
         constructor(_x, _y) {
             this.x = _x;
             this.y = _y;
@@ -120,6 +120,6 @@ var aufgabe12;
             this.fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
         }
     }
-    aufgabe12.Figur = Figur;
+    aufgabe12.Rentier = Rentier;
 })(aufgabe12 || (aufgabe12 = {}));
-//# sourceMappingURL=figur.js.map
+//# sourceMappingURL=rentier.js.map

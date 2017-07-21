@@ -14,29 +14,34 @@ var aufgabe12;
     aufgabe12.startposition = [29.1, 87.4, 145.7];
     function init() {
         document.getElementById("richtungsButtons").style.display = "none";
+        document.getElementById("endtext").style.display = "none";
         document.getElementById("load").style.display = "none";
-        document.getElementById("cl6").addEventListener("click", function () {
-            document.getElementById("bild").style.display = "none";
-            document.getElementById("cl6").style.display = "none";
-            document.getElementById("richtungsButtons").style.display = "block";
-            aufgabe12.canvas = document.getElementsByTagName("canvas")[0];
-            aufgabe12.crc2 = aufgabe12.canvas.getContext("2d");
-            drawBackground();
-            createFigur();
-            installInterval();
-            let buttonlist = document.getElementsByTagName("button");
-            for (let i = 0; i < buttonlist.length; i++) {
-                let button = buttonlist[i];
-                button.addEventListener("click", function () { ; buttonClick(button); });
-            }
-            window.setTimeout(animate, 20);
-        });
+        document.getElementById("start").addEventListener("click", startGame);
+        document.getElementById("start").addEventListener("touch", startGame);
+    }
+    function startGame() {
+        document.getElementById("start").style.display = "none";
+        document.getElementById("bild").style.display = "none";
+        document.getElementById("anfangstext").style.display = "none";
+        document.getElementById("richtungsButtons").style.display = "block";
+        aufgabe12.canvas = document.getElementsByTagName("canvas")[0];
+        aufgabe12.crc2 = aufgabe12.canvas.getContext("2d");
+        drawBackground();
+        createRentier();
+        installInterval();
+        let buttonlist = document.getElementsByTagName("button");
+        for (let i = 0; i < buttonlist.length; i++) {
+            let button = buttonlist[i];
+            button.addEventListener("click", function () { ; buttonClick(button); });
+            button.addEventListener("touch", function () { ; buttonClick(button); });
+        }
+        window.setTimeout(animate, 20);
     }
     function installInterval() {
         id = setTimeout(createThings, milliSec);
     }
     function eatThing(_t, _i) {
-        if (_t.bad == true && _t.y > (277) && _t.y < (280) || _t.bad == false && _t.x > (aufgabe12.f.x - 5) && _t.x < (aufgabe12.f.x + 5) && _t.y > (aufgabe12.f.y - 4) && _t.y < (aufgabe12.f.y)) {
+        if (_t.bad == true && _t.y > (277) && _t.y < (280) || _t.bad == false && _t.x > (aufgabe12.r.x - 5) && _t.x < (aufgabe12.r.x + 5) && _t.y > (aufgabe12.r.y - 4) && _t.y < (aufgabe12.r.y)) {
             if (stopper == false) {
                 // gefressenes Objekt aus Array entfernen
                 things.splice(_i, 1);
@@ -51,24 +56,38 @@ var aufgabe12;
     aufgabe12.eatThing = eatThing;
     function stopGame(_t) {
         // wenn richtige Dinge den Boden berühren, oder wenn falsche Dinge gefangen werden => Spiel verloren
-        if (_t.bad == false && _t.y > (277) && _t.y < (280) || _t.bad == true && _t.x > (aufgabe12.f.x - 5) && _t.x < (aufgabe12.f.x + 5) && _t.y > (aufgabe12.f.y - 4) && _t.y < (aufgabe12.f.y)) {
+        if (_t.bad == false && _t.y > (277) && _t.y < (280) || _t.bad == true && _t.x > (aufgabe12.r.x - 5) && _t.x < (aufgabe12.r.x + 5) && _t.y > (aufgabe12.r.y - 4) && _t.y < (aufgabe12.r.y)) {
             stopper = true;
             clearTimeout(id);
-            //Spiel Beenden noch einbauen
+            //Spiel Beenden 
             document.getElementById("bild").style.display = "block";
+            document.getElementById("endtext").style.display = "block";
             document.getElementById("spielfeld").style.display = "none";
             document.getElementById("richtungsButtons").style.display = "none";
+            if (aufgabe12.counter == 0) {
+                document.getElementById("endtext").textContent = "Spiel beendet." + "\n" + "Schade, du hast " + aufgabe12.counter.toString() + " Punkte erzielt." + " klicke auf neu Laden um noch einmal zu spielen.";
+            }
+            else {
+                if (aufgabe12.counter == 1) {
+                    document.getElementById("endtext").textContent = "Spiel beendet." + "\n" + "Schade, du hast leider nur " + aufgabe12.counter.toString() + " Punkt erzielt." + " klicke auf neu Laden um noch einmal zu spielen.";
+                }
+                else {
+                    document.getElementById("endtext").textContent = "Spiel beendet." + "\n" + "Glückwunsch! du hast " + aufgabe12.counter.toString() + " Punkte erzielt." + " klicke auf neu Laden um noch einmal zu spielen.";
+                }
+            }
             document.getElementById("load").style.display = "block";
-            document.getElementById("load").addEventListener("click", function () {
-                window.location.reload();
-            });
+            document.getElementById("load").addEventListener("click", neuLaden);
+            document.getElementById("load").addEventListener("touch", neuLaden);
         }
+    }
+    function neuLaden() {
+        window.location.reload();
     }
     function buttonClick(_button) {
         aufgabe12.position = Number(_button.value);
     }
-    function createFigur() {
-        aufgabe12.f = new aufgabe12.Figur(145.7, 255);
+    function createRentier() {
+        aufgabe12.r = new aufgabe12.Rentier(145.7, 255);
     }
     function createThings() {
         console.log("milliSec: " + milliSec);
@@ -76,8 +95,8 @@ var aufgabe12;
         z = aufgabe12.startposition[Math.floor(Math.random() * aufgabe12.startposition.length)];
         let typ = Math.floor((Math.random() * 2) + 1);
         if (typ == 1) {
-            //            || typ == 2
             let g = new aufgabe12.Good(z, 0);
+            g.setRandomColor();
             things.push(g);
         }
         else {
@@ -104,17 +123,6 @@ var aufgabe12;
                     }
                 }
             }
-            //            switch (a) {
-            //                case 1:
-            //                    let bl: Bluemchen = new Bluemchen(z, 0);
-            //                    things.push(bl);
-            //                    break;
-            //                    case 2:
-            //                    let tu: Tulpe = new Tulpe(z, 0);
-            //                    things.push(tu);
-            //                    break;
-            //            }
-            console.log("a: " + a);
         }
         if (aufgabe12.counter > 2) {
             milliSec = 3000;
@@ -140,12 +148,16 @@ var aufgabe12;
             t.update();
             eatThing(t, i);
         }
-        aufgabe12.f.update();
+        aufgabe12.r.update();
         window.setTimeout(animate, 20);
     }
     function drawBackground() {
+        var grd = aufgabe12.crc2.createLinearGradient(0, 0, 0, aufgabe12.canvas.height);
+        grd.addColorStop(0, "#222157");
+        grd.addColorStop(0.5, "#2446b6");
+        grd.addColorStop(1, "#159ecf");
         aufgabe12.crc2.beginPath();
-        aufgabe12.crc2.fillStyle = "skyblue";
+        aufgabe12.crc2.fillStyle = grd;
         aufgabe12.crc2.rect(0, 0, aufgabe12.canvas.width, aufgabe12.canvas.height);
         aufgabe12.crc2.fill();
         hintergrund = aufgabe12.crc2.getImageData(0, 0, aufgabe12.canvas.width, aufgabe12.canvas.height);

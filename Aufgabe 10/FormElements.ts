@@ -69,7 +69,7 @@ namespace aufgabe10 {
             if (auswahlT2[i].checked) {
                 betrag += Number(auswahlT2[i].value);
                 warenkorbInhalt.push(" Topping 2 " + toppings2[i] + " = " + toppingPreis + " €");
-//                liste.textContent += "Topping   " + toppings2[i] + "    " + toppingPreis + " €" + "\n";
+//               liste.textContent += "Topping   " + toppings2[i] + "    " + toppingPreis + " €" + "\n";
             }
         }
         let j: number;

@@ -5,7 +5,7 @@ namespace aufgabe12 {
         bad: boolean = true;
         zufallFarbeBlatt: string;
         zufallFarbeBluete: string;
-        // in den  construktor (mit super)this.setRandomColor();
+       
         constructor(_x: number, _y: number) {
             super(_x, _y);
 

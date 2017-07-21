@@ -12,18 +12,21 @@ var aufgabe12;
         draw() {
             let _x = this.x;
             let _y = this.y;
+            let p = this.paket;
+            let b = this.band;
+            //Paket
             //vorne
             aufgabe12.crc2.beginPath();
-            aufgabe12.crc2.fillStyle = "#f0475c";
+            aufgabe12.crc2.fillStyle = p;
             aufgabe12.crc2.strokeStyle = "#000000";
             aufgabe12.crc2.rect(_x - 10, _y - 6.5, 20, 13);
             aufgabe12.crc2.rect(_x - 11, _y - 8.5, 21, 2);
             aufgabe12.crc2.lineWidth = 0.5;
             aufgabe12.crc2.fill();
             aufgabe12.crc2.stroke();
-            //Seite
+            //Sei    
             aufgabe12.crc2.beginPath();
-            aufgabe12.crc2.fillStyle = "#f0475c";
+            aufgabe12.crc2.fillStyle = p;
             aufgabe12.crc2.strokeStyle = "#000000";
             aufgabe12.crc2.moveTo(_x + 10, _y - 6.5);
             aufgabe12.crc2.lineTo(_x + 10, _y + 6.5);
@@ -33,7 +36,7 @@ var aufgabe12;
             aufgabe12.crc2.fill();
             aufgabe12.crc2.stroke();
             aufgabe12.crc2.beginPath();
-            aufgabe12.crc2.fillStyle = "#f0475c";
+            aufgabe12.crc2.fillStyle = p;
             aufgabe12.crc2.strokeStyle = "#000000";
             aufgabe12.crc2.moveTo(_x + 10, _y - 8.5);
             aufgabe12.crc2.lineTo(_x + 10, _y - 6.5);
@@ -44,7 +47,7 @@ var aufgabe12;
             aufgabe12.crc2.stroke();
             //Deckel
             aufgabe12.crc2.beginPath();
-            aufgabe12.crc2.fillStyle = "#f0475c";
+            aufgabe12.crc2.fillStyle = p;
             aufgabe12.crc2.strokeStyle = "#000000";
             aufgabe12.crc2.moveTo(_x - 11, _y - 8.5);
             aufgabe12.crc2.lineTo(_x + 10, _y - 8.5);
@@ -57,7 +60,7 @@ var aufgabe12;
             //Bänder:
             //vorne
             aufgabe12.crc2.beginPath();
-            aufgabe12.crc2.fillStyle = "#68c15d";
+            aufgabe12.crc2.fillStyle = b;
             aufgabe12.crc2.strokeStyle = "#000000";
             aufgabe12.crc2.moveTo(_x - 2, _y - 6.5);
             aufgabe12.crc2.lineTo(_x - 2, _y + 6.5);
@@ -67,7 +70,7 @@ var aufgabe12;
             aufgabe12.crc2.fill();
             aufgabe12.crc2.stroke();
             aufgabe12.crc2.beginPath();
-            aufgabe12.crc2.fillStyle = "#68c15d";
+            aufgabe12.crc2.fillStyle = b;
             aufgabe12.crc2.strokeStyle = "#000000";
             aufgabe12.crc2.moveTo(_x - 3, _y - 8.5);
             aufgabe12.crc2.lineTo(_x - 3, _y - 6.5);
@@ -78,7 +81,7 @@ var aufgabe12;
             aufgabe12.crc2.stroke();
             //oben
             aufgabe12.crc2.beginPath();
-            aufgabe12.crc2.fillStyle = "#68c15d";
+            aufgabe12.crc2.fillStyle = b;
             aufgabe12.crc2.strokeStyle = "#000000";
             aufgabe12.crc2.moveTo(_x + 2, _y - 14.5);
             aufgabe12.crc2.lineTo(_x - 3, _y - 8.5);
@@ -88,8 +91,8 @@ var aufgabe12;
             aufgabe12.crc2.fill();
             aufgabe12.crc2.stroke();
             aufgabe12.crc2.beginPath();
-            aufgabe12.crc2.fillStyle = "#68c15d";
-            aufgabe12.crc2.strokeStyle = "#68c15d";
+            aufgabe12.crc2.fillStyle = b;
+            aufgabe12.crc2.strokeStyle = b;
             aufgabe12.crc2.moveTo(_x - 7.5, _y - 11.5);
             aufgabe12.crc2.moveTo(_x - 8, _y - 12.5);
             aufgabe12.crc2.lineTo(_x + 12.5, _y - 12.5);
@@ -99,8 +102,8 @@ var aufgabe12;
             aufgabe12.crc2.stroke();
             //seite
             aufgabe12.crc2.beginPath();
-            aufgabe12.crc2.fillStyle = "#68c15d";
-            aufgabe12.crc2.strokeStyle = "#68c15d";
+            aufgabe12.crc2.fillStyle = b;
+            aufgabe12.crc2.strokeStyle = b;
             aufgabe12.crc2.lineTo(_x + 11.5, _y - 11.5);
             aufgabe12.crc2.moveTo(_x + 11.5, _y + 3.5);
             aufgabe12.crc2.moveTo(_x + 12.5, _y + 2.5);
@@ -142,10 +145,10 @@ var aufgabe12;
             this.y += Math.random() * this.speed;
         }
         setRandomColor() {
-            let bienenFabe = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];
-            let fluegelFabe = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
-            this.bienenColor = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
-            this.fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
+            let paket = ["#cb0051", "#b628bf", "#28d2d4", "#ffd2d4", "#00bcec", "#ff4e00", "#ffa400", "#bcff00", "#f0475c"];
+            let band = ["#f1ffcb", "#ffc4aa", "#fff8c6", "#cefeff", "#ffd2d4", "#ffb8ea", "#fe7aa4", "#e9abff", "#68c15d"];
+            this.paket = paket[Math.floor(Math.random() * paket.length)];
+            this.band = band[Math.floor(Math.random() * band.length)];
         }
     }
     aufgabe12.Good = Good;

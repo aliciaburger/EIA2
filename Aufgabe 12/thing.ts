@@ -1,6 +1,6 @@
 namespace aufgabe12 {
 
-
+    // Superklasse
     export class Thing {
         x: number;
         y: number;
@@ -9,19 +9,11 @@ namespace aufgabe12 {
         speed: number;
         bad: boolean = false;
 
-
-
         constructor(_x: number, _y: number) {
-
 
             this.x = _x;
             this.y = _y;
-            //            this.setRandomColor();
-            //    .u          
-
         }
-
-
         update(): void {
             this.move();
             this.draw();
@@ -69,12 +61,6 @@ namespace aufgabe12 {
 
         }
 
-        setRandomColor(): void {
-            let bienenFabe: string[] = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];
-            let fluegelFabe: string[] = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
-            this.bienenColor = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
-            this.fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
-        }
 
     }
 

@@ -1,7 +1,6 @@
 var aufgabe12;
 (function (aufgabe12) {
     class Bad extends aufgabe12.Thing {
-        // in den  construktor (mit super)this.setRandomColor();
         constructor(_x, _y) {
             super(_x, _y);
             this.bad = true;

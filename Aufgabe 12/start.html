@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" src="bee.js"></script>
-	<script type="text/javascript" src="figur.js"></script>	
+	<script type="text/javascript" src="thing.js"></script>
+	<script type="text/javascript" src="rentier.js"></script>	
 	<script type="text/javascript" src="good.js"></script>
 	<script type="text/javascript" src="bad.js"></script>
 	<script type="text/javascript" src="bluemchen.js"></script>
@@ -14,36 +14,26 @@
 	<script type="text/javascript" src="apfel.js"></script>
 	<script type="text/javascript" src="pfirsich.js"></script>
 <meta charset="UTF-8">
-<title>Blumenwiese</title>
+<title>Geschenkefressen</title>
 </head>
 <body>
-<span class="close cursor" id="cl6">&times;</span>
+
 <img src="milchstrasse.png" id="bild"> 
-<button name="load" id="load" class="buttons" type="button">Start</button>
-<!-- 	<p class="ueberschriftGr">Blumenwiesen Animation</p> -->
+<p id="anfangstext">Der Weihnachtsmann verliert Geschenke. 
+hilf seinem Rentier die verpackten Geschenke aufzufangen. 
+Doch Vorsicht, fange nur die verpackten Geschenke! 
+Bewege das Rentier mit den Buttons. Klicke auf Start um zu beginnen.</p>
+<p id="endtext"></p>
+<button name="load" id="load" class="startButtons" type="button">Spiel neu laden</button>
+<button name="start" id="start" class="startButtons" type="button">Start</button>
 	<canvas id="spielfeld" class="Leinwand" width="175" height="280"></canvas>
-	
 
 	<div id="richtungsButtons">
-		<button name="links" value="1" id="linkerButton" class="buttons" type="button">links</button>
-		<button name="mitte" value="2" id="mittlerButton" class="buttons" type="button">mitte</button>
-		<button name="rechts" value="3" id="rechterButton" class="buttons" type="button">rechts</button>
+		<button name="links" value="1" id="linkerButton" class="buttons" type="button"></button>
+		<button name="mitte" value="2" id="mittlerButton" class="buttons" type="button"></button>
+		<button name="rechts" value="3" id="rechterButton" class="buttons" type="button"></button>
 	</div>
-	<!-- 	<div> -->
-	<!-- 		<canvas class="LeinwandKlein" id="tap1" width="58.3" height="75"></canvas> -->
-	<!-- 		<canvas class="LeinwandKlein" id="tap2" width="58.3" height="75"></canvas> -->
-	<!-- 		<canvas class="LeinwandKlein" id="tap3" width="58.3" height="75"></canvas> -->
-	<!-- 	</div> -->
-
-
-
-
-
-
-
-
-
-
+	
 
 
 </body>
