@@ -4,8 +4,6 @@ namespace aufgabe12 {
     export class Thing {
         x: number;
         y: number;
-        bienenColor: string;
-        fluegelColor: string;
         speed: number;
         bad: boolean = false;
 

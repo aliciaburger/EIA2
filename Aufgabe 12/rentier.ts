@@ -4,8 +4,6 @@ namespace aufgabe12 {
     export class Rentier {
         x: number;
         y: number;
-        bienenColor: string;
-        fluegelColor: string;
         speed: number;
         xTarget: number;
         xDiff: number;
@@ -138,12 +136,7 @@ namespace aufgabe12 {
             this.x += this.xDiff * this.speed;
         }
 
-        setRandomColor(): void {
-            let bienenFabe: string[] = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];
-            let fluegelFabe: string[] = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
-            this.bienenColor = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
-            this.fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
-        }
+
 
     }
 

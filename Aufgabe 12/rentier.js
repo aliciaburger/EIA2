@@ -113,12 +113,6 @@ var aufgabe12;
             this.xDiff = this.xTarget - this.x;
             this.x += this.xDiff * this.speed;
         }
-        setRandomColor() {
-            let bienenFabe = ["#FFF700", "#FFD500", "#FFBC00", "#FFA600", "#FFD041", "#FFE041", "#FFFA41", "#EDFF41"];
-            let fluegelFabe = ["#F8E1FF", "#FFE1FE", "#EBE1FF", "#E1E1FF", "#E1F2FF", "#E1FFFF", "#E1FFF7", "#E1FFE1"];
-            this.bienenColor = bienenFabe[Math.floor(Math.random() * bienenFabe.length)];
-            this.fluegelColor = fluegelFabe[Math.floor(Math.random() * fluegelFabe.length)];
-        }
     }
     aufgabe12.Rentier = Rentier;
 })(aufgabe12 || (aufgabe12 = {}));
