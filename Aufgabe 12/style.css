@@ -98,9 +98,9 @@ div {
 }
 /* The Close Button */
 .close {
-  color: #d7d7d7;
+  color: #d7d7d7 !important;
   position: absolute;
-   
+  float:right;
   top:8px;
   right: 25px;
   font-size: 35px;
